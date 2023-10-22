@@ -17,8 +17,15 @@ const category2 = require('./c2.png');
 const gig = require('./gig.png');
 const heart = require('./heart.png');
 const freelancer = require('./freelancer.png');
+const splash = require('./splash.png');
+const checkbox = require('./checkbox.png');
+const leftfaded_Line = require('./leftfaded.png');
+const rightfaded_Line = require('./rightfaded.png');
 
 export {
+  checkbox,
+  leftfaded_Line,
+  rightfaded_Line,
   home,
   chat,
   calendar,
@@ -38,4 +45,5 @@ export {
   gig,
   heart,
   freelancer,
+  splash,
 };

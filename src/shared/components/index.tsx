@@ -1,3 +1,3 @@
 import Wrapper from './wrapper';
-
-export {Wrapper};
+import CustomCheckBox from './customCheckBox';
+export {Wrapper, CustomCheckBox};

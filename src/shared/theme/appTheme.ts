@@ -1,7 +1,7 @@
 import {Dimensions} from 'react-native';
 
 const {width, height} = Dimensions.get('window');
-
+export const primary = '#00538F';
 export const THEME = '#F26322';
 export const TEXT = 'black';
 export const GREY = 'grey';

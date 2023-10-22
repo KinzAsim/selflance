@@ -4,26 +4,29 @@ import {
   Image,
   TextInput,
   StyleSheet,
-  Dimensions,
   TouchableOpacity,
   Pressable,
 } from 'react-native';
-import {RF} from '@theme';
-import {Wrapper} from '@components';
-import {navigate} from '@services';
+import {GREY, primary, RF} from '@theme';
+import {CustomCheckBox, Wrapper} from '@components';
 import React, {useState} from 'react';
-import {close, fadedLine, fb, google, logo, show} from '@assets';
-import CheckBox from '@react-native-community/checkbox';
+import {
+  close,
+  fb,
+  google,
+  leftfaded_Line,
+  logo,
+  rightfaded_Line,
+  show,
+} from '@assets';
 import {useDispatch} from 'react-redux';
 import {setIsLoggedIn} from '@redux';
 
-const Height = Dimensions.get('window').height;
-const Width = Dimensions.get('window').width;
-const primary = '#00538F';
-const placeHolder = 'gray';
-
 const Login = ({navigation}: any) => {
-  const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  const [isUsernameFocused, setIsUsernameFocused] = useState(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
   const dispatch = useDispatch();
   const onClick = () => {
     navigation.navigate('SignUp');
@@ -32,6 +35,25 @@ const Login = ({navigation}: any) => {
   const hanldeLogIn = () => {
     console.log('login');
     dispatch(setIsLoggedIn(true));
+  };
+  const handleUsernameFocus = () => {
+    setIsUsernameFocused(true);
+  };
+
+  const handleUsernameBlur = () => {
+    setIsUsernameFocused(false);
+  };
+
+  const handlePasswordFocus = () => {
+    setIsPasswordFocused(true);
+  };
+
+  const handlePasswordBlur = () => {
+    setIsPasswordFocused(false);
+  };
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
   };
 
   return (
@@ -53,8 +75,17 @@ const Login = ({navigation}: any) => {
 
       <TextInput
         placeholder={'User Name'}
-        style={[styles.entry_Fields, {marginTop: RF(10)}]}
-        placeholderTextColor={placeHolder}
+        onFocus={handleUsernameFocus}
+        onBlur={handleUsernameBlur}
+        style={[
+          styles.entry_Fields,
+
+          {
+            marginTop: RF(10),
+            borderColor: isUsernameFocused ? primary : '#00000014',
+          },
+        ]}
+        placeholderTextColor={GREY}
       />
       <View
         style={[
@@ -63,32 +94,31 @@ const Login = ({navigation}: any) => {
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
+            borderColor: isPasswordFocused ? primary : '#00000014',
           },
         ]}>
         <TextInput
           style={styles.password_Field}
+          onFocus={handlePasswordFocus}
+          onBlur={handlePasswordBlur}
           placeholder={'Enter Password'}
-          placeholderTextColor={placeHolder}
+          secureTextEntry={!isPasswordVisible}
+          placeholderTextColor={GREY}
         />
-        <Image
-          style={{height: RF(24), width: RF(24)}}
-          source={show}
-          resizeMode={'contain'}
-        />
+        <Pressable onPress={togglePasswordVisibility}>
+          <Image
+            style={{height: RF(24), width: RF(24)}}
+            source={isPasswordVisible ? show : show}
+            resizeMode={'contain'}
+          />
+        </Pressable>
       </View>
 
       <View
         style={[styles.justify_Row, {marginBottom: RF(25), marginTop: RF(5)}]}>
-        <CheckBox
-          disabled={false}
-          onCheckColor="#00538F"
-          onTintColor={'#00538F'}
-          value={toggleCheckBox}
-          style={{marginLeft: RF(-5), marginTop: RF(-5)}}
-          onValueChange={newValue => setToggleCheckBox(newValue)}
-        />
-        <View style={{width: '60%'}}>
-          <Text style={[styles.extra_Small, {color: placeHolder}]}>
+        <CustomCheckBox />
+        <View style={{width: '60%', marginLeft: 5}}>
+          <Text style={[styles.extra_Small, {color: GREY}]}>
             Yes, I understand and agree to the
           </Text>
           <Text style={styles.extra_Small}>Terms of Service</Text>
@@ -102,13 +132,13 @@ const Login = ({navigation}: any) => {
 
       <View style={styles.or_view}>
         <Image
-          source={fadedLine}
+          source={leftfaded_Line}
           resizeMode={'contain'}
           style={styles.faded_Line}
         />
-        <Text style={{marginHorizontal: RF(10)}}>or</Text>
+        <Text style={{marginHorizontal: RF(10), color: GREY}}>or</Text>
         <Image
-          source={fadedLine}
+          source={rightfaded_Line}
           resizeMode={'contain'}
           style={styles.faded_Line}
         />
@@ -120,29 +150,13 @@ const Login = ({navigation}: any) => {
           justifyContent: 'space-between',
           marginTop: RF(30),
         }}>
-        <View
-          style={{
-            width: RF(150),
-            height: RF(54),
-            backgroundColor: '#F8F8F8',
-            borderRadius: RF(10),
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
+        <View style={styles.auth_View}>
           <Image
             style={{width: '100%', height: RF(23), resizeMode: 'contain'}}
             source={google}
           />
         </View>
-        <View
-          style={{
-            width: RF(150),
-            height: RF(54),
-            backgroundColor: '#F8F8F8',
-            borderRadius: RF(10),
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
+        <View style={styles.auth_View}>
           <Image
             style={{width: '100%', height: RF(23), resizeMode: 'contain'}}
             source={fb}
@@ -175,6 +189,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: RF(30),
   },
+  auth_View: {
+    width: RF(140),
+    height: RF(54),
+    backgroundColor: '#F8F8F8',
+    borderRadius: RF(10),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   logo: {
     width: '50%',
     height: RF(30),
@@ -201,7 +223,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 8,
     marginBottom: RF(15),
-    borderColor: '#00000014',
     borderWidth: 1,
   },
   button: {
@@ -217,6 +238,7 @@ const styles = StyleSheet.create({
     width: '80%',
     color: '#000',
     padding: 0,
+    paddingLeft: 0,
     flexDirection: 'row',
   },
   extra_Small: {width: '100%', fontSize: RF(10), color: primary},
