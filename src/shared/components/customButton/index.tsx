@@ -6,15 +6,18 @@ import {
   TouchableOpacityProps,
 } from 'react-native';
 import React from 'react';
-import {primary, RF} from '@theme';
+import {secondary, RF} from '@theme';
 
 interface Props extends TouchableOpacityProps {
   onPress?: any;
   title?: any;
+  height?: any;
 }
 const CustomButton = (props: Props) => {
   return (
-    <TouchableOpacity style={[styles.button]} onPress={props?.onPress}>
+    <TouchableOpacity
+      style={[styles.button, {height: props?.height ? props?.height : RF(55)}]}
+      onPress={props?.onPress}>
       <Text style={styles.medium}>{props?.title}</Text>
     </TouchableOpacity>
   );
@@ -24,9 +27,8 @@ export default CustomButton;
 
 const styles = StyleSheet.create({
   button: {
-    height: RF(55),
     width: '100%',
-    backgroundColor: primary,
+    backgroundColor: secondary,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 8,

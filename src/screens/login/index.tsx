@@ -1,5 +1,4 @@
 import {
-  Text,
   View,
   Image,
   TextInput,
@@ -7,8 +6,15 @@ import {
   TouchableOpacity,
   Pressable,
 } from 'react-native';
-import {GREY, primary, RED, RF} from '@theme';
-import {CloseButton, CustomButton, CustomCheckBox, Wrapper} from '@components';
+import {GREY, secondary, RF} from '@theme';
+import {
+  CloseButton,
+  CustomButton,
+  CustomCheckBox,
+  CustomModal,
+  Text,
+  Wrapper,
+} from '@components';
 import {fb, google, leftfaded_Line, logo, rightfaded_Line, show} from '@assets';
 import {useDispatch} from 'react-redux';
 import {setIsLoggedIn} from '@redux';
@@ -19,6 +25,8 @@ const Login = ({navigation}: any) => {
   const [isUsernameFocused, setIsUsernameFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const dispatch = useDispatch();
   const onClick = () => {
     navigation.navigate('SignUp');
@@ -44,6 +52,13 @@ const Login = ({navigation}: any) => {
     setIsPasswordVisible(!isPasswordVisible);
   };
 
+  const handleOpenModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
+  };
   const initialValues = {
     email: '',
     password: '',
@@ -51,7 +66,8 @@ const Login = ({navigation}: any) => {
 
   const hanldeLogIn = (values: {email: string; password: string}) => {
     console.log('login', values);
-    dispatch(setIsLoggedIn(true));
+    handleOpenModal();
+    // dispatch(setIsLoggedIn(true));
   };
   return (
     <Formik
@@ -63,6 +79,10 @@ const Login = ({navigation}: any) => {
       }}>
       {({values, errors, touched, handleChange, handleSubmit}) => (
         <Wrapper isPaddingH>
+          <CustomModal
+            isVisible={isModalVisible}
+            closeModal={handleCloseModal}
+          />
           <View style={[styles.justify_Row, {marginTop: RF(30)}]}>
             <Image style={styles.logo} source={logo} resizeMode={'contain'} />
             <CloseButton />
@@ -83,7 +103,7 @@ const Login = ({navigation}: any) => {
 
               {
                 marginTop: RF(10),
-                borderColor: isUsernameFocused ? primary : '#00000014',
+                borderColor: isUsernameFocused ? secondary : '#00000014',
               },
             ]}
             placeholderTextColor={GREY}
@@ -98,7 +118,7 @@ const Login = ({navigation}: any) => {
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                borderColor: isPasswordFocused ? primary : '#00000014',
+                borderColor: isPasswordFocused ? secondary : '#00000014',
               },
             ]}>
             <TextInput
@@ -177,7 +197,10 @@ const Login = ({navigation}: any) => {
 
             <TouchableOpacity onPress={onClick}>
               <Text
-                style={[styles.medium, {alignSelf: 'center', color: primary}]}>
+                style={[
+                  styles.medium,
+                  {alignSelf: 'center', color: secondary},
+                ]}>
                 Create Account
               </Text>
             </TouchableOpacity>
@@ -222,7 +245,7 @@ const styles = StyleSheet.create({
     marginTop: RF(10),
   },
   regular: {fontSize: RF(14), color: '#434343', marginTop: RF(10)},
-  small: {fontSize: RF(12), color: primary},
+  small: {fontSize: RF(12), color: secondary},
   medium: {fontSize: RF(16), color: '#fff', fontWeight: '600'},
   entry_Fields: {
     height: RF(56),
@@ -242,12 +265,12 @@ const styles = StyleSheet.create({
     paddingLeft: 0,
     flexDirection: 'row',
   },
-  extra_Small: {width: '100%', fontSize: RF(10), color: primary},
+  extra_Small: {width: '100%', fontSize: RF(10), color: secondary},
   faded_Line: {height: RF(17), width: RF(120)},
   auth: {width: '100%', height: RF(23), resizeMode: 'contain'},
   errors: {
     fontSize: 12,
-    color: RED,
+    color: 'red',
     marginTop: -10,
     marginBottom: 10,
   },

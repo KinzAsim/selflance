@@ -23,12 +23,18 @@ const leftfaded_Line = require('./leftfaded.png');
 const rightfaded_Line = require('./rightfaded.png');
 const back = require('./back.png');
 const forgeticon = require('./forgeticon.png');
-
+const block = require('./block.png');
+const menu = require('./menu.png');
+const warning = require('./warning.png');
 export {
-  checkbox,
   forgeticon,
+  checkbox,
   leftfaded_Line,
   rightfaded_Line,
+  block,
+  menu,
+  warning,
+  back,
   home,
   chat,
   calendar,
@@ -49,5 +55,4 @@ export {
   heart,
   freelancer,
   splash,
-  back,
 };

@@ -3,5 +3,7 @@ import Login from './login';
 import SignUp from './signUp';
 import Splash from './splash';
 import ForgetPassword from './fogetPassword';
+import Chat from './chat/overview';
+import ChatPage from './chat/chatpage';
 
-export {Home, Login, SignUp, Splash, ForgetPassword};
+export {Home, Login, SignUp, Splash, ForgetPassword, Chat, ChatPage};

@@ -1,0 +1,75 @@
+import {RF} from '@theme';
+import React from 'react';
+import {Text} from '@components';
+import {back, menu, search} from '@assets';
+import {Image, StyleSheet, View} from 'react-native';
+
+const TextHeader = ({
+  title,
+  _back,
+  _search,
+}: {
+  title?: any;
+  _back?: any;
+  _search?: any;
+}) => {
+  return (
+    <View style={styles.main}>
+      {_back && (
+        <View style={styles.iV}>
+          <Image source={back} style={styles.img} />
+        </View>
+      )}
+      <View style={styles.view}>
+        <Text size={20} semiBold>
+          {title}
+        </Text>
+        {_search && (
+          <View style={{flexDirection: 'row'}}>
+            <Image source={search} style={styles.search} />
+            <Image source={menu} style={styles.menu} />
+          </View>
+        )}
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  view: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '80%',
+  },
+  menu: {
+    width: RF(20),
+    height: RF(20),
+    marginLeft: RF(10),
+  },
+  search: {
+    width: RF(20),
+    height: RF(20),
+  },
+  iV: {
+    width: RF(50),
+    height: RF(50),
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F8F8F8',
+    borderRadius: RF(10),
+    marginRight: RF(20),
+  },
+  img: {
+    width: RF(12),
+    height: RF(19),
+  },
+  main: {
+    backgroundColor: '#fff',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: RF(20),
+  },
+});
+
+export default TextHeader;

@@ -6,6 +6,7 @@ import {close} from '@assets';
 const CloseButton = () => {
   return (
     <Pressable
+      // onPress={navigteOnClose}
       style={{
         height: RF(32),
         width: RF(32),
