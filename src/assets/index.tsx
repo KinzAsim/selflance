@@ -17,8 +17,16 @@ const category2 = require('./c2.png');
 const gig = require('./gig.png');
 const heart = require('./heart.png');
 const freelancer = require('./freelancer.png');
+const back = require('./back.png');
+const block = require('./block.png');
+const menu = require('./menu.png');
+const warning = require('./warning.png');
 
 export {
+  block,
+  menu,
+  warning,
+  back,
   home,
   chat,
   calendar,
