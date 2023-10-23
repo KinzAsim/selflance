@@ -21,9 +21,12 @@ const splash = require('./splash.png');
 const checkbox = require('./checkbox.png');
 const leftfaded_Line = require('./leftfaded.png');
 const rightfaded_Line = require('./rightfaded.png');
+const back = require('./back.png');
+const forgeticon = require('./forgeticon.png');
 
 export {
   checkbox,
+  forgeticon,
   leftfaded_Line,
   rightfaded_Line,
   home,
@@ -46,4 +49,5 @@ export {
   heart,
   freelancer,
   splash,
+  back,
 };

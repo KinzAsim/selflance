@@ -2,6 +2,9 @@ import {Dimensions} from 'react-native';
 
 const {width, height} = Dimensions.get('window');
 export const primary = '#00538F';
+export const lightText = '#949494';
+export const grayButton = '#F8F8F8';
+export const textColor = '#434343';
 export const THEME = '#F26322';
 export const TEXT = 'black';
 export const GREY = 'grey';
@@ -61,6 +64,7 @@ export const koho = '#F38375';
 
 export const primaryDarkColor = '#19383A';
 // user?.user?.user_type == 'Borrowell' ? '#20297a' : '#19383A';
+export const black_text = '#0A1C2E';
 export const light_grey = '#F9FAFB';
 export const txt_gray = '#4A5568';
 export const txt_black = '#1D1D1D';
