@@ -21,8 +21,14 @@ const back = require('./back.png');
 const block = require('./block.png');
 const menu = require('./menu.png');
 const warning = require('./warning.png');
+const banner = require('./banner.png');
+const freelancing = require('./freelancing.png');
+const company = require('./company.png');
 
 export {
+  company,
+  freelancing,
+  banner,
   block,
   menu,
   warning,
