@@ -1,5 +1,6 @@
 import {
   ai,
+  banner,
   business,
   category1,
   category2,
@@ -121,5 +122,32 @@ export const chatList = [
     img: user,
     name: 'Shane',
     message: 'Hey there',
+  },
+];
+
+export const carousel = [
+  {
+    img: banner,
+    message: `Get Matched With Sellers`,
+  },
+  {
+    img: banner,
+    message: 'Get Matched With Sellers',
+  },
+  {
+    img: banner,
+    message: 'Get Matched With Sellers',
+  },
+  {
+    img: banner,
+    message: `Get Matched With Sellers`,
+  },
+  {
+    img: banner,
+    message: 'Get Matched With Sellers',
+  },
+  {
+    img: banner,
+    message: 'Get Matched With Sellers',
   },
 ];

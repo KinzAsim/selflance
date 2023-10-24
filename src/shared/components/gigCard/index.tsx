@@ -5,10 +5,11 @@ import {heart, star, user} from '@assets';
 import {View, Image, ImageBackground, StyleSheet} from 'react-native';
 
 const GigCard = (props: any) => {
-  const {data} = props;
+  const {data, index} = props;
 
   return (
-    <View style={styles.gigCardContainer}>
+    <View
+      style={[styles.gigCardContainer, {marginLeft: index === 0 ? RF(15) : 0}]}>
       <ImageBackground source={data.img} style={styles.gigImage}>
         <View style={[styles.row, {justifyContent: 'space-between'}]}>
           <View style={styles.tag}>

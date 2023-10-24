@@ -5,17 +5,19 @@ import {
   Wrapper,
   DetailBox,
   HorizontalList,
+  Carousel_Pagination,
 } from '@components';
+import React, {useRef} from 'react';
 import styles from './styles';
 import {setIsLoggedIn} from '@redux';
 import {useDispatch} from 'react-redux';
 import {company, freelancing} from '@assets';
 import {View, ScrollView} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {categoryData, companiesData} from '@utils';
+import {carousel, categoryData, companiesData} from '@utils';
 
 const Home = ({navigation}: any) => {
   const dispatch = useDispatch();
+  const flatListRef: any = useRef();
 
   const handleLogOut = () => {
     dispatch(setIsLoggedIn(false));
@@ -33,6 +35,7 @@ const Home = ({navigation}: any) => {
         </View>
 
         <ScrollView showsVerticalScrollIndicator={false}>
+          <Carousel_Pagination data={carousel} flatListRef={flatListRef} />
           <SeeAll title={'Categories'} onPress={onOpenSeeAll} />
           <HorizontalList data={categoryData} />
 

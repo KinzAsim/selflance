@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
 } from 'react-native';
+import {setIsLoggedIn} from '@redux';
+import {useDispatch} from 'react-redux';
 import {Text, CustomButton} from '@components';
 import React, {useState, useEffect} from 'react';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
@@ -14,13 +16,16 @@ import {black_text, lightText, RF, secondary, txt_gray} from '@theme';
 interface Props extends TouchableOpacityProps {
   isVisible?: any;
   closeModal?: any;
+  navigation?: any;
 }
 const CustomModal = (props: Props) => {
+  const dispatch = useDispatch();
   const [timer, setTimer] = useState(30);
   const [codeFill, setCodeFill] = useState('');
+  const {isVisible, closeModal, navigation} = props;
 
   useEffect(() => {
-    if (props?.isVisible) {
+    if (isVisible) {
       setTimer(30);
       const intervalId = setInterval(() => {
         setTimer(prevTimer => (prevTimer > 0 ? prevTimer - 1 : 0));
@@ -29,17 +34,22 @@ const CustomModal = (props: Props) => {
         clearInterval(intervalId);
       };
     }
-  }, [props.isVisible]);
+  }, [isVisible]);
 
   const resetTimer = () => {
     setTimer(30);
   };
 
+  const onClose = () => {
+    closeModal;
+    dispatch(setIsLoggedIn(true));
+  };
+
   return (
-    <Modal visible={props?.isVisible} animationType="fade" transparent={true}>
+    <Modal visible={isVisible} animationType="fade" transparent={true}>
       <StatusBar backgroundColor={'rgba(0,0,0,0.6)'} />
       <View style={styles.container}>
-        <TouchableOpacity onPress={props?.closeModal}></TouchableOpacity>
+        <TouchableOpacity onPress={closeModal}></TouchableOpacity>
         <View style={styles.centered_View}>
           <Text color={black_text} size={20} semiBold>
             Verification
@@ -50,8 +60,8 @@ const CustomModal = (props: Props) => {
           </Text>
 
           <OTPInputView
-            style={styles.otp}
             pinCount={6}
+            style={styles.otp}
             autoFocusOnLoad={false}
             codeInputFieldStyle={styles.underlineStyleBase}
             codeInputHighlightStyle={styles.underlineStyleHighLighted}
@@ -75,11 +85,11 @@ const CustomModal = (props: Props) => {
             </Text>
           </View>
           <CustomButton
+            height={RF(40)}
+            title={'Confirm'}
+            onPress={onClose}
             disabled={codeFill.length !== 6}
             color={codeFill.length === 6 ? secondary : lightText}
-            title={'Confirm'}
-            height={RF(40)}
-            onPress={props?.closeModal}
           />
         </View>
       </View>

@@ -16,8 +16,10 @@ import HorizontalList from './horizontalList';
 import ClickableBox from './clickableBox';
 import ShiftCards from './shiftCards';
 import CustomModal from './modal';
+import Carousel_Pagination from './carousel';
 
 export {
+  Carousel_Pagination,
   ClickableBox,
   HorizontalList,
   CategoryCard,

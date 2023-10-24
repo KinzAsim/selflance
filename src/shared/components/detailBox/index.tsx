@@ -8,7 +8,7 @@ const DetailBox = ({data}: {data?: any}) => {
     <View style={styles.view}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {data.map((d: any, index: any) => (
-          <GigCard data={d} key={index} />
+          <GigCard data={d} key={index} index={index} />
         ))}
       </ScrollView>
     </View>
@@ -16,7 +16,7 @@ const DetailBox = ({data}: {data?: any}) => {
 };
 
 const styles = StyleSheet.create({
-  view: {height: RF(270), paddingLeft: RF(16), marginBottom: RF(24)},
+  view: {height: RF(270), marginBottom: RF(24)},
 });
 
 export default DetailBox;

@@ -23,7 +23,7 @@ const MainTabs = ({navigation}: any) => {
     <Tab.Navigator
       screenOptions={({route: {name}}) => ({
         headerShown: false,
-        // keyboardHidesTabBar: true,
+        keyboardHidesTabBar: true,
         // tabBarStyle: styles.tabBarStyle,
         // tabBarIconStyle: styles.tabIcon,
       })}>

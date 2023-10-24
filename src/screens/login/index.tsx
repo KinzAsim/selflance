@@ -2,32 +2,30 @@ import {
   View,
   Image,
   TextInput,
-  StyleSheet,
-  TouchableOpacity,
   Pressable,
+  TouchableOpacity,
 } from 'react-native';
-import {GREY, secondary, RF} from '@theme';
 import {
-  CloseButton,
-  CustomButton,
-  CustomCheckBox,
-  CustomModal,
   Text,
   Wrapper,
+  CloseButton,
+  CustomModal,
+  CustomButton,
+  CustomCheckBox,
 } from '@components';
-import {fb, google, leftfaded_Line, logo, rightfaded_Line, show} from '@assets';
-import {useDispatch} from 'react-redux';
-import {setIsLoggedIn} from '@redux';
 import {Formik} from 'formik';
+import {styles} from './styles';
+import React, {useState} from 'react';
+import {GREY, secondary, RF} from '@theme';
 import {LoginValidationSchema} from '@utils';
-import React, {useState, useEffect} from 'react';
+import {fb, google, leftfaded_Line, logo, rightfaded_Line, show} from '@assets';
+
 const Login = ({navigation}: any) => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [isUsernameFocused, setIsUsernameFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const dispatch = useDispatch();
   const onClick = () => {
     navigation.navigate('SignUp');
   };
@@ -72,8 +70,8 @@ const Login = ({navigation}: any) => {
 
   return (
     <Formik
-      initialValues={initialValues}
       validateOnMount={true}
+      initialValues={initialValues}
       validationSchema={LoginValidationSchema}
       onSubmit={values => {
         hanldeLogIn(values);
@@ -81,6 +79,7 @@ const Login = ({navigation}: any) => {
       {({values, errors, touched, handleChange, handleSubmit}) => (
         <Wrapper isPaddingH>
           <CustomModal
+            navigation={navigation}
             isVisible={isModalVisible}
             closeModal={handleCloseModal}
           />
@@ -88,7 +87,7 @@ const Login = ({navigation}: any) => {
             <Image style={styles.logo} source={logo} resizeMode={'contain'} />
             <CloseButton />
           </View>
-          <View style={{marginVertical: RF(20)}}>
+          <View style={styles.mv}>
             <Text style={styles.semiBold}>Log In</Text>
             <Text style={styles.regular}>Please Sign In To Your Account</Text>
           </View>
@@ -101,7 +100,6 @@ const Login = ({navigation}: any) => {
             onChangeText={handleChange('email')}
             style={[
               styles.entry_Fields,
-
               {
                 marginTop: RF(10),
                 borderColor: isUsernameFocused ? secondary : '#00000014',
@@ -112,6 +110,7 @@ const Login = ({navigation}: any) => {
           {errors.email && touched.email ? (
             <Text style={styles.errors}>{errors.email}</Text>
           ) : null}
+
           <View
             style={[
               styles.entry_Fields,
@@ -168,7 +167,7 @@ const Login = ({navigation}: any) => {
               resizeMode={'contain'}
               style={styles.faded_Line}
             />
-            <Text style={{marginHorizontal: RF(10), color: GREY}}>or</Text>
+            <Text style={styles.or}>or</Text>
             <Image
               source={rightfaded_Line}
               resizeMode={'contain'}
@@ -176,12 +175,7 @@ const Login = ({navigation}: any) => {
             />
           </View>
 
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              marginTop: RF(30),
-            }}>
+          <View style={styles.vImg}>
             <View style={styles.auth_View}>
               <Image style={styles.auth} source={google} />
             </View>
@@ -190,7 +184,7 @@ const Login = ({navigation}: any) => {
             </View>
           </View>
 
-          <View style={{marginTop: RF(20)}}>
+          <View style={styles.mt}>
             <Text
               style={[styles.regular, {alignSelf: 'center', color: '#000'}]}>
               New to Selflance?
@@ -213,66 +207,3 @@ const Login = ({navigation}: any) => {
 };
 
 export default Login;
-
-const styles = StyleSheet.create({
-  or_view: {
-    flexDirection: 'row',
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: RF(30),
-  },
-  auth_View: {
-    width: RF(140),
-    height: RF(54),
-    backgroundColor: '#F8F8F8',
-    borderRadius: RF(10),
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  logo: {
-    width: '50%',
-    height: RF(30),
-    resizeMode: 'contain',
-  },
-  justify_Row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  semiBold: {
-    fontSize: RF(24),
-    fontWeight: '700',
-    color: '#000',
-    marginTop: RF(10),
-  },
-  regular: {fontSize: RF(14), color: '#434343', marginTop: RF(10)},
-  small: {fontSize: RF(12), color: secondary},
-  medium: {fontSize: RF(16), color: '#fff', fontWeight: '600'},
-  entry_Fields: {
-    height: RF(56),
-    width: '100%',
-    color: '#000',
-    padding: 10,
-    borderRadius: 8,
-    marginBottom: RF(15),
-    borderWidth: 1,
-  },
-
-  password_Field: {
-    height: '100%',
-    width: '80%',
-    color: '#000',
-    padding: 0,
-    paddingLeft: 0,
-    flexDirection: 'row',
-  },
-  extra_Small: {width: '100%', fontSize: RF(10), color: secondary},
-  faded_Line: {height: RF(17), width: RF(120)},
-  auth: {width: '100%', height: RF(23), resizeMode: 'contain'},
-  errors: {
-    fontSize: 12,
-    color: 'red',
-    marginTop: -10,
-    marginBottom: 10,
-  },
-});

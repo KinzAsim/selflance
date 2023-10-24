@@ -8,7 +8,7 @@ const HorizontalList = ({data}: {data?: any}) => {
     <View style={styles.category}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {data.map((d: any, index: any) => (
-          <CategoryCard data={d} key={index} />
+          <CategoryCard data={d} key={index} index={index} />
         ))}
       </ScrollView>
     </View>
