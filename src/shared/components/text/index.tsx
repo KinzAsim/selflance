@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
   regular: {
-    fontFamily: '400',
+    fontFamily: 'Poppins-Regular',
   },
   medium: {
     fontFamily: '500',
@@ -103,10 +103,10 @@ const styles = StyleSheet.create({
     fontFamily: '500',
   },
   semiBold: {
-    fontFamily: '600',
+    fontFamily: 'Poppins-SemiBold',
   },
   bold: {
-    fontFamily: '700',
+    fontFamily: 'Poppins-Bold',
   },
   bolder: {
     fontFamily: '800',
