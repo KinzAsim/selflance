@@ -5,5 +5,15 @@ import Splash from './splash';
 import ForgetPassword from './fogetPassword';
 import Chat from './chat/overview';
 import ChatPage from './chat/chatpage';
+import GraphicAndDesign from './graphicAndDesigning';
 
-export {Home, Login, SignUp, Splash, ForgetPassword, Chat, ChatPage};
+export {
+  Home,
+  Login,
+  SignUp,
+  Splash,
+  ForgetPassword,
+  Chat,
+  ChatPage,
+  GraphicAndDesign,
+};

@@ -9,7 +9,7 @@ import {
   ScrollView,
 } from 'react-native';
 import {RF} from '@theme';
-import {Wrapper} from '@components';
+import {CustomCheckBox, Wrapper} from '@components';
 import {navigate} from '@services';
 import React, {useState} from 'react';
 import {close, fadedLine, fb, google, logo, show} from '@assets';
@@ -29,7 +29,9 @@ const SignUp = ({navigation}: any) => {
 
   return (
     <Wrapper isPaddingH>
-      <ScrollView showsHorizontalScrollIndicator={false}>
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}>
         <View style={[styles.justify_Row, {marginTop: RF(30)}]}>
           <Image style={styles.logo} source={logo} resizeMode={'contain'} />
           <Image
@@ -80,21 +82,13 @@ const SignUp = ({navigation}: any) => {
             styles.justify_Row,
             {marginBottom: RF(25), marginTop: RF(5)},
           ]}>
-          <CheckBox
-            disabled={false}
-            onCheckColor="#00538F"
-            onTintColor={'#00538F'}
-            value={toggleCheckBox}
-            style={{marginLeft: RF(-5), marginTop: RF(-5)}}
-            onValueChange={newValue => setToggleCheckBox(newValue)}
-          />
-          <View style={{width: '60%'}}>
+          <CustomCheckBox />
+          <View style={{flexDirection: 'row', width: '70%', marginLeft: 7}}>
             <Text style={[styles.extra_Small, {color: placeHolder}]}>
               Yes, I understand and agree to the
+              {<Text style={styles.extra_Small}> Terms of Services </Text>}
             </Text>
-            <Text style={styles.extra_Small}>Terms of Service</Text>
           </View>
-          <Text style={styles.small}>Forget password</Text>
         </View>
 
         <TouchableOpacity style={styles.button}>
@@ -121,33 +115,11 @@ const SignUp = ({navigation}: any) => {
             justifyContent: 'space-between',
             marginTop: RF(30),
           }}>
-          <View
-            style={{
-              width: RF(150),
-              height: RF(54),
-              backgroundColor: '#F8F8F8',
-              borderRadius: RF(10),
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <Image
-              style={{width: '100%', height: RF(23), resizeMode: 'contain'}}
-              source={google}
-            />
+          <View style={styles.auth_View}>
+            <Image style={styles.auth} source={google} />
           </View>
-          <View
-            style={{
-              width: RF(150),
-              height: RF(54),
-              backgroundColor: '#F8F8F8',
-              borderRadius: RF(10),
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <Image
-              style={{width: '100%', height: RF(23), resizeMode: 'contain'}}
-              source={fb}
-            />
+          <View style={styles.auth_View}>
+            <Image style={styles.auth} source={fb} />
           </View>
         </View>
 
@@ -185,7 +157,6 @@ const styles = StyleSheet.create({
   },
   justify_Row: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
   },
   close_Icon: {height: RF(32), width: RF(32), marginTop: -12},
   semiBold: {
@@ -222,10 +193,16 @@ const styles = StyleSheet.create({
     padding: 0,
     flexDirection: 'row',
   },
-  extra_Small: {width: '100%', fontSize: RF(10), color: primary},
+  extra_Small: {fontSize: RF(10), color: primary},
   faded_Line: {height: RF(17), width: RF(120)},
-  auth: {
+  auth: {width: '100%', height: RF(23), resizeMode: 'contain'},
+
+  auth_View: {
+    width: RF(140),
     height: RF(54),
-    width: '45%',
+    backgroundColor: '#F8F8F8',
+    borderRadius: RF(10),
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

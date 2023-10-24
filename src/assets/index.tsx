@@ -26,7 +26,22 @@ const forgeticon = require('./forgeticon.png');
 const block = require('./block.png');
 const menu = require('./menu.png');
 const warning = require('./warning.png');
+const frame1 = require('./frame1.png');
+const frame2 = require('./frame2.png');
+const frame3 = require('./frame3.png');
+const frame4 = require('./frame2.png');
+const favourets = require('./favourets.png');
+const rating = require('./rating.png');
+const picture = require('./picture.png');
+
 export {
+  picture,
+  favourets,
+  rating,
+  frame1,
+  frame2,
+  frame3,
+  frame4,
   forgeticon,
   checkbox,
   leftfaded_Line,

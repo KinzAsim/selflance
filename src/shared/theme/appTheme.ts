@@ -3,6 +3,7 @@ import {Dimensions} from 'react-native';
 const {width, height} = Dimensions.get('window');
 export const secondary = '#00538F';
 export const lightText = '#949494';
+export const medium_Gray = '#74767E';
 export const grayButton = '#F8F8F8';
 export const light_grey = '#F9FAFB';
 export const black_text = '#0A1C2E';

@@ -9,6 +9,7 @@ import Header from './header';
 import Search from './search';
 import ChatBox from './chatBox';
 import CustomModal from './modal';
+import ShiftCards from './shiftCards';
 export {
   Wrapper,
   CustomCheckBox,
@@ -21,4 +22,5 @@ export {
   Search,
   ChatBox,
   CustomModal,
+  ShiftCards,
 };

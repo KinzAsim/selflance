@@ -12,11 +12,23 @@ interface Props extends TouchableOpacityProps {
   onPress?: any;
   title?: any;
   height?: any;
+  disabled?: any;
+  color?: any;
 }
 const CustomButton = (props: Props) => {
+  const height = props?.height;
+  const disabled = props?.disabled;
+  const color = props.color;
   return (
     <TouchableOpacity
-      style={[styles.button, {height: props?.height ? props?.height : RF(55)}]}
+      disabled={disabled}
+      style={[
+        styles.button,
+        {
+          height: height ? height : RF(55),
+          backgroundColor: color ? color : secondary,
+        },
+      ]}
       onPress={props?.onPress}>
       <Text style={styles.medium}>{props?.title}</Text>
     </TouchableOpacity>

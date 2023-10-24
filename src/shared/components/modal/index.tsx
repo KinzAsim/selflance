@@ -8,7 +8,15 @@ import {
   StatusBar,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
-import {black_text, primary, RF, secondary, txt_gray} from '@theme';
+import {
+  black_text,
+  grayButton,
+  lightText,
+  primary,
+  RF,
+  secondary,
+  txt_gray,
+} from '@theme';
 import {Text, CustomButton} from '@components';
 interface Props extends TouchableOpacityProps {
   closeModal?: any;
@@ -16,24 +24,24 @@ interface Props extends TouchableOpacityProps {
 }
 const CustomModal = (props: Props) => {
   const [timer, setTimer] = useState(30);
-  useEffect(() => {
-    if (timer <= 0) {
-      // Timer has reached zero, navigate or take appropriate action here
-      console.log('Timer has reached zero');
-      // You can navigate to the next screen here if needed
-    } else {
-      const interval = setInterval(() => {
-        setTimer(prevTimer => prevTimer - 1);
-      }, 1000);
+  const [codeFill, setCodeFill] = useState('');
 
+  useEffect(() => {
+    if (props.isVisible) {
+      setTimer(30);
+      const intervalId = setInterval(() => {
+        setTimer(prevTimer => (prevTimer > 0 ? prevTimer - 1 : 0));
+      }, 1000);
       return () => {
-        clearInterval(interval);
+        clearInterval(intervalId);
       };
     }
-  }, [timer]);
+  }, [props.isVisible]);
+
   const resetTimer = () => {
-    setTimer(30); // Reset the timer to 30 seconds
+    setTimer(30);
   };
+
   return (
     <Modal visible={props?.isVisible} animationType="fade" transparent={true}>
       <StatusBar backgroundColor={'rgba(0,0,0,0.6)'} />
@@ -56,6 +64,9 @@ const CustomModal = (props: Props) => {
             codeInputHighlightStyle={styles.underlineStyleHighLighted}
             onCodeFilled={code => {
               console.log(`Code is ${code}, you are good to go!`);
+              setCodeFill(code);
+              // setCodeFill(code);
+              console.log('complete');
             }}
           />
           <Text
@@ -87,6 +98,8 @@ const CustomModal = (props: Props) => {
             </Text>
           </View>
           <CustomButton
+            disabled={codeFill.length !== 6}
+            color={codeFill.length === 6 ? secondary : lightText}
             title={'Confirm'}
             height={RF(40)}
             onPress={props?.closeModal}
