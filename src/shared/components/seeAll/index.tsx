@@ -4,7 +4,15 @@ import {Text} from '@components';
 import {rightArrow} from '@assets';
 import {Image, Pressable, StyleSheet, View} from 'react-native';
 
-const SeeAll = ({title, source}: {title?: any; source?: any}) => {
+const SeeAll = ({
+  title,
+  source,
+  onPress,
+}: {
+  title?: any;
+  source?: any;
+  onPress?: any;
+}) => {
   return (
     <View style={styles.view}>
       <View style={styles.row}>
@@ -13,7 +21,7 @@ const SeeAll = ({title, source}: {title?: any; source?: any}) => {
           {title}
         </Text>
       </View>
-      <Pressable style={styles.pressable}>
+      <Pressable style={styles.pressable} onPress={onPress}>
         <Text size={12} regular color={'#00538F'}>
           View All
         </Text>

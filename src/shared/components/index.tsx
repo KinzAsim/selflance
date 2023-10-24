@@ -9,8 +9,10 @@ import GigCard from './gigCard';
 import DetailBox from './detailBox';
 import CategoryCard from './categoryCard';
 import HorizontalList from './horizontalList';
+import ClickableBox from './clickableBox';
 
 export {
+  ClickableBox,
   HorizontalList,
   CategoryCard,
   Wrapper,

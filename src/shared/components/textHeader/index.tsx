@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
     height: RF(20),
   },
   iV: {
-    width: RF(50),
-    height: RF(50),
+    width: RF(32),
+    height: RF(32),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#F8F8F8',
@@ -61,8 +61,9 @@ const styles = StyleSheet.create({
     marginRight: RF(20),
   },
   img: {
-    width: RF(12),
-    height: RF(19),
+    width: RF(13),
+    height: RF(12),
+    resizeMode: 'contain',
   },
   main: {
     backgroundColor: '#fff',

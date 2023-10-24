@@ -16,7 +16,7 @@ const DetailBox = ({data}: {data?: any}) => {
 };
 
 const styles = StyleSheet.create({
-  view: {height: RF(247.14), paddingLeft: RF(16), marginBottom: RF(24)},
+  view: {height: RF(270), paddingLeft: RF(16), marginBottom: RF(24)},
 });
 
 export default DetailBox;

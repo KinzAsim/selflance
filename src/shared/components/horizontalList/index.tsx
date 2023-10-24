@@ -1,14 +1,13 @@
 import {RF} from '@theme';
-import {categoryData} from '@utils';
 import React from 'react';
-import {View, ScrollView, StyleSheet} from 'react-native';
 import {CategoryCard} from '@components';
+import {View, ScrollView, StyleSheet} from 'react-native';
 
-const HorizontalList = () => {
+const HorizontalList = ({data}: {data?: any}) => {
   return (
     <View style={styles.category}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {categoryData.map((d: any, index: any) => (
+        {data.map((d: any, index: any) => (
           <CategoryCard data={d} key={index} />
         ))}
       </ScrollView>

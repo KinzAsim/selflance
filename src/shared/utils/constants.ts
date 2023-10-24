@@ -1,4 +1,18 @@
-import {category1, category2, freelancer, gig, user} from '@assets';
+import {
+  ai,
+  business,
+  category1,
+  category2,
+  digital,
+  freelancer,
+  gig,
+  graphic,
+  social,
+  tech,
+  user,
+  video,
+  write,
+} from '@assets';
 
 let isDarkThemeEnabled = false;
 
@@ -8,19 +22,36 @@ export function getIsDarkModeEnabled() {
 
 export const categoryData = [
   {
-    img: category1,
-    title: 'Digital Marketing',
-    subTitle: 'Related all categories',
+    img: graphic,
+    title: 'Graphic Designing',
   },
   {
-    img: category2,
+    img: digital,
     title: 'Digital Marketing',
-    subTitle: 'Related all categories',
   },
   {
-    img: category1,
-    title: 'Digital Marketing',
-    subTitle: 'Related all categories',
+    img: write,
+    title: 'Writing & Translation',
+  },
+  {
+    img: video,
+    title: 'Video & Animation',
+  },
+  {
+    img: tech,
+    title: 'Programming & Tech',
+  },
+  {
+    img: business,
+    title: 'Business',
+  },
+  {
+    img: social,
+    title: 'Social Media',
+  },
+  {
+    img: ai,
+    title: 'AI Services',
   },
 ];
 

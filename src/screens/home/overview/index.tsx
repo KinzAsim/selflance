@@ -1,23 +1,27 @@
-import React from 'react';
+import {
+  Header,
+  Search,
+  SeeAll,
+  Wrapper,
+  DetailBox,
+  HorizontalList,
+} from '@components';
 import styles from './styles';
 import {setIsLoggedIn} from '@redux';
 import {useDispatch} from 'react-redux';
 import {company, freelancing} from '@assets';
 import {View, ScrollView} from 'react-native';
-import {
-  DetailBox,
-  Header,
-  HorizontalList,
-  Search,
-  SeeAll,
-  Wrapper,
-} from '@components';
-import {companiesData} from '@utils';
+import React, {useEffect, useState} from 'react';
+import {categoryData, companiesData} from '@utils';
 
 const Home = ({navigation}: any) => {
   const dispatch = useDispatch();
+
   const handleLogOut = () => {
     dispatch(setIsLoggedIn(false));
+  };
+  const onOpenSeeAll = () => {
+    navigation.navigate('AllCategories', {item: categoryData});
   };
 
   return (
@@ -29,8 +33,8 @@ const Home = ({navigation}: any) => {
         </View>
 
         <ScrollView showsVerticalScrollIndicator={false}>
-          <SeeAll title={'Categories'} />
-          <HorizontalList />
+          <SeeAll title={'Categories'} onPress={onOpenSeeAll} />
+          <HorizontalList data={categoryData} />
 
           <SeeAll title={'Companies'} source={company} />
           <DetailBox data={companiesData} />

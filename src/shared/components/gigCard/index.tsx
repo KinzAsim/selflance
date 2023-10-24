@@ -1,8 +1,8 @@
 import React from 'react';
 import Text from '../text';
-import {heart, user} from '@assets';
-import {View, Image, ImageBackground, StyleSheet} from 'react-native';
 import {RF, txt_gray} from '@theme';
+import {heart, star, user} from '@assets';
+import {View, Image, ImageBackground, StyleSheet} from 'react-native';
 
 const GigCard = (props: any) => {
   const {data} = props;
@@ -17,25 +17,14 @@ const GigCard = (props: any) => {
             </Text>
           </View>
 
-          <View
-            style={{
-              width: RF(21),
-              height: RF(21),
-              backgroundColor: '#fff',
-              borderRadius: RF(100),
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <Image
-              source={heart}
-              style={{height: RF(11), width: RF(12), resizeMode: 'contain'}}
-            />
+          <View style={styles.v_img}>
+            <Image source={heart} style={styles.image} />
           </View>
         </View>
       </ImageBackground>
 
-      <View style={{paddingHorizontal: RF(9.87), paddingTop: RF(6.78)}}>
-        <Text style={[{marginBottom: 6.78}]} size={11} regular color={txt_gray}>
+      <View style={styles.v5}>
+        <Text style={styles.mb} size={11} regular color={txt_gray}>
           App Designing
         </Text>
         <Text>I Will Do Ui Design, Ui Ux Design, Website Ui Ux Design</Text>
@@ -43,9 +32,32 @@ const GigCard = (props: any) => {
 
       <View style={styles.line} />
 
-      <View style={{borderWidth: 1, paddingHorizontal: RF(10)}}>
-        <View style={{borderRadius: RF(100), width: RF(20), height: RF(20)}}>
-          <Image source={user} style={styles.img} />
+      <View style={styles.v}>
+        <View style={styles.v1}>
+          <View style={styles.v2}>
+            <View style={styles.imgV}>
+              <Image source={user} style={styles.img} />
+            </View>
+
+            <View style={styles.v4}>
+              <Text size={10}>Creative</Text>
+              <View style={styles.rating}>
+                <Text size={10} regular>
+                  5.5
+                </Text>
+                <Image source={star} style={styles.star} />
+              </View>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.v3}>
+          <Text bold size={9}>
+            STARTING AT
+          </Text>
+          <Text size={14} regular style={{marginLeft: RF(20)}}>
+            ₹678
+          </Text>
         </View>
       </View>
     </View>
@@ -53,12 +65,51 @@ const GigCard = (props: any) => {
 };
 
 const styles = StyleSheet.create({
-  img: {width: RF(20), height: RF(29)},
+  mb: {marginBottom: 6.78},
+  v5: {paddingHorizontal: RF(9.87), paddingTop: RF(6.78)},
+  image: {height: RF(11), width: RF(12), resizeMode: 'contain'},
+  v_img: {
+    width: RF(21),
+    height: RF(21),
+    backgroundColor: '#fff',
+    borderRadius: RF(100),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  v4: {marginLeft: RF(10)},
+  rating: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    // justifyContent: 'center',
+  },
+  star: {
+    width: RF(10),
+    height: RF(8),
+    resizeMode: 'contain',
+  },
+  v2: {flexDirection: 'row'},
+  v3: {marginTop: RF(15), marginRight: RF(20)},
+  v1: {
+    marginTop: RF(15),
+    paddingHorizontal: RF(10),
+  },
+  v: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: RF(10),
+  },
+  imgV: {
+    width: RF(32),
+    height: RF(32),
+    borderRadius: RF(100),
+    padding: 1,
+  },
+  img: {height: RF(30), width: RF(30)},
   line: {
     height: RF(1),
     backgroundColor: '#f4f4',
-    opacity: 0.2,
-    marginTop: RF(20),
+    marginTop: RF(10),
     width: '92%',
     alignSelf: 'center',
   },
@@ -67,7 +118,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   gigCardContainer: {
-    height: RF(247.14),
+    height: RF(260),
     width: RF(227.26),
     borderWidth: 1,
     borderColor: 'rgba(0,0,0,0.1)',
