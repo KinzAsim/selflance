@@ -65,9 +65,9 @@ const Login = ({navigation}: any) => {
   };
 
   const hanldeLogIn = (values: {email: string; password: string}) => {
-    console.log('login', values);
-    handleOpenModal();
-    // dispatch(setIsLoggedIn(true));
+    // console.log('login', values);
+    // handleOpenModal();
+    dispatch(setIsLoggedIn(true));
   };
 
   return (

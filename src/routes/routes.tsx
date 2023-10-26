@@ -7,11 +7,7 @@ import MainTabs from './tabs/mainTabs';
 const Routes = () => {
   const {isLoggedIn} = useSelector((state: any) => state.root.user);
 
-  return (
-    <SafeAreaProvider>
-      {isLoggedIn ? <MainTabs /> : <AuthStack />}
-    </SafeAreaProvider>
-  );
+  return <>{isLoggedIn ? <MainTabs /> : <AuthStack />}</>;
 };
 
 export default Routes;

@@ -42,5 +42,8 @@ export const darkThemeStyle = {
 };
 
 export const defaultTheme = {
-  colors: {},
+  colors: {
+    lightGray: '#F8F8F8',
+    blackText: '#2A3333',
+  },
 };

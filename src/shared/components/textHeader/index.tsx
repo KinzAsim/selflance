@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#F8F8F8',
     borderRadius: RF(10),
-    marginRight: RF(20),
+    marginRight: RF(8),
   },
   img: {
     width: RF(13),

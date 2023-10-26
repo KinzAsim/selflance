@@ -45,8 +45,12 @@ const frame4 = require('./frame2.png');
 const favourets = require('./favourets.png');
 const rating = require('./rating.png');
 const picture = require('./picture.png');
+const arrowDown = require('./arrowDown.png');
+const arrowUp = require('./arrowUp.png');
 
 export {
+  arrowUp,
+  arrowDown,
   write,
   social,
   ai,

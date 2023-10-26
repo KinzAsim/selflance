@@ -16,6 +16,7 @@ import HorizontalList from './horizontalList';
 import ClickableBox from './clickableBox';
 import ShiftCards from './shiftCards';
 import CustomModal from './modal';
+import CustomAccordion from './accordion';
 
 export {
   ClickableBox,
@@ -36,4 +37,5 @@ export {
   GigCard,
   CustomModal,
   ShiftCards,
+  CustomAccordion,
 };

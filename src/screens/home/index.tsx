@@ -13,6 +13,7 @@ import {company, freelancing} from '@assets';
 import {View, ScrollView} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {categoryData, companiesData} from '@utils';
+import {navigate} from '@services';
 
 const Home = ({navigation}: any) => {
   const dispatch = useDispatch();
@@ -21,7 +22,8 @@ const Home = ({navigation}: any) => {
     dispatch(setIsLoggedIn(false));
   };
   const onOpenSeeAll = () => {
-    navigation.navigate('AllCategories', {item: categoryData});
+    // navigation.navigate('AllCategories', {item: categoryData});
+    navigate('AllCategories', {});
   };
 
   return (
