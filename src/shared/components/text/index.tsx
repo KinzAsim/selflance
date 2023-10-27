@@ -6,7 +6,7 @@ import {
   Text as RNText,
 } from 'react-native';
 import React from 'react';
-import {RF, primary} from '@theme';
+import {RF, primary, textColor} from '@theme';
 import {useTheme} from '@react-navigation/native';
 
 interface Props extends TextProps {
@@ -73,7 +73,7 @@ const Text = (props: Partial<Props>) => {
         medium_italic && styles.medium_italic,
         regular_italic && styles.regular_italic,
         belowLine && {textDecorationLine: 'underline'},
-        {color: color ? color : primary},
+        {color: color ? color : textColor},
         style,
       ]}>
       {props.children}

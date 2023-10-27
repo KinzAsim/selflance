@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  ForgetPassword,
-  GraphicAndDesign,
-  Home,
-  Login,
-  SignUp,
-  Splash,
-} from '@screens';
+import {ForgetPassword, Login, SignUp} from '@screens';
 import {createStackNavigator} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();

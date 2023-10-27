@@ -7,8 +7,8 @@ import {
   HorizontalList,
   Carousel_Pagination,
 } from '@components';
-import React, {useRef} from 'react';
 import styles from './styles';
+import React, {useRef} from 'react';
 import {setIsLoggedIn} from '@redux';
 import {useDispatch} from 'react-redux';
 import {company, freelancing} from '@assets';
@@ -25,6 +25,9 @@ const Home = ({navigation}: any) => {
   const onOpenSeeAll = () => {
     navigation.navigate('AllCategories', {item: categoryData});
   };
+  const onOpenSeeAll_companies = () => {
+    navigation.navigate('CategoryItemDetail', {item: categoryData});
+  };
 
   return (
     <Wrapper>
@@ -39,7 +42,11 @@ const Home = ({navigation}: any) => {
           <SeeAll title={'Categories'} onPress={onOpenSeeAll} />
           <HorizontalList data={categoryData} />
 
-          <SeeAll title={'Companies'} source={company} />
+          <SeeAll
+            source={company}
+            title={'Companies'}
+            onPress={onOpenSeeAll_companies}
+          />
           <DetailBox data={companiesData} />
 
           <SeeAll title={'Freelancers'} source={freelancing} />

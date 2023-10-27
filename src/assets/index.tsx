@@ -45,8 +45,12 @@ const frame4 = require('./frame2.png');
 const favourets = require('./favourets.png');
 const rating = require('./rating.png');
 const picture = require('./picture.png');
+const star_outlined = require('./star-outlined.png');
+const _star = require('./star.png');
 
 export {
+  _star,
+  star_outlined,
   write,
   social,
   ai,

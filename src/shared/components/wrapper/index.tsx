@@ -33,6 +33,7 @@ interface Props extends TouchableOpacityProps {
   statusBarStyle?: any;
   statusBarBagColor?: any;
   translucent?: any;
+  hidden?: any;
 }
 const Wrapper = (props: Props) => {
   const theme: any = useTheme();
@@ -40,17 +41,17 @@ const Wrapper = (props: Props) => {
 
   return (
     <View
-      //   {...props}
       style={[
         styles.container,
         props.viewStyle,
         {
-          marginHorizontal: props?.isMarginHorizontal ? RF(20) : 0,
           paddingTop: props?.isTop ? RF(50) : 0,
           paddingHorizontal: props?.isPaddingH ? RF(20) : 0,
+          marginHorizontal: props?.isMarginHorizontal ? RF(20) : 0,
         },
       ]}>
       <StatusBar
+        hidden={props?.hidden}
         translucent={props.translucent ? true : false}
         backgroundColor={
           props.statusBarBagColor ? props.statusBarBagColor : 'white'

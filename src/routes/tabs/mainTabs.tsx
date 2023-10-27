@@ -1,6 +1,6 @@
 import {navigate} from '@services';
 import React, {useState} from 'react';
-import {RF, WHITE, tab_gray} from '@theme';
+import {RF} from '@theme';
 import HomeStack from '../stacks/homeStack';
 import ChatStack from '../stacks/chatStack';
 import OrderStack from '../stacks/orderStack';

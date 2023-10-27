@@ -1,20 +1,18 @@
-import {RF, WHITE, txt_gray, GREY} from '@theme';
+import {Text} from '@components';
 import React, {useState} from 'react';
+import {RF, WHITE, primary} from '@theme';
+import Carousel from 'react-native-snap-carousel';
 import {useTheme} from '@react-navigation/native';
-import {View, StyleSheet, Dimensions, Image} from 'react-native';
-import Carousel, {Pagination} from 'react-native-snap-carousel';
-import Text from '../text';
+import {View, StyleSheet, ImageBackground} from 'react-native';
 
 const Carousel_Pagination = ({
   data,
-  renderItem,
   flatListRef,
   activeSlide,
   setActiveSlide,
   setcarousel_Index,
 }: {
   data?: any;
-  renderItem?: any;
   flatListRef?: any;
   activeSlide?: any;
   setActiveSlide?: any;
@@ -23,72 +21,50 @@ const Carousel_Pagination = ({
   const myTheme: any = useTheme();
   const styles = useStyles(myTheme.colors);
   const [loading, setLoading] = useState(false);
-  const SLIDER_WIDTH = Dimensions.get('window').width;
-  const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.98);
-  const ITEM_HEIGHT = Math.round((ITEM_WIDTH * 3) / 4);
-
-  const onSnap = (index: any) => {
-    if (activeSlide !== index) {
-      setLoading(true);
-      setActiveSlide(index);
-      setcarousel_Index(index);
-      setTimeout(() => {
-        setLoading(false);
-      }, 2000);
-    } else {
-      setLoading(false);
-    }
-  };
-
-  console.log('data...', data);
 
   return (
     <View style={styles.container}>
       <Carousel
-        // loop={activeSlide === 1 && true}
-        enableSnap
         data={data}
         ref={flatListRef}
-        layout={'default'}
-        sliderWidth={RF(327)}
-        itemWidth={ITEM_WIDTH}
-        sliderHeight={RF(157)}
-        renderItem={({item}) => {
+        renderItem={({item, index}) => {
           return (
-            <View>
-              <Text>halo</Text>
-              {/* <Image
+            <View
+              style={{
+                elevation: 1,
+              }}>
+              <ImageBackground
                 source={item?.img}
-                style={{width: RF(100), height: RF(100)}}
-              /> */}
+                imageStyle={{
+                  resizeMode: 'contain',
+                }}
+                style={{width: RF(320), height: RF(158)}}>
+                <View
+                  style={{
+                    backgroundColor: primary,
+                    width: RF(144),
+                    height: RF(40),
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: RF(20),
+                    position: 'absolute',
+                    bottom: 20,
+                    left: 10,
+                  }}>
+                  <Text color={WHITE} size={16}>
+                    Post a Request
+                  </Text>
+                </View>
+              </ImageBackground>
             </View>
           );
         }}
-        hasParallaxImages={true}
+        itemWidth={RF(320)}
+        sliderWidth={RF(320)}
+        sliderHeight={RF(157)}
         inactiveSlideOpacity={1}
-        onSnapToItem={index => onSnap(index)}
-        // contentContainerCustomStyle={{backgroundColor:'red',width:'100%',height:'50%',marginTop:300}}
       />
-      <Pagination
-        inactiveDotScale={1}
-        dotStyle={styles.dot}
-        animatedDuration={650}
-        inactiveDotOpacity={0.4}
-        dotsLength={data?.length}
-        activeDotIndex={activeSlide}
-        inactiveDotColor={txt_gray}
-        inactiveDotStyle={styles.inaciveDot}
-        containerStyle={styles.containerView}
-        dotColor={
-          activeSlide === 0 ||
-          activeSlide === 1 ||
-          activeSlide === 2 ||
-          activeSlide === 3
-            ? GREY
-            : WHITE
-        }
-        animatedTension={70}
-      />
+
       {/* {loading && <CustomLoader />} */}
     </View>
   );
@@ -105,12 +81,11 @@ const useStyles = (colors: any) =>
       height: RF(5),
     },
     container: {
-      width: RF(330),
       paddingVertical: 0,
       alignSelf: 'center',
       alignItems: 'center',
       justifyContent: 'center',
-      height: RF(200),
+      height: RF(180),
     },
     containerView: {
       marginTop: RF(150),

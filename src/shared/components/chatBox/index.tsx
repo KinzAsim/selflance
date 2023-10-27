@@ -1,6 +1,6 @@
 import React from 'react';
 import {user} from '@assets';
-import {Text} from '@components';
+import {Line, Text} from '@components';
 import {Image, StyleSheet, View} from 'react-native';
 import {RF, WHITE, dull_orange, mustard, txt_gray} from '@theme';
 
@@ -38,18 +38,12 @@ const ChatBox = ({
           </View>
         </View>
       </View>
-      <View style={styles.line} />
+      <Line />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  line: {
-    height: RF(1),
-    backgroundColor: '#000000',
-    opacity: 0.2,
-    marginTop: RF(20),
-  },
   msg: {
     flexDirection: 'row',
     alignItems: 'center',

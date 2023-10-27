@@ -17,8 +17,18 @@ import ClickableBox from './clickableBox';
 import ShiftCards from './shiftCards';
 import CustomModal from './modal';
 import Carousel_Pagination from './carousel';
+import BackHeader from './backHeader';
+import HeaderSwiper from './headerSwiper';
+import ProfileItem from './profileItem';
+import Ratings from './ratings';
+import Line from './line';
 
 export {
+  Line,
+  Ratings,
+  ProfileItem,
+  HeaderSwiper,
+  BackHeader,
   Carousel_Pagination,
   ClickableBox,
   HorizontalList,
