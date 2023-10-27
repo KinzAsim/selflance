@@ -16,11 +16,20 @@ import {
 import {Formik} from 'formik';
 import {styles} from './styles';
 import React, {useState} from 'react';
-import {GREY, secondary, RF} from '@theme';
+import {GREY, RF, primary} from '@theme';
 import {LoginValidationSchema} from '@utils';
 import {fb, google, leftfaded_Line, logo, rightfaded_Line, show} from '@assets';
+import {useDispatch} from 'react-redux';
+import {setIsLoggedIn} from '@redux';
+import {useTheme} from '@react-navigation/native';
+
+const initialValues = {
+  email: '',
+  password: '',
+};
 
 const Login = ({navigation}: any) => {
+  const dispatch: any = useDispatch();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isUsernameFocused, setIsUsernameFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
@@ -57,14 +66,10 @@ const Login = ({navigation}: any) => {
   const handleCloseModal = () => {
     setIsModalVisible(false);
   };
-  const initialValues = {
-    email: '',
-    password: '',
-  };
 
-  const hanldeLogIn = (values: {email: string; password: string}) => {
-    // console.log('login', values);
-    // handleOpenModal();
+  const hanldeLogIn = (values: any) => {
+    console.log('val...', values);
+
     dispatch(setIsLoggedIn(true));
   };
 
@@ -102,7 +107,7 @@ const Login = ({navigation}: any) => {
               styles.entry_Fields,
               {
                 marginTop: RF(10),
-                borderColor: isUsernameFocused ? secondary : '#00000014',
+                borderColor: isUsernameFocused ? primary : '#00000014',
               },
             ]}
             placeholderTextColor={GREY}
@@ -118,7 +123,7 @@ const Login = ({navigation}: any) => {
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                borderColor: isPasswordFocused ? secondary : '#00000014',
+                borderColor: isPasswordFocused ? primary : '#00000014',
               },
             ]}>
             <TextInput
@@ -192,10 +197,7 @@ const Login = ({navigation}: any) => {
 
             <TouchableOpacity onPress={onClick}>
               <Text
-                style={[
-                  styles.medium,
-                  {alignSelf: 'center', color: secondary},
-                ]}>
+                style={[styles.medium, {alignSelf: 'center', color: primary}]}>
                 Create Account
               </Text>
             </TouchableOpacity>

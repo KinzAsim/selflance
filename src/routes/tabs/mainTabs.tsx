@@ -23,9 +23,6 @@ const MainTabs = ({navigation}: any) => {
       screenOptions={({route: {name}}) => ({
         headerShown: false,
         keyboardHidesTabBar: true,
-        // tabBarStyle: styles.tabBarStyle,
-        // tabBarIconStyle: styles.tabIcon,
-        // keyboardHidesTabBar: true,
         tabBarStyle: styles.tabBarStyle,
         tabBarActiveTintColor: '#00538F',
         tabBarInactiveTintColor: '#949494',

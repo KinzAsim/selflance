@@ -25,33 +25,6 @@ const App = () => {
     }, 3000);
   }, []);
 
-  // useEffect(() => {
-  //   let listener = EventRegister.addEventListener('appThemeChange', data => {
-  //     setIsEnabledOne(data);
-  //   });
-  //   return () => {
-  //     EventRegister.removeEventListener(listener as any);
-  //   };
-  // }, []);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     let isEnabled = await getDataFromUserDefaults('THEME_KEY');
-
-  //     if (
-  //       (isEnabled !== undefined && isEnabled === 'true') ||
-  //       (isEnabled === undefined && colorScheme === 'dark')
-  //     ) {
-  //       setIsEnabledOne(true);
-  //       setIsDarkModeEnabled(true);
-  //       appTheme = darkThemeStyle;
-  //       console.log('dark_mode');
-  //     } else {
-  //       console.log('light_mode');
-  //     }
-  //   })();
-  // }, []);
-
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>

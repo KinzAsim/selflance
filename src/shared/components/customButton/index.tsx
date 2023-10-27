@@ -6,7 +6,7 @@ import {
   TouchableOpacityProps,
 } from 'react-native';
 import React from 'react';
-import {secondary, RF} from '@theme';
+import {primary, RF} from '@theme';
 
 interface Props extends TouchableOpacityProps {
   onPress?: any;
@@ -26,7 +26,7 @@ const CustomButton = (props: Props) => {
         styles.button,
         {
           height: height ? height : RF(55),
-          backgroundColor: color ? color : secondary,
+          backgroundColor: color ? color : primary,
         },
       ]}
       onPress={props?.onPress}>
@@ -40,7 +40,7 @@ export default CustomButton;
 const styles = StyleSheet.create({
   button: {
     width: '100%',
-    backgroundColor: secondary,
+    backgroundColor: primary,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 8,
