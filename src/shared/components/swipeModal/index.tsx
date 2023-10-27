@@ -41,7 +41,8 @@ const SwipeModal = (props: Props) => {
           width: RF(50),
         }}
         ref={modalizeRef}
-        modalHeight={props?.height}
+        adjustToContentHeight={true}
+        // modalHeight={props?.height}
         modalStyle={{
           backgroundColor: WHITE,
         }}>

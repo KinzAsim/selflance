@@ -20,7 +20,9 @@ import Carousel_Pagination from './carousel';
 import SwipeModal from './swipeModal';
 import FilterCategory from './filterCategoryLIst';
 import ModalHeader from './modalHeader';
+import SmallSearch from './smallSearch';
 export {
+  SmallSearch,
   ModalHeader,
   SwipeModal,
   Carousel_Pagination,

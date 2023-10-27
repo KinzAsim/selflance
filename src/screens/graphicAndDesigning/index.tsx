@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import {
   FilterCategory,
   ShiftCards,
+  SmallSearch,
   SwipeModal,
   Text,
   TextHeader,
@@ -150,7 +151,9 @@ const GraphicAndDesign = () => {
         headerTitle={'Filter'}>
         <FilterCategory toggleChange={toggleChange} selected={selected} />
       </SwipeModal>
+
       <FlatList
+        showsVerticalScrollIndicator={false}
         data={data}
         renderItem={({item}: any) => renderFrelancer(item)}
         keyExtractor={(item: any) => item.id.toString()}

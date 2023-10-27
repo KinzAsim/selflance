@@ -10,6 +10,10 @@ import React, {useState, useEffect} from 'react';
 import {grayButton, primary, RF, textColor, WHITE} from '@theme';
 import {close} from '@assets';
 import Text from '../text';
+import Search from '../search';
+import SmallSearch from '../smallSearch';
+import CustomCheckBox from '../customCheckBox';
+import CustomButton from '../customButton';
 
 interface Props extends TouchableOpacityProps {
   selected: any;
@@ -28,30 +32,40 @@ const data: categoryData[] = [
   },
   {
     id: 1,
-    cat: 'Seller Language',
+    cat: 'Seller Level',
   },
   {
     id: 2,
-    cat: 'Seller Location',
+    cat: 'Seller Language',
   },
   {
     id: 3,
-    cat: 'Delivery Time',
+    cat: 'Seller Location',
   },
   {
     id: 4,
-    cat: 'Project',
+    cat: 'Delivery Time',
   },
   {
     id: 5,
-    cat: 'Premium Freelancers',
+    cat: 'Project',
   },
   {
     id: 6,
+    cat: 'Premium Freelancers',
+  },
+  {
+    id: 7,
     cat: 'Olnine Freelancers',
   },
 ];
 
+const checkboxData = [
+  {id: 0, label: 'App Design'},
+  {id: 1, label: 'Website Design'},
+  {id: 2, label: 'App Design'},
+  {id: 3, label: 'UX Design'},
+];
 const FilterCategory = (props: Props) => {
   const {selected, toggleChange} = props;
 
@@ -61,7 +75,7 @@ const FilterCategory = (props: Props) => {
       <View
         style={{
           width: '100%',
-          marginTop: 20,
+          marginBottom: 15,
           justifyContent: 'center',
           borderLeftWidth: 3,
           borderColor: isSelected ? primary : WHITE,
@@ -84,17 +98,36 @@ const FilterCategory = (props: Props) => {
   };
 
   return (
-    <>
+    <ScrollView>
       <View style={styles.category_Container}>
         <View style={styles.list_View}>
           <FlatList
+            scrollEnabled={false}
+            showsVerticalScrollIndicator={false}
             data={data}
             renderItem={({item}: any) => renderCategory(item, selected)}
             keyExtractor={(item: any) => item.id.toString()}
           />
         </View>
+        <View
+          style={{
+            width: '55%',
+            height: '100%',
+          }}>
+          <SmallSearch height={33} />
+          {checkboxData.map(checkbox => (
+            <CustomCheckBox
+              key={checkbox.id}
+              label={checkbox.label}
+              isTop={10}
+            />
+          ))}
+        </View>
       </View>
-    </>
+      <View style={{marginTop: 20}}>
+        <CustomButton title={'Apply Filter'} />
+      </View>
+    </ScrollView>
   );
 };
 
@@ -108,9 +141,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   category_Container: {
-    height: RF(400),
+    height: '80%',
     width: '100%',
-    marginTop: 20,
+    marginTop: 15,
+    paddingTop: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     borderTopWidth: 1,
     borderTopColor: grayButton,
   },
@@ -124,7 +160,7 @@ const styles = StyleSheet.create({
   },
   list_View: {
     height: '100%',
-    width: RF(115),
+    width: '40%',
     borderRightWidth: 1,
     borderColor: grayButton,
   },
