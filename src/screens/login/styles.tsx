@@ -1,4 +1,4 @@
-import {GREY, RF, secondary} from '@theme';
+import {GREY, RF, primary} from '@theme';
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
     marginTop: RF(10),
   },
   regular: {fontSize: RF(14), color: '#434343', marginTop: RF(10)},
-  small: {fontSize: RF(12), color: secondary},
+  small: {fontSize: RF(12), color: primary},
   medium: {fontSize: RF(16), color: '#fff', fontWeight: '600'},
   entry_Fields: {
     height: RF(56),
@@ -61,7 +61,7 @@ export const styles = StyleSheet.create({
     paddingLeft: 0,
     flexDirection: 'row',
   },
-  extra_Small: {width: '100%', fontSize: RF(10), color: secondary},
+  extra_Small: {width: '100%', fontSize: RF(10), color: primary},
   faded_Line: {height: RF(17), width: RF(120)},
   auth: {width: '100%', height: RF(23), resizeMode: 'contain'},
   errors: {

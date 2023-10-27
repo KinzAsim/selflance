@@ -7,7 +7,6 @@ import Chat from './chat/overview';
 import ChatPage from './chat/chatpage';
 import AllCategories from './home/allCategories';
 import GraphicAndDesign from './graphicAndDesigning';
-
 export {
   Home,
   Login,

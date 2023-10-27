@@ -17,8 +17,12 @@ import ClickableBox from './clickableBox';
 import ShiftCards from './shiftCards';
 import CustomModal from './modal';
 import Carousel_Pagination from './carousel';
-
+import SwipeModal from './swipeModal';
+import FilterCategory from './filterCategoryLIst';
+import ModalHeader from './modalHeader';
 export {
+  ModalHeader,
+  SwipeModal,
   Carousel_Pagination,
   ClickableBox,
   HorizontalList,
@@ -38,4 +42,5 @@ export {
   GigCard,
   CustomModal,
   ShiftCards,
+  FilterCategory,
 };

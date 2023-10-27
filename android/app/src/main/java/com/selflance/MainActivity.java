@@ -4,7 +4,8 @@ import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactActivityDelegate;
-
+import com.facebook.react.ReactRootView;
+import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 public class MainActivity extends ReactActivity {
 
   /**
@@ -29,4 +30,12 @@ public class MainActivity extends ReactActivity {
         // If you opted-in for the New Architecture, we enable the Fabric Renderer.
         DefaultNewArchitectureEntryPoint.getFabricEnabled());
   }
+  //  protected ReactActivityDelegate createReactActivityDelegate() {
+  //  return new ReactActivityDelegate(this, getMainComponentName()) {
+  //     @Override
+  //     protected ReactRootView createRootView() {
+  //      return new RNGestureHandlerEnabledRootView(MainActivity.this);
+  //     }
+  //   };
+  // }
 }

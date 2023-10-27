@@ -1,7 +1,14 @@
 import {StyleSheet, View, ImageBackground, Image, FlatList} from 'react-native';
-import React, {useState} from 'react';
-import {ShiftCards, Text, Wrapper} from '@components';
-import {lightText, medium_Gray, RF, textColor, txt_gray} from '@theme';
+import React, {useState, useEffect} from 'react';
+import {
+  FilterCategory,
+  ShiftCards,
+  SwipeModal,
+  Text,
+  TextHeader,
+  Wrapper,
+} from '@components';
+import {lightText, medium_Gray, RF, SCREEN_HEIGHT, textColor} from '@theme';
 import {
   favourets,
   frame1,
@@ -14,14 +21,17 @@ import {
 
 const GraphicAndDesign = () => {
   const [selectedShift, setSelectedShift] = useState('Freelancer');
+  const [selected, setSelected] = useState('Category');
 
+  const toggleChange = (change: any) => {
+    setSelected(change);
+  };
   const handleShiftChange = (newShift: string) => {
     setSelectedShift(newShift);
-    // console.log('shift', newShift);
   };
   type FreelancerData = {
     id: number;
-    bacImage: any; // Replace 'any' with the actual type of bacImage
+    bacImage: any;
     des: string;
     rating: string;
     price: string;
@@ -82,7 +92,7 @@ const GraphicAndDesign = () => {
             {item.des}
           </Text>
           <View style={[styles.rowDirection_View, {marginVertical: 5}]}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View style={styles.row}>
               <Text size={10} color={lightText}>
                 {item.rating}
               </Text>
@@ -91,7 +101,7 @@ const GraphicAndDesign = () => {
                 source={rating}
               />
             </View>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View style={styles.row}>
               <Text
                 size={10}
                 color={medium_Gray}
@@ -105,7 +115,7 @@ const GraphicAndDesign = () => {
             </View>
           </View>
           <View style={styles.rowDirection_View}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View style={styles.row}>
               <Image
                 style={{height: RF(17), width: RF(17), marginRight: 5}}
                 source={picture}
@@ -123,12 +133,23 @@ const GraphicAndDesign = () => {
     );
   };
 
+  useEffect(() => {
+    console.log(selected); // This will log the updated selected value
+  }, [selected]);
+
   return (
     <Wrapper isPaddingH>
+      <TextHeader _back title={'Graphic And Designing'} />
       <ShiftCards
         selectedShift={selectedShift}
         onShiftChange={handleShiftChange}
       />
+      <SwipeModal
+        height={SCREEN_HEIGHT / 1.4}
+        modalHeader={true}
+        headerTitle={'Filter'}>
+        <FilterCategory toggleChange={toggleChange} selected={selected} />
+      </SwipeModal>
       <FlatList
         data={data}
         renderItem={({item}: any) => renderFrelancer(item)}
@@ -164,4 +185,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  row: {flexDirection: 'row', alignItems: 'center'},
 });

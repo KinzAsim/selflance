@@ -45,8 +45,10 @@ const frame4 = require('./frame2.png');
 const favourets = require('./favourets.png');
 const rating = require('./rating.png');
 const picture = require('./picture.png');
+const filter = require('./filter.png');
 
 export {
+  filter,
   write,
   social,
   ai,

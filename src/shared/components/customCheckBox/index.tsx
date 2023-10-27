@@ -1,6 +1,6 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
-import {primary, RF, secondary} from '@theme';
+import {primary, RF} from '@theme';
 import {checkbox} from '@assets';
 
 const CustomCheckBox = () => {
@@ -17,9 +17,9 @@ const CustomCheckBox = () => {
         style={{
           height: '100%',
           width: '100%',
-          tintColor: check ? secondary : 'transparent',
+          tintColor: check ? primary : 'transparent',
           borderWidth: check ? 0 : 1,
-          borderColor: secondary,
+          borderColor: primary,
           borderRadius: 5,
         }}
       />
