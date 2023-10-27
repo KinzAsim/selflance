@@ -23,13 +23,19 @@ import ProfileItem from './profileItem';
 import Ratings from './ratings';
 import Line from './line';
 import CustomAccordion from './accordion';
-
+import SwipeModal from './swipeModal';
+import FilterCategory from './filterCategoryLIst';
+import ModalHeader from './modalHeader';
+import SmallSearch from './smallSearch';
 export {
   Line,
   Ratings,
   ProfileItem,
   HeaderSwiper,
   BackHeader,
+  SmallSearch,
+  ModalHeader,
+  SwipeModal,
   Carousel_Pagination,
   ClickableBox,
   HorizontalList,
@@ -50,4 +56,5 @@ export {
   CustomModal,
   ShiftCards,
   CustomAccordion,
+  FilterCategory,
 };

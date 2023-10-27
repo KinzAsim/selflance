@@ -1,14 +1,26 @@
 import {search} from '@assets';
 import React from 'react';
-import {Image, StyleSheet, TextInput, View} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  TextInput,
+  View,
+  TouchableOpacityProps,
+} from 'react-native';
 
-const Search = () => {
+interface Props extends TouchableOpacityProps {
+  width?: any;
+  height?: any;
+}
+
+const Search = (props: Props) => {
+  const {width, height} = props;
   return (
-    <View style={styles.searchContainer}>
+    <View style={[styles.searchContainer, {height: height ? height : 50}]}>
       <Image source={search} style={styles.searchImg} />
 
       <TextInput
-        style={styles.input}
+        style={[styles.input, {width: width ? width : '92%'}]}
         placeholder="Search Here....."
         // value={text}
         // onChangeText={onChange}

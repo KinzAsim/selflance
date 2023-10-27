@@ -7,7 +7,7 @@ import {
   lightText,
   RF,
   SCREEN_HEIGHT,
-  secondary,
+  primary,
   textColor,
 } from '@theme';
 import {forgeticon} from '@assets';
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     height: RF(56),
     width: '100%',
     color: '#000',
-    borderColor: secondary,
+    borderColor: primary,
     padding: 10,
     borderRadius: 8,
     marginBottom: RF(15),

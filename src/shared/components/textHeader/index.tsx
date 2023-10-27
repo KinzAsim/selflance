@@ -8,10 +8,14 @@ const TextHeader = ({
   title,
   _back,
   _search,
+  _source1,
+  _source2,
 }: {
   title?: any;
   _back?: any;
   _search?: any;
+  _source1?: any;
+  _source2?: any;
 }) => {
   return (
     <View style={styles.main}>
@@ -21,13 +25,13 @@ const TextHeader = ({
         </View>
       )}
       <View style={styles.view}>
-        <Text size={20} semiBold>
+        <Text size={16} semiBold>
           {title}
         </Text>
         {_search && (
           <View style={{flexDirection: 'row'}}>
-            <Image source={search} style={styles.search} />
-            <Image source={menu} style={styles.menu} />
+            <Image source={_source1} style={styles.search} />
+            <Image source={_source2} style={styles.menu} />
           </View>
         )}
       </View>

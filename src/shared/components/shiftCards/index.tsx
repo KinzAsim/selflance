@@ -1,6 +1,6 @@
 import {StyleSheet, View, Pressable, TouchableOpacityProps} from 'react-native';
 import React, {useState} from 'react';
-import {grayButton, lightText, RF, secondary} from '@theme';
+import {grayButton, lightText, RF, primary} from '@theme';
 import Text from '../text';
 
 interface ShiftCardsProps {
@@ -20,7 +20,7 @@ const ShiftCards = ({selectedShift, onShiftChange}: ShiftCardsProps) => {
         ]}
         onPress={() => onShiftChange('Freelancer')}>
         <Text
-          color={selectedShift == 'Freelancer' ? secondary : lightText}
+          color={selectedShift == 'Freelancer' ? primary : lightText}
           size={14}
           semiBold>
           Freelancer
@@ -35,7 +35,7 @@ const ShiftCards = ({selectedShift, onShiftChange}: ShiftCardsProps) => {
           },
         ]}>
         <Text
-          color={selectedShift == 'Company' ? secondary : lightText}
+          color={selectedShift == 'Company' ? primary : lightText}
           size={14}
           semiBold>
           Company

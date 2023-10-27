@@ -28,7 +28,7 @@ const NavHeader = ({navigation}: any, props: Props) => {
         justifyContent: 'space-between',
       }}>
       <Pressable
-        onPress={props?.onPress}
+        onPress={() => navigation.goBack()}
         style={{
           height: RF(32),
           width: RF(32),
@@ -39,7 +39,6 @@ const NavHeader = ({navigation}: any, props: Props) => {
         }}>
         <Image style={{height: RF(12), width: RF(10)}} source={back} />
       </Pressable>
-
       <CloseButton />
     </View>
   );

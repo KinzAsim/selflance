@@ -45,16 +45,10 @@ const frame4 = require('./frame2.png');
 const favourets = require('./favourets.png');
 const rating = require('./rating.png');
 const picture = require('./picture.png');
-const star_outlined = require('./star-outlined.png');
-const _star = require('./star.png');
-const arrowDown = require('./arrowDown.png');
-const arrowUp = require('./arrowUp.png');
+const filter = require('./filter.png');
 
 export {
-  _star,
-  star_outlined,
-  arrowUp,
-  arrowDown,
+  filter,
   write,
   social,
   ai,

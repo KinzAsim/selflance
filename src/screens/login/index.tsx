@@ -16,7 +16,7 @@ import {
 import {Formik} from 'formik';
 import {styles} from './styles';
 import React, {useState} from 'react';
-import {GREY, RF, primary} from '@theme';
+import {GREY, primary, RF} from '@theme';
 import {LoginValidationSchema} from '@utils';
 import {fb, google, leftfaded_Line, logo, rightfaded_Line, show} from '@assets';
 import {useDispatch} from 'react-redux';
