@@ -1,6 +1,5 @@
 import {navigate} from '@services';
 import React, {useState} from 'react';
-import {RF} from '@theme';
 import HomeStack from '../stacks/homeStack';
 import ChatStack from '../stacks/chatStack';
 import OrderStack from '../stacks/orderStack';
@@ -26,6 +25,11 @@ const MainTabs = ({navigation}: any) => {
         keyboardHidesTabBar: true,
         // tabBarStyle: styles.tabBarStyle,
         // tabBarIconStyle: styles.tabIcon,
+        // keyboardHidesTabBar: true,
+        tabBarStyle: styles.tabBarStyle,
+        tabBarActiveTintColor: '#00538F',
+        tabBarInactiveTintColor: '#949494',
+        tabBarIconStyle: styles.tabIcon,
       })}>
       <Tab.Screen
         name="Home"
@@ -37,7 +41,7 @@ const MainTabs = ({navigation}: any) => {
               color={color}
               styles={styles}
               focused={focused}
-              stack={'HomeStack'}
+              stack={'Home'}
               activeStack={activeStack}
               setActiveStack={setActiveStack}
             />
@@ -55,7 +59,7 @@ const MainTabs = ({navigation}: any) => {
               color={color}
               styles={styles}
               focused={focused}
-              stack={'ChatStack'}
+              stack={'Chats'}
               activeStack={activeStack}
               setActiveStack={setActiveStack}
             />
@@ -73,7 +77,7 @@ const MainTabs = ({navigation}: any) => {
               color={color}
               styles={styles}
               focused={focused}
-              stack={'OrderStack'}
+              stack={'Orders'}
               activeStack={activeStack}
               setActiveStack={setActiveStack}
             />
@@ -91,7 +95,7 @@ const MainTabs = ({navigation}: any) => {
               color={color}
               styles={styles}
               focused={focused}
-              stack={'ProfileStack'}
+              stack={'Profile'}
               activeStack={activeStack}
               setActiveStack={setActiveStack}
             />
@@ -108,7 +112,7 @@ const onPressTab = (
   setActiveStack: any,
   handleCaptureFlag: any,
 ) => {
-  navigate(stack);
+  navigate(stack, {});
   setActiveStack(stack);
   if (stack == 'ScanStack' && activeStack == 'ScanStack') {
     handleCaptureFlag();
@@ -138,15 +142,21 @@ const TabBarIcon = ({
 }) => {
   return (
     <Pressable
-      onPress={() =>
-        onPressTab(stack, activeStack, setActiveStack, handleCaptureFlag)
-      }>
+      style={{
+        height: 8,
+        // width: 30,
+        // alignItems: 'center',
+        // justifyContent: 'center',
+      }}
+      onPress={() => {
+        onPressTab(stack, activeStack, setActiveStack, handleCaptureFlag);
+      }}>
       <Image
         source={source}
         style={[
           styles.image,
           {
-            tintColor: color,
+            tintColor: focused ? '#00538F' : '#949494',
           },
         ]}
         resizeMode={'contain'}
@@ -157,17 +167,16 @@ const TabBarIcon = ({
 
 const useStyles = (colors: any) =>
   StyleSheet.create({
-    image: {width: RF(18), height: RF(18), opacity: 100, tintColor: '#fffff'},
+    image: {width: 24, height: 24, opacity: 100},
     img: {},
     tabIcon: {
-      alignItems: 'center',
-      justifyContent: 'center',
+      // alignItems: 'center',
+      // justifyContent: 'center',
     },
     tabBarStyle: {
-      width: '100%',
-      backgroundColor: 'red',
-      // marginTop: -20,
-      paddingBottom: 10,
+      height: 75,
+      backgroundColor: '#fff',
+      paddingBottom: 15.5,
     },
   });
 

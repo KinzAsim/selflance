@@ -14,6 +14,7 @@ import {useDispatch} from 'react-redux';
 import {company, freelancing} from '@assets';
 import {View, ScrollView} from 'react-native';
 import {carousel, categoryData, companiesData} from '@utils';
+import {navigate} from '@services';
 
 const Home = ({navigation}: any) => {
   const dispatch = useDispatch();
@@ -23,7 +24,8 @@ const Home = ({navigation}: any) => {
     dispatch(setIsLoggedIn(false));
   };
   const onOpenSeeAll = () => {
-    navigation.navigate('AllCategories', {item: categoryData});
+    // navigation.navigate('AllCategories', {item: categoryData});
+    navigate('AllCategories', {});
   };
   const onOpenSeeAll_companies = () => {
     navigation.navigate('CategoryItemDetail', {item: categoryData});

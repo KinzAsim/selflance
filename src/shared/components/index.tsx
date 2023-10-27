@@ -22,6 +22,7 @@ import HeaderSwiper from './headerSwiper';
 import ProfileItem from './profileItem';
 import Ratings from './ratings';
 import Line from './line';
+import CustomAccordion from './accordion';
 
 export {
   Line,
@@ -48,4 +49,5 @@ export {
   GigCard,
   CustomModal,
   ShiftCards,
+  CustomAccordion,
 };
