@@ -11,28 +11,17 @@ import {grayButton, RF, SCREEN_HEIGHT, WHITE} from '@theme';
 import ModalHeader from '../modalHeader';
 interface Props extends TouchableOpacityProps {
   children?: any;
-  height?: any;
   modalHeader?: boolean;
   headerTitle?: any;
+  ref: any;
+  onClose: () => void;
 }
 
-const SwipeModal = (props: Props) => {
-  const {modalHeader, headerTitle} = props;
-  const modalizeRef = useRef<Modalize>(null);
-
-  const onOpen = () => {
-    modalizeRef.current?.open();
-  };
-  const onClose = () => {
-    modalizeRef.current?.close();
-  };
+const SwipeModal = React.forwardRef((props: Props, ref) => {
+  const {modalHeader, headerTitle, onClose} = props;
 
   return (
     <>
-      <TouchableOpacity onPress={onOpen}>
-        <Text>Open the modal</Text>
-      </TouchableOpacity>
-
       <Modalize
         overlayStyle={{backgroundColor: 'rgba(0,0,0,0.1)'}}
         handleStyle={{
@@ -40,7 +29,7 @@ const SwipeModal = (props: Props) => {
           backgroundColor: grayButton,
           width: RF(50),
         }}
-        ref={modalizeRef}
+        ref={ref}
         adjustToContentHeight={true}
         // modalHeight={props?.height}
         modalStyle={{
@@ -48,14 +37,14 @@ const SwipeModal = (props: Props) => {
         }}>
         <View style={{flex: 1, padding: RF(20)}}>
           {modalHeader == true ? (
-            <ModalHeader headerTitle={headerTitle} onClick={onClose} />
+            <ModalHeader headerTitle={headerTitle} onClose={onClose} />
           ) : null}
           {props?.children}
         </View>
       </Modalize>
     </>
   );
-};
+});
 
 export default SwipeModal;
 

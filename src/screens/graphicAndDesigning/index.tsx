@@ -1,5 +1,6 @@
 import {StyleSheet, View, ImageBackground, Image, FlatList} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
+import {Modalize} from 'react-native-modalize';
 import {
   FilterCategory,
   ShiftCards,
@@ -138,6 +139,15 @@ const GraphicAndDesign = () => {
     console.log(selected); // This will log the updated selected value
   }, [selected]);
 
+  const modalizeRef = useRef<Modalize>(null);
+
+  const onOpen = () => {
+    modalizeRef.current?.open();
+  };
+  const onClose = () => {
+    modalizeRef.current?.close();
+  };
+
   return (
     <Wrapper isPaddingH>
       <TextHeader _back title={'Graphic And Designing'} />
@@ -145,10 +155,12 @@ const GraphicAndDesign = () => {
         selectedShift={selectedShift}
         onShiftChange={handleShiftChange}
       />
+      <Text onPress={onOpen}>Modal1 </Text>
       <SwipeModal
-        height={SCREEN_HEIGHT / 1.4}
         modalHeader={true}
-        headerTitle={'Filter'}>
+        headerTitle={'Filter'}
+        ref={modalizeRef}
+        onClose={onClose}>
         <FilterCategory toggleChange={toggleChange} selected={selected} />
       </SwipeModal>
 
