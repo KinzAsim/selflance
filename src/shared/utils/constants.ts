@@ -5,6 +5,10 @@ import {
   category1,
   category2,
   digital,
+  frame1,
+  frame2,
+  frame3,
+  frame4,
   freelancer,
   gig,
   graphic,
@@ -149,5 +153,48 @@ export const carousel = [
   {
     img: banner,
     message: 'Get Matched With Sellers',
+  },
+];
+
+export const FreelancerData = [
+  {
+    id: 0,
+    bacImage: frame1,
+    des: 'I will do ui design, ui ux design, ',
+    rating: '5.0',
+    price: '₹678',
+    level: 1,
+  },
+  {
+    id: 1,
+    bacImage: frame2,
+    des: 'I will do ui design, ui ux design, ',
+    rating: '5.0',
+    price: '₹678',
+    level: 1,
+  },
+  {
+    id: 2,
+    bacImage: frame3,
+    des: 'I will do ui design, ui ux design, ',
+    rating: '5.0',
+    price: '₹678',
+    level: 1,
+  },
+  {
+    id: 3,
+    bacImage: frame1,
+    des: 'I will do ui design, ui ux design, ',
+    rating: '5.0',
+    price: '₹678',
+    level: 1,
+  },
+  {
+    id: 4,
+    bacImage: frame4,
+    des: 'I will do ui design, ui ux design, ',
+    rating: '5.0',
+    price: '₹678',
+    level: 1,
   },
 ];

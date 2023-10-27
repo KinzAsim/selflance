@@ -1,19 +1,16 @@
 import {
-  StyleSheet,
   View,
-  Image,
   FlatList,
   ScrollView,
+  StyleSheet,
   TouchableOpacityProps,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
-import {grayButton, primary, RF, textColor, WHITE} from '@theme';
-import {close} from '@assets';
+import React from 'react';
 import Text from '../text';
-import Search from '../search';
 import SmallSearch from '../smallSearch';
-import CustomCheckBox from '../customCheckBox';
 import CustomButton from '../customButton';
+import CustomCheckBox from '../customCheckBox';
+import {grayButton, primary, RF, textColor, WHITE} from '@theme';
 
 interface Props extends TouchableOpacityProps {
   selected: any;
@@ -68,9 +65,8 @@ const checkboxData = [
 ];
 const FilterCategory = (props: Props) => {
   const {selected, toggleChange} = props;
-
   const renderCategory = (item: categoryData, selected: any) => {
-    const isSelected = item.cat === selected;
+    const isSelected = item?.cat === selected;
     return (
       <View
         style={{
@@ -78,19 +74,20 @@ const FilterCategory = (props: Props) => {
           marginBottom: 15,
           justifyContent: 'center',
           borderLeftWidth: 3,
-          borderColor: isSelected ? primary : WHITE,
           alignItems: 'center',
+          borderColor: isSelected ? primary : WHITE,
         }}>
         <Text
-          onPress={() => toggleChange(item.cat)}
-          color={isSelected ? primary : textColor}
+          semiBold
           size={14}
+          onPress={() => toggleChange(item?.cat)}
+          color={isSelected ? primary : textColor}
           style={{
             width: '80%',
             textAlignVertical: 'center',
             fontFamily: isSelected ? 'Poppins-SemiBold' : 'Poppins-Regular',
           }}>
-          {item.cat}
+          {item?.cat}
           {/* Category */}
         </Text>
       </View>
@@ -117,8 +114,8 @@ const FilterCategory = (props: Props) => {
           <SmallSearch height={33} />
           {checkboxData.map(checkbox => (
             <CustomCheckBox
-              key={checkbox.id}
-              label={checkbox.label}
+              key={checkbox?.id}
+              label={checkbox?.label}
               isTop={10}
             />
           ))}

@@ -7,6 +7,7 @@ interface ShiftCardsProps {
   selectedShift: string;
   onShiftChange: (newShift: any) => void;
 }
+
 const ShiftCards = ({selectedShift, onShiftChange}: ShiftCardsProps) => {
   return (
     <View style={styles.container}>

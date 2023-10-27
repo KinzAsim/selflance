@@ -3,7 +3,6 @@ import {categoryData} from '@utils';
 import {FlatList} from 'react-native';
 import {RouteProp} from '@react-navigation/native';
 import {ClickableBox, Search, TextHeader, Wrapper} from '@components';
-import {navigate} from '@services';
 
 interface Props {
   navigation: any;

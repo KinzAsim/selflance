@@ -1,28 +1,27 @@
-import {StyleSheet, View, ImageBackground, Image, FlatList} from 'react-native';
-import React, {useState, useEffect} from 'react';
 import {
-  FilterCategory,
-  ShiftCards,
-  SmallSearch,
-  SwipeModal,
-  Text,
-  TextHeader,
-  Wrapper,
-} from '@components';
-import {lightText, medium_Gray, RF, SCREEN_HEIGHT, textColor} from '@theme';
-import {
-  favourets,
   frame1,
   frame2,
   frame3,
+  rating,
   frame4,
   picture,
-  rating,
+  favourets,
 } from '@assets';
+import {
+  Text,
+  Wrapper,
+  SwipeModal,
+  ShiftCards,
+  TextHeader,
+  FilterCategory,
+} from '@components';
+import React, {useState} from 'react';
+import {lightText, medium_Gray, RF, SCREEN_HEIGHT, textColor} from '@theme';
+import {StyleSheet, View, ImageBackground, Image, FlatList} from 'react-native';
 
 const GraphicAndDesign = () => {
-  const [selectedShift, setSelectedShift] = useState('Freelancer');
   const [selected, setSelected] = useState('Category');
+  const [selectedShift, setSelectedShift] = useState('Freelancer');
 
   const toggleChange = (change: any) => {
     setSelected(change);
@@ -38,7 +37,6 @@ const GraphicAndDesign = () => {
     price: string;
     level: number;
   };
-
   const data: FreelancerData[] = [
     {
       id: 0,
@@ -81,7 +79,6 @@ const GraphicAndDesign = () => {
       level: 1,
     },
   ];
-
   const renderFrelancer = (item: FreelancerData) => {
     return (
       <View style={styles.cards}>
@@ -133,10 +130,6 @@ const GraphicAndDesign = () => {
       </View>
     );
   };
-
-  useEffect(() => {
-    console.log(selected); // This will log the updated selected value
-  }, [selected]);
 
   return (
     <Wrapper isPaddingH>

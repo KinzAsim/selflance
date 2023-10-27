@@ -21,7 +21,6 @@ import {LoginValidationSchema} from '@utils';
 import {fb, google, leftfaded_Line, logo, rightfaded_Line, show} from '@assets';
 import {useDispatch} from 'react-redux';
 import {setIsLoggedIn} from '@redux';
-import {useTheme} from '@react-navigation/native';
 
 const initialValues = {
   email: '',

@@ -1,4 +1,4 @@
-import Home from './home';
+import Home from './home/overview';
 import Login from './login';
 import SignUp from './signUp';
 import Splash from './splash';
@@ -9,8 +9,10 @@ import AllCategories from './allCategories';
 import GraphicAndDesign from './graphicAndDesigning';
 import CategoryItemDetail from './home/categoryItemDetail';
 import CategoryDetails from './categoryDetails';
+import Category from './home/category';
 
 export {
+  Category,
   Home,
   Login,
   SignUp,

@@ -25,7 +25,7 @@ const CustomCheckBox = (props: Props) => {
     <View
       style={{
         flexDirection: 'row',
-        width: '100%',
+        // width: '100%',
         alignItems: 'center',
         marginTop: isTop ? isTop : 0,
       }}>

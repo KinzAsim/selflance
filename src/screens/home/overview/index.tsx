@@ -13,7 +13,7 @@ import {setIsLoggedIn} from '@redux';
 import {useDispatch} from 'react-redux';
 import {company, freelancing} from '@assets';
 import {View, ScrollView} from 'react-native';
-import {carousel, categoryData, companiesData} from '@utils';
+import {FreelancerData, carousel, categoryData, companiesData} from '@utils';
 import {navigate} from '@services';
 
 const Home = ({navigation}: any) => {
@@ -24,11 +24,13 @@ const Home = ({navigation}: any) => {
     dispatch(setIsLoggedIn(false));
   };
   const onOpenSeeAll = () => {
-    // navigation.navigate('AllCategories', {item: categoryData});
-    navigate('AllCategories', {});
+    navigate('AllCategories', {item: categoryData});
   };
   const onOpenSeeAll_companies = () => {
-    navigation.navigate('CategoryItemDetail', {item: categoryData});
+    navigate('CategoryItemDetail', {item: categoryData});
+  };
+  const onOpenDetailBox = () => {
+    navigate('Category', {item: FreelancerData});
   };
 
   return (
@@ -51,7 +53,11 @@ const Home = ({navigation}: any) => {
           />
           <DetailBox data={companiesData} />
 
-          <SeeAll title={'Freelancers'} source={freelancing} />
+          <SeeAll
+            title={'Freelancers'}
+            source={freelancing}
+            onPress={onOpenDetailBox}
+          />
           <DetailBox data={companiesData} />
         </ScrollView>
       </View>
