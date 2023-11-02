@@ -80,7 +80,7 @@ const MessagesScreen = ({navigation}: any) => {
           <TouchableOpacity
             style={styles.cards}
             onPress={() =>
-              navigation.navigate('Chat', {userName: item.userName})
+              navigation.navigate('ChatScreen', {userName: item.userName})
             }>
             <View style={styles.UserInfo}>
               <View style={styles.UserImgWrapper}>

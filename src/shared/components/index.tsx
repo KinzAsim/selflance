@@ -24,7 +24,11 @@ import SmallSearch from './smallSearch';
 import UserDetail from './userDetail';
 import UserDescription from './userDesctiption';
 import UserLevel from './userLevel';
+import SmallModal from './customModal';
+import ModalContent from './modalContent';
 export {
+  ModalContent,
+  SmallModal,
   UserLevel,
   UserDescription,
   UserDetail,

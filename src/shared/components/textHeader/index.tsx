@@ -2,36 +2,50 @@ import {RF} from '@theme';
 import React from 'react';
 import {Text} from '@components';
 import {back, menu, search} from '@assets';
-import {Image, StyleSheet, View} from 'react-native';
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 
 const TextHeader = ({
+  navigation,
+  f_Size,
   title,
   _back,
   _search,
   _source1,
   _source2,
+  onOpen,
 }: {
+  navigation?: any;
   title?: any;
   _back?: any;
   _search?: any;
   _source1?: any;
   _source2?: any;
+  f_Size?: any;
+  onOpen?: () => void;
 }) => {
   return (
     <View style={styles.main}>
       {_back && (
-        <View style={styles.iV}>
+        <Pressable style={styles.iV} onPress={() => navigation.goBack()}>
           <Image source={back} style={styles.img} />
-        </View>
+        </Pressable>
       )}
       <View style={styles.view}>
-        <Text size={16} semiBold>
+        <Text size={f_Size ? f_Size : RF(16)} semiBold>
           {title}
         </Text>
         {_search && (
           <View style={{flexDirection: 'row'}}>
             <Image source={_source1} style={styles.search} />
-            <Image source={_source2} style={styles.menu} />
+            <TouchableOpacity onPress={onOpen}>
+              <Image source={_source2} style={styles.menu} />
+            </TouchableOpacity>
           </View>
         )}
       </View>

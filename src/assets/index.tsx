@@ -53,8 +53,12 @@ const comment = require('./comment.png');
 const user_1 = require('./user_1.png');
 const add = require('./add.png');
 const send = require('./send.png');
+const gallery = require('./gallery.png');
+const file = require('./file.png');
 
 export {
+  gallery,
+  file,
   send,
   add,
   user_1,

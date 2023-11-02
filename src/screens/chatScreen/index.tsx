@@ -1,20 +1,37 @@
-import {add, send} from '@assets';
-import {Text} from '@components';
-import {RF, SCREEN_WIDTH, WHITE} from '@theme';
-import React, {useState, useEffect, useCallback} from 'react';
-import {View, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import {add, file, gallery, heart, menu, search, send} from '@assets';
+import {Header, NavHeader, SmallModal, Text, TextHeader} from '@components';
 import {
-  Bubble,
-  GiftedChat,
-  Send,
-  StylePropType,
-  Composer,
-  IMessage,
-  User,
-} from 'react-native-gifted-chat';
-//
-const ChatScreen = ({navigation}: any) => {
+  grayButton,
+  RF,
+  SCREEN_HEIGHT,
+  SCREEN_WIDTH,
+  textColor,
+  text_Color2,
+  WHITE,
+} from '@theme';
+import React, {useState, useEffect, useCallback, useRef} from 'react';
+import {
+  View,
+  StyleSheet,
+  Image,
+  TextInput,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  TouchableOpacity,
+  Pressable,
+  Modal,
+} from 'react-native';
+import {Bubble, GiftedChat, Send, IMessage} from 'react-native-gifted-chat';
+import {RouteProp, useRoute} from '@react-navigation/native';
+
+const ChatScreen: React.FC = ({navigation, route}: any) => {
   const [messages, setMessages] = useState<IMessage[]>([]);
+  const [messageText, setMessageText] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible2, setModalVisible2] = useState(false);
+
+  const {userName} = route.params;
+  console.log(userName, 'sssss');
 
   useEffect(() => {
     setMessages([
@@ -41,74 +58,20 @@ const ChatScreen = ({navigation}: any) => {
     ]);
   }, []);
 
+  const modalRef = useRef<Modal>(null);
+
+  const onClose = () => {
+    setModalVisible(!modalVisible);
+  };
+  const onOpen = () => {
+    setModalVisible(!modalVisible);
+  };
   const onSend = useCallback((newMessages: IMessage[] = []) => {
+    console.log('ssss');
     setMessages(previousMessages =>
       GiftedChat.append(previousMessages, newMessages),
     );
   }, []);
-
-  // const renderSend = (props:any) => {
-  //   return (
-  //     <Send {...props}>
-  //       <View
-  //         style={{
-  //           flexDirection: 'row',
-  //           justifyContent: 'space-between',
-  //           alignItems: 'center',
-  //           width: '91%',
-  //         }}>
-  //         <TouchableOpacity onPress={() => setModalVisible(true)}>
-  //           <AntDesign name="plus" size={24} color="blue" />
-  //         </TouchableOpacity>
-  //         <View style={{flexDirection: 'row', alignItems: 'center'}}>
-  //           <Composer {...props} />
-  //           <TouchableOpacity onPress={() => {}}>
-  //             <IonIcons name="send-outline" size={24} color="blue" />
-  //           </TouchableOpacity>
-  //         </View>
-  //       </View>
-  //     </Send>
-  //   );
-  // };
-
-  const renderSend = (props: any) => {
-    return (
-      <>
-        {/* <Send {...props}></Send> */}
-        <Send
-          {...props}
-          // containerStyle={{
-          //   borderWidth: 1,
-          //   backgroundColor: 'red',
-          //   width: '80%',
-          //   justifyContent: 'flex-end',
-          //   alignItems: 'flex-end',
-          //   position: 'absolute',
-          //   right: 0,
-          //   zIndex: -100,
-          // }}
-          // sendButtonProps={{style: {zIndex: 100}}}
-        >
-          <View
-            style={{
-              height: '100%',
-              width: RF(60),
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Image
-              source={send}
-              style={{
-                height: RF(18),
-                width: RF(18),
-              }}
-              resizeMode={'contain'}
-            />
-          </View>
-        </Send>
-      </>
-    );
-  };
 
   const renderBubble = (props: any) => {
     return (
@@ -156,21 +119,116 @@ const ChatScreen = ({navigation}: any) => {
   };
 
   return (
-    <GiftedChat
-      renderMessageImage={renderMessageImage}
-      isCustomViewBottom={true}
-      isTyping={true}
-      messages={messages}
-      onSend={(newMessages: IMessage[]) => onSend(newMessages)}
-      user={{
-        _id: 1,
-      }}
-      alwaysShowSend
-      renderBubble={renderBubble}
-      renderSend={renderSend}
-      scrollToBottom
-      scrollToBottomComponent={scrollToBottomComponent}
-    />
+    <View style={{flex: 1, backgroundColor: '#fff', paddingBottom: 30}}>
+      <View style={{paddingHorizontal: RF(10)}}>
+        <TextHeader
+          f_Size={20}
+          navigation={navigation}
+          _back
+          title={userName}
+          _search
+          _source1={search}
+          // onOpen={onOpen}
+          _source2={menu}
+        />
+      </View>
+      <View
+        style={{
+          borderWidth: 1,
+          width: '90%',
+          position: 'absolute',
+          bottom: 130,
+          alignSelf: 'center',
+          borderColor: grayButton,
+        }}
+      />
+      <GiftedChat
+        messagesContainerStyle={{paddingBottom: RF(80)}}
+        renderMessageImage={renderMessageImage}
+        isCustomViewBottom={true}
+        isTyping={true}
+        messages={messages}
+        onSend={(newMessages: IMessage[]) => onSend(newMessages)}
+        user={{
+          _id: 1,
+        }}
+        alwaysShowSend
+        renderBubble={renderBubble}
+        scrollToBottom={true}
+        scrollToBottomComponent={scrollToBottomComponent}
+        renderInputToolbar={inputToolbarProps => (
+          <View
+            {...inputToolbarProps}
+            style={{
+              flexDirection: 'row',
+              height: RF(70),
+              alignItems: 'center',
+              width: '100%',
+              justifyContent: 'space-evenly',
+              backgroundColor: grayButton,
+            }}>
+            <SmallModal
+              _sourceImage1={gallery}
+              _sourceImage2={file}
+              ref={modalRef}
+              onClose={onClose}
+              modalVisible={modalVisible}
+            />
+            <TouchableOpacity
+              onPress={() => setModalVisible(!modalVisible)}
+              style={{
+                height: RF(29),
+                width: RF(29),
+                justifyContent: 'center',
+                borderRadius: 15,
+                alignItems: 'center',
+                backgroundColor: WHITE,
+              }}>
+              <Image source={add} style={{height: RF(11), width: RF(11)}} />
+            </TouchableOpacity>
+            <TextInput
+              style={{
+                height: RF(33),
+                width: '80%',
+                padding: 0,
+                paddingHorizontal: 5,
+                borderRadius: 8,
+                backgroundColor: WHITE,
+              }}
+              value={messageText} // Bind the input value to the state
+              onChangeText={text => setMessageText(text)}
+              placeholder={'Write message'}
+            />
+            <Pressable
+              onPress={() => {
+                if (messageText.trim() !== '') {
+                  // Check if the message is not empty
+                  onSend([
+                    {
+                      _id: Math.random(),
+                      text: messageText,
+                      createdAt: new Date(),
+                      user: {
+                        _id: 1,
+                      },
+                    },
+                  ]);
+                  setMessageText(''); // Clear the input after sending
+                }
+              }}>
+              <Image
+                source={send}
+                style={{
+                  height: RF(18),
+                  width: RF(18),
+                }}
+                resizeMode={'contain'}
+              />
+            </Pressable>
+          </View>
+        )}
+      />
+    </View>
   );
 };
 
@@ -181,5 +239,21 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  mainView: {
+    height: '100%',
+    width: '100%',
+  },
+  centeredView: {
+    height: RF(64),
+    width: RF(122),
+    borderRadius: 6,
+    alignItems: 'center',
+    marginLeft: 10,
+    justifyContent: 'space-evenly',
+    backgroundColor: WHITE,
+    elevation: 2,
+    position: 'absolute',
+    bottom: RF(60),
   },
 });
