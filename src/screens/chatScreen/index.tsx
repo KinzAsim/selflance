@@ -1,24 +1,37 @@
-import {RF, WHITE, grayButton} from '@theme';
-import {SmallModal, TextHeader} from '@components';
-import {add, file, gallery, menu, search, send} from '@assets';
+import {add, file, gallery, heart, menu, search, send} from '@assets';
+import {Header, NavHeader, SmallModal, Text, TextHeader} from '@components';
+import {
+  grayButton,
+  RF,
+  SCREEN_HEIGHT,
+  SCREEN_WIDTH,
+  textColor,
+  text_Color2,
+  WHITE,
+} from '@theme';
 import React, {useState, useEffect, useCallback, useRef} from 'react';
 import {
   View,
-  Image,
-  Modal,
-  TextInput,
-  Pressable,
   StyleSheet,
+  Image,
+  TextInput,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
   TouchableOpacity,
+  Pressable,
+  Modal,
 } from 'react-native';
-import {Bubble, GiftedChat, IMessage} from 'react-native-gifted-chat';
+import {Bubble, GiftedChat, Send, IMessage} from 'react-native-gifted-chat';
+import {RouteProp, useRoute} from '@react-navigation/native';
 
-const ChatPage: React.FC = ({navigation, route}: any) => {
-  const {userName} = route?.params;
-  const modalRef = useRef<Modal>(null);
+const ChatScreen: React.FC = ({navigation, route}: any) => {
+  const [messages, setMessages] = useState<IMessage[]>([]);
   const [messageText, setMessageText] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
-  const [messages, setMessages] = useState<IMessage[]>([]);
+  const [modalVisible2, setModalVisible2] = useState(false);
+
+  const {userName} = route.params;
+  console.log(userName, 'sssss');
 
   useEffect(() => {
     setMessages([
@@ -44,6 +57,8 @@ const ChatPage: React.FC = ({navigation, route}: any) => {
       },
     ]);
   }, []);
+
+  const modalRef = useRef<Modal>(null);
 
   const onClose = () => {
     setModalVisible(!modalVisible);
@@ -217,7 +232,7 @@ const ChatPage: React.FC = ({navigation, route}: any) => {
   );
 };
 
-export default ChatPage;
+export default ChatScreen;
 
 const styles = StyleSheet.create({
   container: {

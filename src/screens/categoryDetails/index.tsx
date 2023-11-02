@@ -1,15 +1,15 @@
 import React from 'react';
+import {SECTIONS} from '@utils';
 import {View} from 'react-native';
 import {useStyles} from './styles';
 import {useDispatch} from 'react-redux';
 import {useTheme} from '@react-navigation/native';
 import {RouteProp} from '@react-navigation/native';
 import {CustomAccordion, TextHeader} from '@components';
-import {SECTIONS} from '@utils';
 
 interface Props {
-  navigation: any;
-  route: RouteProp<{
+  navigation?: any;
+  route?: RouteProp<{
     params: {
       data?: any;
     };
@@ -25,7 +25,7 @@ const CategoryDetails = ({route, navigation}: Props) => {
   return (
     <View style={styles.container}>
       <TextHeader title={data?.title} _back />
-      <CustomAccordion data={SECTIONS} />
+      <CustomAccordion data={SECTIONS} navigation={navigation} />
     </View>
   );
 };

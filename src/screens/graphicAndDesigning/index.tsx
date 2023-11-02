@@ -1,17 +1,19 @@
 import {rating, picture, favourets} from '@assets';
+import {StyleSheet, View, ImageBackground, Image, FlatList} from 'react-native';
+import {Modalize} from 'react-native-modalize';
 import {
   Text,
+  UserDetail,
   Wrapper,
   SwipeModal,
   ShiftCards,
   TextHeader,
   FilterCategory,
 } from '@components';
-import React, {useState} from 'react';
+import React, {useState,useRef,useEffect} from 'react';
 import {FreelancerData} from '@utils';
 import {RouteProp} from '@react-navigation/native';
 import {lightText, medium_Gray, RF, SCREEN_HEIGHT, textColor} from '@theme';
-import {StyleSheet, View, ImageBackground, Image, FlatList} from 'react-native';
 
 interface Props {
   navigation: any;
@@ -135,6 +137,19 @@ const GraphicAndDesign = ({route, navigation}: Props) => {
     );
   };
 
+  useEffect(() => {
+    console.log(selected); // This will log the updated selected value
+  }, [selected]);
+
+  const modalizeRef = useRef<Modalize>(null);
+
+  const onOpen = () => {
+    modalizeRef.current?.open();
+  };
+  const onClose = () => {
+    modalizeRef.current?.close();
+  };
+
   return (
     <Wrapper isPaddingH>
       <TextHeader _back title={'Graphic And Designing'} />
@@ -142,13 +157,23 @@ const GraphicAndDesign = ({route, navigation}: Props) => {
         selectedShift={selectedShift}
         onShiftChange={handleShiftChange}
       />
-      <SwipeModal
+
+      <Text onPress={onOpen}>Modal1 </Text>
+      {/* <SwipeModal
         modalHeader={true}
         headerTitle={'Filter'}
-        height={SCREEN_HEIGHT / 1.4}>
+        ref={modalizeRef}
+        onClose={onClose}
+       >
         <FilterCategory toggleChange={toggleChange} selected={selected} />
+      </SwipeModal> */}
+      <SwipeModal ref={modalizeRef} onClose={onClose}>
+        <UserDetail
+          user_Desc={
+            "Pancakes are some people's favorite breakfast, who doesn't like pancakes? Especially with the real honey splash on top of the pancakes, of course everyone loves that! besides being Read More..."
+          }
+        />
       </SwipeModal>
-
       <FlatList
         data={FreelancerData}
         showsVerticalScrollIndicator={false}

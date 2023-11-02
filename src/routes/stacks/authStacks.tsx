@@ -1,6 +1,15 @@
 import React from 'react';
+import {
+  ChatScreen,
+  ForgetPassword,
+  GraphicAndDesign,
+  Home,
+  Login,
+  MessagesScreen,
+  SignUp,
+  Splash,
+} from '@screens';
 import {createStackNavigator} from '@react-navigation/stack';
-import {ForgetPassword, Login, SignUp, GraphicAndDesign} from '@screens';
 
 const Stack = createStackNavigator();
 

@@ -2,6 +2,11 @@ import {Dimensions} from 'react-native';
 
 const {width, height} = Dimensions.get('window');
 export const primary = '#00538F';
+export const black_Shadow = 'rgba(0,0,0,0.1)';
+export const text_Color2 = '#7B6F72';
+export const border_Opacity = 'rgba(0,0,0,0.05)';
+export const neutral = '#121F3E';
+export const neutral_90 = '#4F5350';
 export const textColor = '#434343';
 export const lightText = '#949494';
 export const medium_Gray = '#74767E';

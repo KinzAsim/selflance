@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import {search} from '@assets';
+import {RF} from '@theme';
 
 interface Props extends ViewProps {
   height?: any;
@@ -15,6 +16,7 @@ interface Props extends ViewProps {
 }
 // NOTE:
 // WHEN YOU USE THIS SEARCH COMPONENT IT IS RECOMENDED TO WRAP THIS COMPONENT WITH VIEW OTHERWISE IT THROUGHS AN ERROR
+
 const SmallSearch = (props: Props) => {
   const {height, b_Margin} = props;
 
@@ -22,11 +24,14 @@ const SmallSearch = (props: Props) => {
     <View
       style={[
         styles.searchContainer,
-        {height: height ? height : 50, marginBottom: b_Margin ? b_Margin : 10},
+        {
+          height: height ? height : RF(50),
+          marginBottom: b_Margin ? b_Margin : 10,
+        },
       ]}>
       <Image
         source={search}
-        style={[styles.searchImg, {height: height / 2, width: height / 2}]}
+        style={[styles.searchImg, {height: height / 2.5, width: height / 2.5}]}
       />
 
       <TextInput

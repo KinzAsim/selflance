@@ -1,13 +1,13 @@
 import {Text} from '@components';
 import React, {useState} from 'react';
 import {arrowDown, arrowUp} from '@assets';
-import {View, StyleSheet, Image} from 'react-native';
+import {View, StyleSheet, Image, Pressable} from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
 import {RouteProp, useTheme} from '@react-navigation/native';
 
 interface Props {
-  data: any;
-  navigation: any;
+  data?: any;
+  navigation?: any;
   route: RouteProp<{
     params: {
       data?: any;
@@ -15,8 +15,8 @@ interface Props {
   }>;
 }
 const CustomAccordion = (props: Partial<Props>) => {
-  const {data} = props;
   const theme: any = useTheme();
+  const {data, navigation} = props;
   const styles: any = useStyles(theme.colors);
   const [activeSection, setActiveSection] = useState([]);
 
@@ -51,13 +51,15 @@ const CustomAccordion = (props: Partial<Props>) => {
     const sec = section.content;
 
     return (
-      <View style={styles.content}>
+      <Pressable
+        style={styles.content}
+        onPress={() => navigation.navigate('Category')}>
         {sec.map((s: any, index: any) => (
           <Text key={index} style={styles.contentText}>
             {s}
           </Text>
         ))}
-      </View>
+      </Pressable>
     );
   };
 
@@ -66,12 +68,12 @@ const CustomAccordion = (props: Partial<Props>) => {
   };
   return (
     <Accordion
-      activeSections={activeSection}
       sections={data}
-      //   renderSectionTitle={_renderSectionTitle}
-      renderHeader={_renderHeader}
-      renderContent={_renderContent}
       onChange={_updateSections}
+      renderHeader={_renderHeader}
+      activeSections={activeSection}
+      renderContent={_renderContent}
+      //   renderSectionTitle={_renderSectionTitle}
     />
   );
 };

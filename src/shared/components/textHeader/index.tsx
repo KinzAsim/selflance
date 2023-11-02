@@ -1,10 +1,18 @@
 import React from 'react';
-import {back} from '@assets';
 import {Text} from '@components';
 import {RF, light_grey} from '@theme';
-import {Image, StyleSheet, View, Pressable} from 'react-native';
+import {back, menu, search} from '@assets';
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 
 const TextHeader = ({
+  navigation,
+  f_Size,
   title,
   _back,
   _search,
@@ -13,7 +21,7 @@ const TextHeader = ({
   setting,
   s_source1,
   s_source2,
-  navigation,
+  onOpen,
 }: {
   title?: any;
   _back?: any;
@@ -24,24 +32,26 @@ const TextHeader = ({
   s_source1?: any;
   s_source2?: any;
   navigation?: any;
+  f_Size?: any;
+  onOpen?: () => void;
 }) => {
   return (
     <View style={styles.main}>
       {_back && (
-        <Pressable
-          style={styles.iV}
-          onPress={() => navigation.navigate.goBack()}>
+        <Pressable style={styles.iV} onPress={() => navigation?.goBack()}>
           <Image source={back} style={styles.img} />
         </Pressable>
       )}
       <View style={styles.view}>
-        <Text size={16} semiBold>
+        <Text size={f_Size ? f_Size : RF(16)} semiBold>
           {title}
         </Text>
         {_search ? (
           <View style={styles.s}>
             <Image source={_source1} style={styles.search} />
-            <Image source={_source2} style={styles.menu} />
+            <TouchableOpacity onPress={onOpen}>
+              <Image source={_source2} style={styles.menu} />
+            </TouchableOpacity>
           </View>
         ) : (
           setting && (

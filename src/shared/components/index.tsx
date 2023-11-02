@@ -30,6 +30,11 @@ import SmallSearch from './smallSearch';
 import Gig from './gig';
 import OrderCard from './orderCard';
 import ProfileText from './profileText';
+import UserDetail from './userDetail';
+import UserDescription from './userDesctiption';
+import UserLevel from './userLevel';
+import SmallModal from './customModal';
+import ModalContent from './modalContent';
 
 export {
   ProfileText,
@@ -40,6 +45,12 @@ export {
   ProfileItem,
   HeaderSwiper,
   BackHeader,
+
+  ModalContent,
+  SmallModal,
+  UserLevel,
+  UserDescription,
+  UserDetail,
   SmallSearch,
   ModalHeader,
   SwipeModal,

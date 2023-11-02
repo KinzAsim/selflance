@@ -12,13 +12,13 @@ import {grayButton, RF, textColor} from '@theme';
 import Text from '../text';
 interface Props extends TouchableOpacityProps {
   headerTitle: string;
-  onClick: () => void;
+  onClose: () => void;
 }
 const ModalHeader = (props: Props) => {
-  const {headerTitle, onClick} = props;
+  const {headerTitle, onClose} = props;
   return (
     <View style={[styles.rowDirection_View]}>
-      <TouchableOpacity onPress={onClick}>
+      <TouchableOpacity onPress={onClose}>
         <Image source={close} style={styles.close} />
       </TouchableOpacity>
       <Text color={textColor} semiBold size={20}>
