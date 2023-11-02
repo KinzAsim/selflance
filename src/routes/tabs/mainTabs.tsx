@@ -174,6 +174,7 @@ const useStyles = (colors: any) =>
       height: 75,
       backgroundColor: '#fff',
       paddingBottom: 15.5,
+      borderTopWidth: 0,
     },
   });
 

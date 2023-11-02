@@ -56,7 +56,8 @@ const Category = ({route, navigation}: Props) => {
       <SwipeModal
         modalHeader={true}
         headerTitle={'Filter'}
-        height={SCREEN_HEIGHT / 1.4}>
+        // height={SCREEN_HEIGHT / 1.4}
+      >
         <FilterCategory toggleChange={toggleChange} selected={selected} />
       </SwipeModal>
 

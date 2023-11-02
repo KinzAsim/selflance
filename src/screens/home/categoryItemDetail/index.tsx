@@ -33,7 +33,7 @@ const CategoryItemDetail = ({route, navigation}: Props) => {
 
   return (
     <Wrapper statusBarBagColor={'transparent'} translucent>
-      <HeaderSwiper />
+      <HeaderSwiper navigation={navigation} />
       <ProfileItem name={'Kinza'} level={'1'} />
       <Line mh />
 

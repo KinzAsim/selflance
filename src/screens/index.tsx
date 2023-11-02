@@ -14,6 +14,7 @@ import Orders from './orders/overview';
 import OrderDetail from './orders/detail';
 import ChatScreen from './chatScreen';
 import MessagesScreen from './mesaages';
+import Profile from './profile';
 
 export {
   OrderDetail,
@@ -32,4 +33,5 @@ export {
   GraphicAndDesign,
   CategoryItemDetail,
   CategoryDetails,
+  Profile,
 };

@@ -9,7 +9,7 @@ import {CustomAccordion, TextHeader} from '@components';
 
 interface Props {
   navigation?: any;
-  route?: RouteProp<{
+  route: RouteProp<{
     params: {
       data?: any;
     };

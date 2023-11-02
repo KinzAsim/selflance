@@ -269,4 +269,16 @@ export const orders = [
     date: '21/23/2023',
     title: 'I Will Do UI Design, UI UX Design, Website UI UX...',
   },
+  {
+    completion: 'In Revision',
+    budget: '300',
+    date: '21/23/2023',
+    title: 'I Will Do UI Design, UI UX Design, Website UI UX...',
+  },
+  {
+    completion: 'In Revision',
+    budget: '300',
+    date: '21/23/2023',
+    title: 'I Will Do UI Design, UI UX Design, Website UI UX...',
+  },
 ];

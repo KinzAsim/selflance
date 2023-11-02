@@ -1,5 +1,5 @@
 import React from 'react';
-import {Home} from '@screens';
+import {Profile} from '@screens';
 import {createStackNavigator} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
@@ -7,7 +7,7 @@ const Stack = createStackNavigator();
 const ProfileStack = ({route}: any) => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="ProfileScreen" component={Profile} />
     </Stack.Navigator>
   );
 };

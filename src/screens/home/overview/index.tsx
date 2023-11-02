@@ -41,7 +41,9 @@ const Home = ({navigation}: any) => {
           <Search />
         </View>
 
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={{paddingTop: 20}}>
           <Carousel_Pagination data={carousel} flatListRef={flatListRef} />
           <SeeAll title={'Categories'} onPress={onOpenSeeAll} />
           <HorizontalList data={categoryData} />

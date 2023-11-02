@@ -7,7 +7,7 @@ const Stack = createStackNavigator();
 const OrderStack = ({route}: any) => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Orders" component={Orders} />
+      <Stack.Screen name="OrdersScreen" component={Orders} />
       <Stack.Screen name="OrderDetail" component={OrderDetail} />
     </Stack.Navigator>
   );

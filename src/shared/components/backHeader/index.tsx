@@ -1,14 +1,28 @@
 import {RF} from '@theme';
 import React from 'react';
 import {back, heart} from '@assets';
-import {Image, StyleSheet, View} from 'react-native';
+import {Image, Pressable, StyleSheet, View} from 'react-native';
+import {RouteProp} from '@react-navigation/native';
 
-const BackHeader = () => {
+interface Props {
+  navigation: any;
+  route: RouteProp<{
+    params: {
+      data?: any;
+    };
+  }>;
+}
+const BackHeader = (props: Partial<Props>) => {
+  const {navigation} = props;
+  const handleBack = () => {
+    console.log('challlalaaaaa');
+    navigation.goBack();
+  };
   return (
     <View style={styles.view}>
-      <View style={styles.v_img}>
+      <Pressable style={styles.v_img} onPress={handleBack}>
         <Image source={back} style={styles.img} />
-      </View>
+      </Pressable>
 
       <View style={styles.v_img}>
         <Image source={heart} style={styles.heart} />

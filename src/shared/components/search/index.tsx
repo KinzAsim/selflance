@@ -22,6 +22,7 @@ const Search = (props: Props) => {
       <TextInput
         style={[styles.input, {width: width ? width : '92%'}]}
         placeholder="Search Here....."
+        placeholderTextColor={'#949494'}
         // value={text}
         // onChangeText={onChange}
       />
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 24,
+    marginBottom: 4,
   },
   input: {
     backgroundColor: '#F8F8F8',

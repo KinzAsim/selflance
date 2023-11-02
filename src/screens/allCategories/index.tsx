@@ -17,7 +17,10 @@ const AllCategories = ({route, navigation}: Props) => {
   const {data} = route.params;
 
   const onClickCategory = (item: any) => {
-    navigation.navigate('CategoryDetails', {data: item});
+    navigation.navigate('CategoryDetails', {
+      data: item,
+      navigation: navigation,
+    });
   };
 
   return (

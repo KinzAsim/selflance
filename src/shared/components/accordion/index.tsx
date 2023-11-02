@@ -4,6 +4,7 @@ import {arrowDown, arrowUp} from '@assets';
 import {View, StyleSheet, Image, Pressable} from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
 import {RouteProp, useTheme} from '@react-navigation/native';
+import {FreelancerData} from '@utils';
 
 interface Props {
   data?: any;
@@ -51,15 +52,18 @@ const CustomAccordion = (props: Partial<Props>) => {
     const sec = section.content;
 
     return (
-      <Pressable
-        style={styles.content}
-        onPress={() => navigation.navigate('Category')}>
+      <View style={styles.content}>
         {sec.map((s: any, index: any) => (
-          <Text key={index} style={styles.contentText}>
-            {s}
-          </Text>
+          <Pressable
+            onPress={() =>
+              navigation.navigate('Category', {item: FreelancerData})
+            }>
+            <Text key={index} style={styles.contentText}>
+              {s}
+            </Text>
+          </Pressable>
         ))}
-      </Pressable>
+      </View>
     );
   };
 

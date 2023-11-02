@@ -3,8 +3,18 @@ import {RF} from '@theme';
 import {BackHeader} from '@components';
 import {StyleSheet, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {RouteProp} from '@react-navigation/native';
 
-const HeaderSwiper = () => {
+interface Props {
+  navigation: any;
+  route: RouteProp<{
+    params: {
+      data?: any;
+    };
+  }>;
+}
+const HeaderSwiper = (props: Partial<Props>) => {
+  const {navigation} = props;
   return (
     <View style={styles.view}>
       <LinearGradient
@@ -18,7 +28,7 @@ const HeaderSwiper = () => {
         useAngle={true}
         style={styles.view}
         angleCenter={{x: 0.5, y: 0.5}}>
-        <BackHeader />
+        <BackHeader navigation={navigation} />
       </LinearGradient>
     </View>
   );
