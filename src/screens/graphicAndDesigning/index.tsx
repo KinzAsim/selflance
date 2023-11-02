@@ -8,6 +8,7 @@ import {
   SwipeModal,
   Text,
   TextHeader,
+  UserDetail,
   Wrapper,
 } from '@components';
 import {lightText, medium_Gray, RF, SCREEN_HEIGHT, textColor} from '@theme';
@@ -20,6 +21,7 @@ import {
   picture,
   rating,
 } from '@assets';
+import {BlurView} from '@react-native-community/blur';
 
 const GraphicAndDesign = () => {
   const [selectedShift, setSelectedShift] = useState('Freelancer');
@@ -155,15 +157,23 @@ const GraphicAndDesign = () => {
         selectedShift={selectedShift}
         onShiftChange={handleShiftChange}
       />
+
       <Text onPress={onOpen}>Modal1 </Text>
-      <SwipeModal
+      {/* <SwipeModal
         modalHeader={true}
         headerTitle={'Filter'}
         ref={modalizeRef}
-        onClose={onClose}>
+        onClose={onClose}
+       >
         <FilterCategory toggleChange={toggleChange} selected={selected} />
+      </SwipeModal> */}
+      <SwipeModal ref={modalizeRef} onClose={onClose}>
+        <UserDetail
+          user_Desc={
+            "Pancakes are some people's favorite breakfast, who doesn't like pancakes? Especially with the real honey splash on top of the pancakes, of course everyone loves that! besides being Read More..."
+          }
+        />
       </SwipeModal>
-
       <FlatList
         showsVerticalScrollIndicator={false}
         data={data}

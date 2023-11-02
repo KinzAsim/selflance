@@ -21,7 +21,13 @@ import SwipeModal from './swipeModal';
 import FilterCategory from './filterCategoryLIst';
 import ModalHeader from './modalHeader';
 import SmallSearch from './smallSearch';
+import UserDetail from './userDetail';
+import UserDescription from './userDesctiption';
+import UserLevel from './userLevel';
 export {
+  UserLevel,
+  UserDescription,
+  UserDetail,
   SmallSearch,
   ModalHeader,
   SwipeModal,

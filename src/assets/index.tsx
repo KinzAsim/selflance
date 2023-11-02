@@ -46,8 +46,22 @@ const favourets = require('./favourets.png');
 const rating = require('./rating.png');
 const picture = require('./picture.png');
 const filter = require('./filter.png');
+const location = require('./location.png');
+const sellerLevel = require('./sellerLevel.png');
+const translater = require('./translater.png');
+const comment = require('./comment.png');
+const user_1 = require('./user_1.png');
+const add = require('./add.png');
+const send = require('./send.png');
 
 export {
+  send,
+  add,
+  user_1,
+  comment,
+  translater,
+  sellerLevel,
+  location,
   filter,
   write,
   social,

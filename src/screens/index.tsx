@@ -7,7 +7,11 @@ import Chat from './chat/overview';
 import ChatPage from './chat/chatpage';
 import AllCategories from './home/allCategories';
 import GraphicAndDesign from './graphicAndDesigning';
+import ChatScreen from './chatScreen';
+import MessagesScreen from './mesaages';
 export {
+  MessagesScreen,
+  ChatScreen,
   Home,
   Login,
   SignUp,

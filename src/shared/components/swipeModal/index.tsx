@@ -4,11 +4,14 @@ import {
   View,
   TouchableOpacity,
   TouchableOpacityProps,
+  StatusBar,
 } from 'react-native';
 import {Modalize} from 'react-native-modalize';
-import React, {useRef} from 'react';
-import {grayButton, RF, SCREEN_HEIGHT, WHITE} from '@theme';
+import React, {useRef, useState} from 'react';
+import {black_Shadow, grayButton, RF, SCREEN_HEIGHT, WHITE} from '@theme';
 import ModalHeader from '../modalHeader';
+import {BlurView} from '@react-native-community/blur';
+import {fadedLine} from '@assets';
 interface Props extends TouchableOpacityProps {
   children?: any;
   modalHeader?: boolean;
@@ -19,14 +22,27 @@ interface Props extends TouchableOpacityProps {
 
 const SwipeModal = React.forwardRef((props: Props, ref) => {
   const {modalHeader, headerTitle, onClose} = props;
+  const [blur, setBulr] = useState(false);
+
+  console.log(blur, 'onClose');
 
   return (
     <>
+      <StatusBar backgroundColor={blur == true ? 'rgba(0,0,0,0.6)' : WHITE} />
+      {blur == true ? (
+        <BlurView
+          style={styles.absolute}
+          blurType="materialLight"
+          blurAmount={1}
+        />
+      ) : null}
       <Modalize
-        overlayStyle={{backgroundColor: 'rgba(0,0,0,0.1)'}}
+        onClose={() => setBulr(false)}
+        onOpen={() => setBulr(true)}
+        overlayStyle={{backgroundColor: 'transparent'}}
+        handlePosition="inside"
         handleStyle={{
-          marginTop: 20,
-          backgroundColor: grayButton,
+          backgroundColor: black_Shadow,
           width: RF(50),
         }}
         ref={ref}
@@ -48,4 +64,14 @@ const SwipeModal = React.forwardRef((props: Props, ref) => {
 
 export default SwipeModal;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  absolute: {
+    position: 'absolute',
+    zIndex: 100,
+    height: '100%',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+  },
+});
