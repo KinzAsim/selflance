@@ -25,6 +25,7 @@ export const txt_gray = '#949494';
 export const dull_orange = '#DD730A';
 export const orange = '#FF7F00';
 export const blue = '#121F3E';
+export const lightBlue = '#E6F3FC';
 
 export const mulish_regular = 'Mulish-Regular';
 export const mulish_bold = 'Mulish-Bold';

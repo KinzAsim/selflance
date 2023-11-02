@@ -1,47 +1,30 @@
-import {Text, View} from 'react-native';
 import React from 'react';
-import {useTheme} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
+import {View} from 'react-native';
 import {useStyles} from './styles';
+import {useDispatch} from 'react-redux';
+import {useTheme} from '@react-navigation/native';
+import {RouteProp} from '@react-navigation/native';
 import {CustomAccordion, TextHeader} from '@components';
+import {SECTIONS} from '@utils';
 
-const SECTIONS = [
-  {
-    title: 'LOGO & BRAND IDENTITY',
-    content: [
-      'Logo Design',
-      'Brand Style Guides',
-      'Fonts & Typography',
-      'Business Cards & Stationery',
-    ],
-  },
-  {
-    title: 'GAMING',
-    content: [
-      'Logo Design',
-      'Brand Style Guides',
-      'Fonts & Typography',
-      'Business Cards & Stationery',
-    ],
-  },
-  {
-    title: 'ART & ILLUSTRATION',
-    content: [
-      'Logo Design',
-      'Brand Style Guides',
-      'Fonts & Typography',
-      'Business Cards & Stationery',
-    ],
-  },
-];
-const CategoryDetails = () => {
+interface Props {
+  navigation: any;
+  route: RouteProp<{
+    params: {
+      data?: any;
+    };
+  }>;
+}
+
+const CategoryDetails = ({route, navigation}: Props) => {
+  const {data} = route.params;
   const theme: any = useTheme();
   const dispatch = useDispatch();
   const styles = useStyles(theme.colors);
-  return (
-    <View style={{flex: 1, backgroundColor: '#fff', paddingHorizontal: 20}}>
-      <TextHeader title={'Graphic And Designing'} _back />
 
+  return (
+    <View style={styles.container}>
+      <TextHeader title={data?.title} _back />
       <CustomAccordion data={SECTIONS} />
     </View>
   );

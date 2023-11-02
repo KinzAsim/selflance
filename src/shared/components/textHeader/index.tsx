@@ -1,8 +1,8 @@
-import {RF, light_grey, txt_gray} from '@theme';
 import React from 'react';
 import {back} from '@assets';
 import {Text} from '@components';
-import {Image, StyleSheet, View} from 'react-native';
+import {RF, light_grey} from '@theme';
+import {Image, StyleSheet, View, Pressable} from 'react-native';
 
 const TextHeader = ({
   title,
@@ -13,6 +13,7 @@ const TextHeader = ({
   setting,
   s_source1,
   s_source2,
+  navigation,
 }: {
   title?: any;
   _back?: any;
@@ -22,13 +23,16 @@ const TextHeader = ({
   setting?: any;
   s_source1?: any;
   s_source2?: any;
+  navigation?: any;
 }) => {
   return (
     <View style={styles.main}>
       {_back && (
-        <View style={styles.iV}>
+        <Pressable
+          style={styles.iV}
+          onPress={() => navigation.navigate.goBack()}>
           <Image source={back} style={styles.img} />
-        </View>
+        </Pressable>
       )}
       <View style={styles.view}>
         <Text size={16} semiBold>

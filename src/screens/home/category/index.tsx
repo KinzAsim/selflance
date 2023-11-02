@@ -6,11 +6,13 @@ import {
   TextHeader,
   FilterCategory,
 } from '@components';
+import {_2tabs} from '@utils';
+import {navigate} from '@services';
 import {SCREEN_HEIGHT} from '@theme';
 import {FlatList} from 'react-native';
 import React, {useState} from 'react';
-import {RouteProp} from '@react-navigation/native';
 import {search, settings} from '@assets';
+import {RouteProp} from '@react-navigation/native';
 
 interface Props {
   navigation: any;
@@ -32,17 +34,22 @@ const Category = ({route, navigation}: Props) => {
   const handleShiftChange = (newShift: string) => {
     setSelectedShift(newShift);
   };
+  const onClick = (i: any) => {
+    navigate('CategoryItemDetail', {data: item});
+  };
 
   return (
     <Wrapper isPaddingH>
       <TextHeader
         _back
         setting
-        s_source1={settings}
         s_source2={search}
+        s_source1={settings}
+        navigation={navigation}
         title={'Graphic And Designing'}
       />
       <ShiftCards
+        tabs={_2tabs}
         selectedShift={selectedShift}
         onShiftChange={handleShiftChange}
       />
@@ -57,7 +64,7 @@ const Category = ({route, navigation}: Props) => {
         data={item}
         showsVerticalScrollIndicator={false}
         renderItem={(i: any) => {
-          return <Gig item={i?.item} />;
+          return <Gig item={i?.item} onPress={() => onClick(i)} />;
         }}
         keyExtractor={(i: any) => i?.id?.toString()}
       />

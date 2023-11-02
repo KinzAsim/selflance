@@ -23,4 +23,20 @@ export const styles = StyleSheet.create({
     marginHorizontal: RF(20),
     marginTop: RF(20),
   },
+  img: {
+    marginRight: RF(8),
+    width: RF(16),
+    height: RF(16),
+    resizeMode: 'contain',
+  },
+  imgV: {
+    marginRight: RF(10),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  v: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 });

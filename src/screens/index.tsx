@@ -10,8 +10,12 @@ import GraphicAndDesign from './graphicAndDesigning';
 import CategoryItemDetail from './home/categoryItemDetail';
 import CategoryDetails from './categoryDetails';
 import Category from './home/category';
+import Orders from './orders/overview';
+import OrderDetail from './orders/detail';
 
 export {
+  OrderDetail,
+  Orders,
   Category,
   Home,
   Login,

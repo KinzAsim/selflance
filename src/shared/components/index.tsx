@@ -28,8 +28,12 @@ import FilterCategory from './filterCategoryLIst';
 import ModalHeader from './modalHeader';
 import SmallSearch from './smallSearch';
 import Gig from './gig';
+import OrderCard from './orderCard';
+import ProfileText from './profileText';
 
 export {
+  ProfileText,
+  OrderCard,
   Gig,
   Line,
   Ratings,

@@ -47,8 +47,16 @@ const rating = require('./rating.png');
 const picture = require('./picture.png');
 const filter = require('./filter.png');
 const settings = require('./settings.png');
+const revision = require('./revision.png');
+const time = require('./time.png');
+const frame = require('./Frame.png');
+const next = require('./next.png');
 
 export {
+  next,
+  frame,
+  revision,
+  time,
   settings,
   filter,
   write,

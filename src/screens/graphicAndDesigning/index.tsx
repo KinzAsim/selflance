@@ -1,12 +1,4 @@
-import {
-  frame1,
-  frame2,
-  frame3,
-  rating,
-  frame4,
-  picture,
-  favourets,
-} from '@assets';
+import {rating, picture, favourets} from '@assets';
 import {
   Text,
   Wrapper,
@@ -16,10 +8,22 @@ import {
   FilterCategory,
 } from '@components';
 import React, {useState} from 'react';
+import {FreelancerData} from '@utils';
+import {RouteProp} from '@react-navigation/native';
 import {lightText, medium_Gray, RF, SCREEN_HEIGHT, textColor} from '@theme';
 import {StyleSheet, View, ImageBackground, Image, FlatList} from 'react-native';
 
-const GraphicAndDesign = () => {
+interface Props {
+  navigation: any;
+  route: RouteProp<{
+    params: {
+      data?: any;
+    };
+  }>;
+}
+
+const GraphicAndDesign = ({route, navigation}: Props) => {
+  const {data} = route.params;
   const [selected, setSelected] = useState('Category');
   const [selectedShift, setSelectedShift] = useState('Freelancer');
 
@@ -37,49 +41,49 @@ const GraphicAndDesign = () => {
     price: string;
     level: number;
   };
-  const data: FreelancerData[] = [
-    {
-      id: 0,
-      bacImage: frame1,
-      des: 'I will do ui design, ui ux design, ',
-      rating: '5.0',
-      price: '₹678',
-      level: 1,
-    },
-    {
-      id: 1,
-      bacImage: frame2,
-      des: 'I will do ui design, ui ux design, ',
-      rating: '5.0',
-      price: '₹678',
-      level: 1,
-    },
-    {
-      id: 2,
-      bacImage: frame3,
-      des: 'I will do ui design, ui ux design, ',
-      rating: '5.0',
-      price: '₹678',
-      level: 1,
-    },
-    {
-      id: 3,
-      bacImage: frame1,
-      des: 'I will do ui design, ui ux design, ',
-      rating: '5.0',
-      price: '₹678',
-      level: 1,
-    },
-    {
-      id: 4,
-      bacImage: frame4,
-      des: 'I will do ui design, ui ux design, ',
-      rating: '5.0',
-      price: '₹678',
-      level: 1,
-    },
-  ];
-  const renderFrelancer = (item: FreelancerData) => {
+  // const data: FreelancerData[] = [
+  //   {
+  //     id: 0,
+  //     bacImage: frame1,
+  //     des: 'I will do ui design, ui ux design, ',
+  //     rating: '5.0',
+  //     price: '₹678',
+  //     level: 1,
+  //   },
+  //   {
+  //     id: 1,
+  //     bacImage: frame2,
+  //     des: 'I will do ui design, ui ux design, ',
+  //     rating: '5.0',
+  //     price: '₹678',
+  //     level: 1,
+  //   },
+  //   {
+  //     id: 2,
+  //     bacImage: frame3,
+  //     des: 'I will do ui design, ui ux design, ',
+  //     rating: '5.0',
+  //     price: '₹678',
+  //     level: 1,
+  //   },
+  //   {
+  //     id: 3,
+  //     bacImage: frame1,
+  //     des: 'I will do ui design, ui ux design, ',
+  //     rating: '5.0',
+  //     price: '₹678',
+  //     level: 1,
+  //   },
+  //   {
+  //     id: 4,
+  //     bacImage: frame4,
+  //     des: 'I will do ui design, ui ux design, ',
+  //     rating: '5.0',
+  //     price: '₹678',
+  //     level: 1,
+  //   },
+  // ];
+  const renderFrelancer = (item: any) => {
     return (
       <View style={styles.cards}>
         <ImageBackground style={styles.imageStyle} source={item.bacImage}>
@@ -139,17 +143,17 @@ const GraphicAndDesign = () => {
         onShiftChange={handleShiftChange}
       />
       <SwipeModal
-        height={SCREEN_HEIGHT / 1.4}
         modalHeader={true}
-        headerTitle={'Filter'}>
+        headerTitle={'Filter'}
+        height={SCREEN_HEIGHT / 1.4}>
         <FilterCategory toggleChange={toggleChange} selected={selected} />
       </SwipeModal>
 
       <FlatList
+        data={FreelancerData}
         showsVerticalScrollIndicator={false}
-        data={data}
-        renderItem={({item}: any) => renderFrelancer(item)}
         keyExtractor={(item: any) => item.id.toString()}
+        renderItem={({item}: any) => renderFrelancer(item)}
       />
     </Wrapper>
   );

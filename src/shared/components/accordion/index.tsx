@@ -1,39 +1,9 @@
-import {View, StyleSheet, Image} from 'react-native';
+import {Text} from '@components';
 import React, {useState} from 'react';
+import {arrowDown, arrowUp} from '@assets';
+import {View, StyleSheet, Image} from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
 import {RouteProp, useTheme} from '@react-navigation/native';
-import {arrowDown, arrowUp} from '@assets';
-import {Text} from '@components';
-
-const SECTIONS = [
-  {
-    title: 'LOGO & BRAND IDENTITY',
-    content: [
-      'Logo Design',
-      'Brand Style Guides',
-      'Fonts & Typography',
-      'Business Cards & Stationery',
-    ],
-  },
-  {
-    title: 'GAMING',
-    content: [
-      'Logo Design',
-      'Brand Style Guides',
-      'Fonts & Typography',
-      'Business Cards & Stationery',
-    ],
-  },
-  {
-    title: 'ART & ILLUSTRATION',
-    content: [
-      'Logo Design',
-      'Brand Style Guides',
-      'Fonts & Typography',
-      'Business Cards & Stationery',
-    ],
-  },
-];
 
 interface Props {
   data: any;
@@ -46,9 +16,9 @@ interface Props {
 }
 const CustomAccordion = (props: Partial<Props>) => {
   const {data} = props;
-  const [activeSection, setActiveSection] = useState([]);
   const theme: any = useTheme();
   const styles: any = useStyles(theme.colors);
+  const [activeSection, setActiveSection] = useState([]);
 
   //   const _renderSectionTitle = (section: any) => {
   //     return (
@@ -59,7 +29,6 @@ const CustomAccordion = (props: Partial<Props>) => {
   //   };
 
   const _renderHeader = (section: any, index: any) => {
-    console.log('sss....', index);
     let flag = false;
 
     if (index == activeSection[0]) {
@@ -67,7 +36,6 @@ const CustomAccordion = (props: Partial<Props>) => {
     } else {
       false;
     }
-    console.log('fff..', flag);
 
     return (
       <View style={styles.header}>

@@ -16,8 +16,8 @@ interface Props {
 const AllCategories = ({route, navigation}: Props) => {
   const {data} = route.params;
 
-  const onClickCategory = () => {
-    navigation.navigate('CategoryDetails');
+  const onClickCategory = (item: any) => {
+    navigation.navigate('CategoryDetails', {data: item});
   };
 
   return (
@@ -32,7 +32,7 @@ const AllCategories = ({route, navigation}: Props) => {
             <ClickableBox
               title={item?.title}
               source={item?.img}
-              onClick={onClickCategory}
+              onClick={() => onClickCategory(item)}
             />
           );
         }}

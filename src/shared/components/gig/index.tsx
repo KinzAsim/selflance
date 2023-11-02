@@ -2,11 +2,17 @@ import React from 'react';
 import {Text} from '@components';
 import {favourets, picture, rating} from '@assets';
 import {RF, lightText, medium_Gray, textColor} from '@theme';
-import {View, ImageBackground, Image, StyleSheet} from 'react-native';
+import {
+  View,
+  ImageBackground,
+  Image,
+  StyleSheet,
+  Pressable,
+} from 'react-native';
 
-const Gig = ({item}: {item?: any}) => {
+const Gig = ({item, onPress}: {item?: any; onPress?: any}) => {
   return (
-    <View style={styles.cards}>
+    <Pressable style={styles.cards} onPress={onPress}>
       <ImageBackground style={styles.imageStyle} source={item?.bacImage}>
         <Image source={favourets} style={styles.fav} />
       </ImageBackground>
@@ -46,7 +52,7 @@ const Gig = ({item}: {item?: any}) => {
           </Text>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
