@@ -46,6 +46,11 @@ const favourets = require('./favourets.png');
 const rating = require('./rating.png');
 const picture = require('./picture.png');
 const filter = require('./filter.png');
+const settings = require('./settings.png');
+const revision = require('./revision.png');
+const time = require('./time.png');
+const frame = require('./Frame.png');
+const next = require('./next.png');
 const location = require('./location.png');
 const sellerLevel = require('./sellerLevel.png');
 const translater = require('./translater.png');
@@ -58,6 +63,13 @@ const file = require('./file.png');
 const report = require('./report.png');
 
 export {
+  next,
+  frame,
+  revision,
+  time,
+  settings,
+
+
   gallery,
   report,
   file,

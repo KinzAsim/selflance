@@ -17,16 +17,35 @@ import ClickableBox from './clickableBox';
 import ShiftCards from './shiftCards';
 import CustomModal from './modal';
 import Carousel_Pagination from './carousel';
+import BackHeader from './backHeader';
+import HeaderSwiper from './headerSwiper';
+import ProfileItem from './profileItem';
+import Ratings from './ratings';
+import Line from './line';
+import CustomAccordion from './accordion';
 import SwipeModal from './swipeModal';
 import FilterCategory from './filterCategoryLIst';
 import ModalHeader from './modalHeader';
 import SmallSearch from './smallSearch';
+import Gig from './gig';
+import OrderCard from './orderCard';
+import ProfileText from './profileText';
 import UserDetail from './userDetail';
 import UserDescription from './userDesctiption';
 import UserLevel from './userLevel';
 import SmallModal from './customModal';
 import ModalContent from './modalContent';
+
 export {
+  ProfileText,
+  OrderCard,
+  Gig,
+  Line,
+  Ratings,
+  ProfileItem,
+  HeaderSwiper,
+  BackHeader,
+
   ModalContent,
   SmallModal,
   UserLevel,
@@ -54,5 +73,6 @@ export {
   GigCard,
   CustomModal,
   ShiftCards,
+  CustomAccordion,
   FilterCategory,
 };

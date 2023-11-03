@@ -16,6 +16,13 @@ interface Props {
 const AllCategories = ({route, navigation}: Props) => {
   const {data} = route.params;
 
+  const onClickCategory = (item: any) => {
+    navigation.navigate('CategoryDetails', {
+      data: item,
+      navigation: navigation,
+    });
+  };
+
   return (
     <Wrapper isPaddingH>
       <TextHeader title={'All Categories'} _back />
@@ -24,7 +31,13 @@ const AllCategories = ({route, navigation}: Props) => {
         data={categoryData}
         showsVerticalScrollIndicator={false}
         renderItem={({item, index}: any) => {
-          return <ClickableBox title={item?.title} source={item?.img} />;
+          return (
+            <ClickableBox
+              title={item?.title}
+              source={item?.img}
+              onClick={() => onClickCategory(item)}
+            />
+          );
         }}
       />
     </Wrapper>

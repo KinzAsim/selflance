@@ -19,8 +19,16 @@ import React, {useState} from 'react';
 import {GREY, primary, RF} from '@theme';
 import {LoginValidationSchema} from '@utils';
 import {fb, google, leftfaded_Line, logo, rightfaded_Line, show} from '@assets';
+import {useDispatch} from 'react-redux';
+import {setIsLoggedIn} from '@redux';
+
+const initialValues = {
+  email: '',
+  password: '',
+};
 
 const Login = ({navigation}: any) => {
+  const dispatch: any = useDispatch();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isUsernameFocused, setIsUsernameFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
@@ -57,15 +65,11 @@ const Login = ({navigation}: any) => {
   const handleCloseModal = () => {
     setIsModalVisible(false);
   };
-  const initialValues = {
-    email: '',
-    password: '',
-  };
 
-  const hanldeLogIn = (values: {email: string; password: string}) => {
-    console.log('login', values);
-    handleOpenModal();
-    // dispatch(setIsLoggedIn(true));
+  const hanldeLogIn = (values: any) => {
+    console.log('val...', values);
+
+    dispatch(setIsLoggedIn(true));
   };
 
   return (

@@ -1,31 +1,33 @@
+import {rating, picture, favourets} from '@assets';
 import {StyleSheet, View, ImageBackground, Image, FlatList} from 'react-native';
-import React, {useState, useEffect, useRef} from 'react';
 import {Modalize} from 'react-native-modalize';
 import {
-  FilterCategory,
-  ShiftCards,
-  SmallSearch,
-  SwipeModal,
   Text,
-  TextHeader,
   UserDetail,
   Wrapper,
+  SwipeModal,
+  ShiftCards,
+  TextHeader,
+  FilterCategory,
 } from '@components';
+import React, {useState,useRef,useEffect} from 'react';
+import {FreelancerData} from '@utils';
+import {RouteProp} from '@react-navigation/native';
 import {lightText, medium_Gray, RF, SCREEN_HEIGHT, textColor} from '@theme';
-import {
-  favourets,
-  frame1,
-  frame2,
-  frame3,
-  frame4,
-  picture,
-  rating,
-} from '@assets';
-import {BlurView} from '@react-native-community/blur';
 
-const GraphicAndDesign = () => {
-  const [selectedShift, setSelectedShift] = useState('Freelancer');
+interface Props {
+  navigation: any;
+  route: RouteProp<{
+    params: {
+      data?: any;
+    };
+  }>;
+}
+
+const GraphicAndDesign = ({route, navigation}: Props) => {
+  const {data} = route.params;
   const [selected, setSelected] = useState('Category');
+  const [selectedShift, setSelectedShift] = useState('Freelancer');
 
   const toggleChange = (change: any) => {
     setSelected(change);
@@ -41,51 +43,49 @@ const GraphicAndDesign = () => {
     price: string;
     level: number;
   };
-
-  const data: FreelancerData[] = [
-    {
-      id: 0,
-      bacImage: frame1,
-      des: 'I will do ui design, ui ux design, ',
-      rating: '5.0',
-      price: '₹678',
-      level: 1,
-    },
-    {
-      id: 1,
-      bacImage: frame2,
-      des: 'I will do ui design, ui ux design, ',
-      rating: '5.0',
-      price: '₹678',
-      level: 1,
-    },
-    {
-      id: 2,
-      bacImage: frame3,
-      des: 'I will do ui design, ui ux design, ',
-      rating: '5.0',
-      price: '₹678',
-      level: 1,
-    },
-    {
-      id: 3,
-      bacImage: frame1,
-      des: 'I will do ui design, ui ux design, ',
-      rating: '5.0',
-      price: '₹678',
-      level: 1,
-    },
-    {
-      id: 4,
-      bacImage: frame4,
-      des: 'I will do ui design, ui ux design, ',
-      rating: '5.0',
-      price: '₹678',
-      level: 1,
-    },
-  ];
-
-  const renderFrelancer = (item: FreelancerData) => {
+  // const data: FreelancerData[] = [
+  //   {
+  //     id: 0,
+  //     bacImage: frame1,
+  //     des: 'I will do ui design, ui ux design, ',
+  //     rating: '5.0',
+  //     price: '₹678',
+  //     level: 1,
+  //   },
+  //   {
+  //     id: 1,
+  //     bacImage: frame2,
+  //     des: 'I will do ui design, ui ux design, ',
+  //     rating: '5.0',
+  //     price: '₹678',
+  //     level: 1,
+  //   },
+  //   {
+  //     id: 2,
+  //     bacImage: frame3,
+  //     des: 'I will do ui design, ui ux design, ',
+  //     rating: '5.0',
+  //     price: '₹678',
+  //     level: 1,
+  //   },
+  //   {
+  //     id: 3,
+  //     bacImage: frame1,
+  //     des: 'I will do ui design, ui ux design, ',
+  //     rating: '5.0',
+  //     price: '₹678',
+  //     level: 1,
+  //   },
+  //   {
+  //     id: 4,
+  //     bacImage: frame4,
+  //     des: 'I will do ui design, ui ux design, ',
+  //     rating: '5.0',
+  //     price: '₹678',
+  //     level: 1,
+  //   },
+  // ];
+  const renderFrelancer = (item: any) => {
     return (
       <View style={styles.cards}>
         <ImageBackground style={styles.imageStyle} source={item.bacImage}>
@@ -175,10 +175,10 @@ const GraphicAndDesign = () => {
         />
       </SwipeModal>
       <FlatList
+        data={FreelancerData}
         showsVerticalScrollIndicator={false}
-        data={data}
-        renderItem={({item}: any) => renderFrelancer(item)}
         keyExtractor={(item: any) => item.id.toString()}
+        renderItem={({item}: any) => renderFrelancer(item)}
       />
     </Wrapper>
   );

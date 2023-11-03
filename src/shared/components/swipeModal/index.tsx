@@ -16,8 +16,8 @@ interface Props extends TouchableOpacityProps {
   children?: any;
   modalHeader?: boolean;
   headerTitle?: any;
-  ref: any;
-  onClose: () => void;
+  ref?: any;
+  onClose?: () => void;
 }
 
 const SwipeModal = React.forwardRef((props: Props, ref) => {

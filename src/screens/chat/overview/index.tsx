@@ -1,12 +1,11 @@
-import {RF} from '@theme';
 import React from 'react';
+import {chatList} from '@utils';
 import {FlatList, Pressable} from 'react-native';
 import {ChatBox, Search, TextHeader, Wrapper} from '@components';
-import {chatList} from '@utils';
 
 const Chat = ({navigation}: any) => {
   const onClick = (item: any, index: any) => {
-    navigation.navigate('ChatPage', {item: item});
+    navigation.navigate('ChatPage', {userName: item?.name});
   };
 
   return (

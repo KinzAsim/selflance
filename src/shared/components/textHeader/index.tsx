@@ -1,6 +1,6 @@
-import {RF} from '@theme';
 import React from 'react';
 import {Text} from '@components';
+import {RF, light_grey} from '@theme';
 import {back, menu, search} from '@assets';
 import {
   Image,
@@ -18,21 +18,27 @@ const TextHeader = ({
   _search,
   _source1,
   _source2,
+  setting,
+  s_source1,
+  s_source2,
   onOpen,
 }: {
-  navigation?: any;
   title?: any;
   _back?: any;
   _search?: any;
   _source1?: any;
   _source2?: any;
+  setting?: any;
+  s_source1?: any;
+  s_source2?: any;
+  navigation?: any;
   f_Size?: any;
   onOpen?: () => void;
 }) => {
   return (
     <View style={styles.main}>
       {_back && (
-        <Pressable style={styles.iV} onPress={() => navigation.goBack()}>
+        <Pressable style={styles.iV} onPress={() => navigation?.goBack()}>
           <Image source={back} style={styles.img} />
         </Pressable>
       )}
@@ -40,13 +46,24 @@ const TextHeader = ({
         <Text size={f_Size ? f_Size : RF(16)} semiBold>
           {title}
         </Text>
-        {_search && (
-          <View style={{flexDirection: 'row'}}>
+        {_search ? (
+          <View style={styles.s}>
             <Image source={_source1} style={styles.search} />
             <TouchableOpacity onPress={onOpen}>
               <Image source={_source2} style={styles.menu} />
             </TouchableOpacity>
           </View>
+        ) : (
+          setting && (
+            <View style={styles.row}>
+              <View style={styles.innerView}>
+                <Image source={s_source1} style={styles.s_s} />
+              </View>
+              <View style={[styles.innerView, {marginLeft: RF(10)}]}>
+                <Image source={s_source2} style={styles.s_s} />
+              </View>
+            </View>
+          )
         )}
       </View>
     </View>
@@ -54,11 +71,28 @@ const TextHeader = ({
 };
 
 const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+  },
+  innerView: {
+    width: RF(32),
+    height: RF(32),
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: light_grey,
+    borderRadius: RF(10),
+  },
+  s_s: {
+    width: RF(16),
+    height: RF(16),
+    resizeMode: 'contain',
+  },
+  s: {flexDirection: 'row'},
   view: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: '80%',
+    width: '90%',
   },
   menu: {
     width: RF(20),
@@ -76,7 +110,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#F8F8F8',
     borderRadius: RF(10),
-    marginRight: RF(20),
+    marginRight: RF(8),
   },
   img: {
     width: RF(13),

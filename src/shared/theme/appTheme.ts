@@ -28,6 +28,9 @@ export const ASPECT_DIFF = ASPECT_RATIO / BASE_ASPECT_RATIO;
 export const mustard = '#EDBD57';
 export const txt_gray = '#949494';
 export const dull_orange = '#DD730A';
+export const orange = '#FF7F00';
+export const blue = '#121F3E';
+export const lightBlue = '#E6F3FC';
 
 export const mulish_regular = 'Mulish-Regular';
 export const mulish_bold = 'Mulish-Bold';
@@ -46,5 +49,8 @@ export const darkThemeStyle = {
 };
 
 export const defaultTheme = {
-  colors: {},
+  colors: {
+    lightGray: '#F8F8F8',
+    blackText: '#2A3333',
+  },
 };

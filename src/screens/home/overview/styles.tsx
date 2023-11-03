@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
   view: {paddingHorizontal: RF(16)},
   container: {
     flex: 1,
-    paddingVertical: RF(16),
     backgroundColor: '#fff',
   },
 
