@@ -2,6 +2,7 @@ import React from 'react';
 import {chatList} from '@utils';
 import {FlatList, Pressable} from 'react-native';
 import {ChatBox, Search, TextHeader, Wrapper} from '@components';
+import {RF} from '@theme';
 
 const Chat = ({navigation}: any) => {
   const onClick = (item: any, index: any) => {
@@ -17,7 +18,11 @@ const Chat = ({navigation}: any) => {
         showsVerticalScrollIndicator={false}
         renderItem={({item, index}: any) => {
           return (
-            <Pressable onPress={() => onClick(item, index)}>
+            <Pressable
+              onPress={() => onClick(item, index)}
+              style={{
+                width: '100%',
+              }}>
               <ChatBox
                 count={1}
                 time={'5 min'}

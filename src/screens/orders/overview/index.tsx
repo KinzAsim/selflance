@@ -13,6 +13,7 @@ const Orders = ({navigation}: any) => {
       <TextHeader title={'Orders'} />
       <FlatList
         data={orders}
+        showsVerticalScrollIndicator={false}
         renderItem={({item}) => {
           return (
             <OrderCard

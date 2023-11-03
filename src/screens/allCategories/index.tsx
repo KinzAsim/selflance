@@ -25,7 +25,7 @@ const AllCategories = ({route, navigation}: Props) => {
 
   return (
     <Wrapper isPaddingH>
-      <TextHeader title={'All Categories'} _back />
+      <TextHeader title={'All Categories'} _back navigation={navigation} />
       <Search />
       <FlatList
         data={categoryData}

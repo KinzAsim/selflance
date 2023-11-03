@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     backgroundColor: grayButton,
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: 15,
+    marginRight: RF(1),
   },
   view: {
     flexDirection: 'row',

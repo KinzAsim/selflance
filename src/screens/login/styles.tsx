@@ -33,6 +33,8 @@ export const styles = StyleSheet.create({
   justify_Row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    width: '100%',
+    marginHorizontal: RF(2),
   },
   semiBold: {
     fontSize: RF(24),

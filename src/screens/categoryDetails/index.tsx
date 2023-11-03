@@ -24,7 +24,7 @@ const CategoryDetails = ({route, navigation}: Props) => {
 
   return (
     <View style={styles.container}>
-      <TextHeader title={data?.title} _back />
+      <TextHeader title={data?.title} _back navigation={navigation} />
       <CustomAccordion data={SECTIONS} navigation={navigation} />
     </View>
   );
