@@ -27,10 +27,10 @@ const Home = ({navigation}: any) => {
     navigate('AllCategories', {item: categoryData});
   };
   const onOpenSeeAll_companies = () => {
-    navigate('CategoryItemDetail', {item: categoryData});
+    // navigate('CategoryItemDetail', {item: categoryData});
   };
   const onOpenDetailBox = () => {
-    navigate('Category', {item: FreelancerData});
+    // navigate('Category', {item: FreelancerData});
   };
 
   return (

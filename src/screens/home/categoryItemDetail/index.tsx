@@ -7,15 +7,15 @@ import {
   HeaderSwiper,
 } from '@components';
 import {_3tabs} from '@utils';
-import {heart, revision, time} from '@assets';
 import {styles} from './styles';
 import React, {useState} from 'react';
 import {RF, dull_orange} from '@theme';
 import {Image, View} from 'react-native';
+import {heart, revision, time} from '@assets';
 import {RouteProp} from '@react-navigation/native';
 
 interface Props {
-  navigation: any;
+  navigation?: any;
   route: RouteProp<{
     params: {
       data?: any;
@@ -38,8 +38,8 @@ const CategoryItemDetail = ({route, navigation}: Props) => {
       <Line mh />
 
       <View style={styles.view}>
-        <Text semiBold size={16}>
-          Mobile UI UX design or app UI UX design
+        <Text semiBold size={16} style={{width: RF(250)}}>
+          Mobile UI UX Design or App UI UX Design
         </Text>
         <View style={styles.v_img}>
           <Image source={heart} style={styles.heart} />

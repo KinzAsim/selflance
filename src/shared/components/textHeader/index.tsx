@@ -1,27 +1,27 @@
-import React from 'react';
-import {Text} from '@components';
-import {RF, light_grey} from '@theme';
-import {back, menu, search} from '@assets';
 import {
+  View,
   Image,
   Pressable,
   StyleSheet,
-  View,
   TouchableOpacity,
 } from 'react-native';
+import React from 'react';
+import {back} from '@assets';
+import {Text} from '@components';
+import {RF, light_grey} from '@theme';
 
 const TextHeader = ({
-  navigation,
   f_Size,
   title,
   _back,
+  onOpen,
   _search,
   _source1,
   _source2,
   setting,
   s_source1,
   s_source2,
-  onOpen,
+  navigation,
 }: {
   title?: any;
   _back?: any;
@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: RF(20),
+    marginRight: 10,
   },
 });
 

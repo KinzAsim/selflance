@@ -15,7 +15,6 @@ interface Props {
 const BackHeader = (props: Partial<Props>) => {
   const {navigation} = props;
   const handleBack = () => {
-    console.log('challlalaaaaa');
     navigation.goBack();
   };
   return (
@@ -36,8 +35,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: RF(20),
+    marginHorizontal: RF(20),
     marginTop: RF(55),
+    width: '90%',
   },
   heart: {
     width: RF(17),

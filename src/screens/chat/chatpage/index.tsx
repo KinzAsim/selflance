@@ -105,7 +105,7 @@ const ChatPage: React.FC = ({navigation, route}: any) => {
 
   return (
     <View style={{flex: 1, backgroundColor: '#fff', paddingBottom: 30}}>
-      <View style={{paddingHorizontal: RF(10)}}>
+      <View style={{marginHorizontal: RF(15)}}>
         <TextHeader
           f_Size={20}
           navigation={navigation}

@@ -41,12 +41,17 @@ const styles = StyleSheet.create({
     height: RF(22),
     resizeMode: 'contain',
   },
-  pressable: {flexDirection: 'row', alignItems: 'center'},
+  pressable: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   rightArrow: {
     width: RF(5),
     height: RF(10),
-    marginLeft: 5,
+    marginLeft: RF(5),
     resizeMode: 'contain',
+    marginTop: -3,
   },
   textDark: {
     color: '#434343',

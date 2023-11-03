@@ -1,10 +1,10 @@
-import {search} from '@assets';
 import React from 'react';
+import {search} from '@assets';
 import {
-  Image,
-  StyleSheet,
-  TextInput,
   View,
+  Image,
+  TextInput,
+  StyleSheet,
   TouchableOpacityProps,
 } from 'react-native';
 

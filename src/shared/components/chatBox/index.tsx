@@ -18,7 +18,7 @@ const ChatBox = ({
   unread?: any;
 }) => {
   return (
-    <View style={{marginTop: RF(20)}}>
+    <View style={{marginTop: RF(20), marginRight: RF(5)}}>
       <View style={styles.main}>
         <Image source={user} style={styles.img} />
         <View style={styles.msg}>
