@@ -13,22 +13,44 @@ import React, {useState} from 'react';
 import {RF, textColor, WHITE} from '@theme';
 import Text from '../text';
 interface Props extends TouchableOpacityProps {
+  title1?: any;
+  title2: any;
   _sourceImage1?: any;
   _sourceImage2?: any;
   ref?: any;
   onClose: () => void;
   modalVisible?: any;
+  withMenu?: any;
 }
 
 const SmallModal = (props: Props) => {
-  const {_sourceImage1, _sourceImage2, onClose, modalVisible} = props;
+  const {
+    _sourceImage1,
+    _sourceImage2,
+    onClose,
+    modalVisible,
+    title1,
+    title2,
+    withMenu,
+  } = props;
+  console.log(modalVisible, 'sss');
+
   return (
     <Modal animationType="fade" transparent={true} visible={modalVisible}>
       <TouchableWithoutFeedback
         onPress={onClose} // Close the modal when touched outside
       >
         <View style={styles.mainView}>
-          <View style={styles.centeredView}>
+          <View
+            style={[
+              styles.centeredView,
+
+              {
+                position: withMenu ? 'relative' : 'absolute',
+                alignSelf: withMenu ? 'flex-end' : 'flex-start',
+                bottom: withMenu ? -60 : 60,
+              },
+            ]}>
             <View
               style={{
                 flexDirection: 'row',
@@ -44,7 +66,7 @@ const SmallModal = (props: Props) => {
                 }}
               />
               <Text color={textColor} size={12}>
-                Photo Library
+                {title1}
               </Text>
             </View>
             <View
@@ -62,7 +84,7 @@ const SmallModal = (props: Props) => {
                 }}
               />
               <Text color={textColor} size={12}>
-                Choose File
+                {title2}
               </Text>
             </View>
           </View>
@@ -89,6 +111,5 @@ const styles = StyleSheet.create({
     backgroundColor: WHITE,
     elevation: 2,
     position: 'absolute',
-    bottom: RF(60),
   },
 });
