@@ -45,13 +45,15 @@ const TextHeader = ({
           backgroundColor: bgClr ? bgClr : '#fff',
         },
       ]}>
-      {_back && (
-        <Pressable style={styles.iV} onPress={() => navigation?.goBack()}>
-          <Image source={back} style={styles.img} />
-        </Pressable>
-      )}
+      <View style={{width: '14%'}}>
+        {_back && (
+          <Pressable style={styles.iV} onPress={() => navigation?.goBack()}>
+            <Image source={back} style={styles.img} />
+          </Pressable>
+        )}
+      </View>
       <View style={styles.view}>
-        <Text size={f_Size ? f_Size : RF(16)} semiBold>
+        <Text size={f_Size ? f_Size : RF(14)} semiBold>
           {title}
         </Text>
         {_search ? (
@@ -99,6 +101,8 @@ const styles = StyleSheet.create({
   view: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '87%',
   },
   menu: {
     width: RF(20),
@@ -126,8 +130,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: RF(20),
-    alignSelf: 'center',
     width: '100%',
+    marginRight: 2,
   },
 });
 
