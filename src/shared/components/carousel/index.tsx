@@ -86,6 +86,7 @@ const useStyles = (colors: any) =>
       alignItems: 'center',
       justifyContent: 'center',
       height: RF(180),
+      width: '100%',
     },
     containerView: {
       marginTop: RF(150),
