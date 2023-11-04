@@ -1,7 +1,28 @@
+import {StyleSheet, View} from 'react-native';
+import {Text} from '@components';
 import {RF} from '@theme';
-import {StyleSheet} from 'react-native';
 
-export const styles = StyleSheet.create({
+const DropDownDetail = ({first, second}: {first?: any; second?: any}) => {
+  return (
+    <>
+      <View style={styles.v}>
+        <Text
+          size={first == 'Total' ? 14 : 13}
+          semiBold={first == 'Total' ? true : false}>
+          {first}
+        </Text>
+        <Text
+          size={first == 'Total' ? 14 : 13}
+          semiBold={first == 'Total' ? true : false}>
+          {second}
+        </Text>
+      </View>
+      {first == 'Total' ? null : <View style={styles.line} />}
+    </>
+  );
+};
+
+const styles = StyleSheet.create({
   _img: {width: RF(114), height: RF(64), resizeMode: 'contain'},
   row: {
     flexDirection: 'row',
@@ -48,3 +69,5 @@ export const styles = StyleSheet.create({
     marginTop: RF(20),
   },
 });
+
+export default DropDownDetail;

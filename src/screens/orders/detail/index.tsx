@@ -1,9 +1,18 @@
 import React from 'react';
-import {RF, WHITE, light_grey, primary} from '@theme';
 import {frame, next} from '@assets';
+import {RF, light_grey, primary} from '@theme';
 import {RouteProp} from '@react-navigation/native';
 import {Image, Pressable, ScrollView, View} from 'react-native';
-import {DropDown, ProfileText, Text, TextHeader, Wrapper} from '@components';
+import {
+  CustomTextInput,
+  DropDown,
+  DropDownDetail,
+  ProfileText,
+  Text,
+  TextHeader,
+  Wrapper,
+} from '@components';
+import {styles} from './styles';
 
 interface Props {
   navigation?: any;
@@ -27,10 +36,10 @@ const OrderDetail = ({route, navigation}: Props) => {
         />
         <View
           style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
             marginTop: 10,
+            alignItems: 'center',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
           }}>
           <ProfileText ratings={'5.5'} />
           <Pressable>
@@ -43,10 +52,58 @@ const OrderDetail = ({route, navigation}: Props) => {
             />
           </Pressable>
         </View>
-        <DropDown title={'Order Details'} type={'detail'} />
-        <DropDown title={'Payment Details'} type={'payment'} />
+        <DropDown title={'Order Details'} type={'detail'}>
+          <>
+            <View style={styles.row}>
+              <Image source={frame} style={styles._img} />
+              <Text style={{width: RF(140)}}>
+                I Will Do UI Design, UI UX Design And Mobile Apps{' '}
+              </Text>
+            </View>
+            <DropDownDetail first={'Order By'} second={'kim waliamson'} />
+            <DropDownDetail first={'Delivery Days'} second={'2 Days'} />
+            <DropDownDetail first={'Price'} second={'30$'} />
+            <DropDownDetail first={'Order Number'} second={'#D467798DER55'} />
+            <DropDownDetail first={'Payment'} second={'Paypal'} />
+          </>
+        </DropDown>
+        <DropDown title={'Payment Details'} type={'payment'}>
+          <>
+            <DropDownDetail
+              first={'Delivery Date'}
+              second={'Thursday, 14 July 2023'}
+            />
+            <DropDownDetail first={'Subtotal'} second={'$30'} />
+            <DropDownDetail first={'Total'} second={'$40'} />
+          </>
+        </DropDown>
         <DropDown title={'Order Summary'} type={'summary'} />
-        <DropDown title={'Cooperation Agreement'} type={'agreement'} />
+        <DropDown title={'Cooperation Agreement'} type={'agreement'}>
+          <>
+            <CustomTextInput
+              title={'Product Organization'}
+              placeholderText={'Mobile UI Design'}
+            />
+            <CustomTextInput
+              multiline
+              title={'Product Organization'}
+              placeholderText={
+                'Buyer says 2 screens of mobile app which  onboarding screens...logo will be provided cheme also... I will give thce figma file...Thank you'
+              }
+            />
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              <CustomTextInput
+                title={'Price'}
+                placeholderText={'Mobile UI Dehysign'}
+              />
+              <CustomTextInput
+                title={'NO of Reviews'}
+                placeholderText={'Mobile UI Design'}
+              />
+            </View>
+          </>
+        </DropDown>
       </ScrollView>
     </Wrapper>
   );

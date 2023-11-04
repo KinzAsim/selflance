@@ -1,19 +1,22 @@
+import {
+  View,
+  Image,
+  Pressable,
+  StyleSheet,
+  ImageBackground,
+} from 'react-native';
 import React from 'react';
 import {Text} from '@components';
 import {favourets, picture, rating} from '@assets';
 import {RF, lightText, medium_Gray, textColor} from '@theme';
-import {
-  View,
-  ImageBackground,
-  Image,
-  StyleSheet,
-  Pressable,
-} from 'react-native';
 
 const Gig = ({item, onPress}: {item?: any; onPress?: any}) => {
   return (
     <Pressable style={styles.cards} onPress={onPress}>
-      <ImageBackground style={styles.imageStyle} source={item?.bacImage}>
+      <ImageBackground
+        style={styles.imageStyle}
+        source={item?.bacImage}
+        imageStyle={{borderTopLeftRadius: 10, borderBottomLeftRadius: 10}}>
         <Image source={favourets} style={styles.fav} />
       </ImageBackground>
       <View style={styles.des}>
@@ -65,11 +68,12 @@ const styles = StyleSheet.create({
     height: RF(98),
     width: '100%',
     borderTopRightRadius: 8,
-    marginTop: 15,
+    marginTop: RF(15),
     borderBottomEndRadius: 8,
     flexDirection: 'row',
     backgroundColor: '#fff',
     elevation: 1,
+    borderRadius: 10,
   },
   imageStyle: {height: '100%', width: RF(145)},
   fav: {height: RF(21), width: RF(21), margin: 5},

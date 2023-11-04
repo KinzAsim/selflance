@@ -62,8 +62,10 @@ const gallery = require('./gallery.png');
 const file = require('./file.png');
 const down = require('./down.png');
 const report = require('./report.png');
+const tick = require('./tick.png');
 
 export {
+  tick,
   down,
   next,
   frame,

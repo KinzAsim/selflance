@@ -36,8 +36,12 @@ import UserLevel from './userLevel';
 import SmallModal from './customModal';
 import ModalContent from './modalContent';
 import DropDown from './dropdown';
+import CustomTextInput from './textInput';
+import DropDownDetail from './dropDowndetail';
 
 export {
+  DropDownDetail,
+  CustomTextInput,
   DropDown,
   ProfileText,
   OrderCard,

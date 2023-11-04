@@ -9,6 +9,7 @@ export const neutral = '#121F3E';
 export const neutral_90 = '#4F5350';
 export const textColor = '#434343';
 export const lightText = '#949494';
+export const gray = '#95979D';
 export const medium_Gray = '#74767E';
 export const grayButton = '#F8F8F8';
 export const light_grey = '#F9FAFB';

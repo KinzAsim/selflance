@@ -2,8 +2,8 @@ import React from 'react';
 import {RF} from '@theme';
 import {BackHeader} from '@components';
 import {StyleSheet, View} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import {RouteProp} from '@react-navigation/native';
+import LinearGradient from 'react-native-linear-gradient';
 
 interface Props {
   navigation: any;
@@ -36,7 +36,7 @@ const HeaderSwiper = (props: Partial<Props>) => {
 
 const styles = StyleSheet.create({
   view: {
-    width: RF(375),
+    width: '100%',
     height: RF(288),
   },
 });
