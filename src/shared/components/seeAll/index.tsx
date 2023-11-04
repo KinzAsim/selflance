@@ -17,7 +17,7 @@ const SeeAll = ({
     <View style={styles.view}>
       <View style={styles.row}>
         <Image source={source} style={styles.img} />
-        <Text size={15} semiBold>
+        <Text size={14} semiBold>
           {title}
         </Text>
       </View>
@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   img: {
-    width: RF(22),
-    height: RF(22),
-    resizeMode: 'contain',
+    width: RF(19),
+    height: RF(19),
+    marginRight: 4,
   },
   pressable: {
     flexDirection: 'row',

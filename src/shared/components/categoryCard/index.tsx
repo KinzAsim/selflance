@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   categoryImg: {
-    width: 44.7,
-    height: 44.7,
+    width: RF(44.7),
+    height: RF(44.7),
     marginRight: 8,
   },
 });

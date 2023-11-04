@@ -27,7 +27,7 @@ const Carousel_Pagination = ({
       <Carousel
         data={data}
         ref={flatListRef}
-        renderItem={({item, index}) => {
+        renderItem={({item, index}: any) => {
           return (
             <View
               style={{
@@ -38,7 +38,7 @@ const Carousel_Pagination = ({
                 imageStyle={{
                   resizeMode: 'contain',
                 }}
-                style={{width: RF(320), height: RF(158)}}>
+                style={{width: '100%', height: RF(158)}}>
                 <View
                   style={{
                     backgroundColor: primary,
