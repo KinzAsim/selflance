@@ -5,6 +5,7 @@ const initialState: any = {
   password: null,
   authToken: null,
   isLoggedIn: false,
+  isModalVisible: false,
 };
 
 export const userReducer = createSlice({
@@ -23,6 +24,9 @@ export const userReducer = createSlice({
     setIsLoggedIn: (state, action) => {
       state.isLoggedIn = action.payload;
     },
+    setIsModalVisible: (state, action) => {
+      state.isModalVisible = action.payload;
+    },
     signOut: state => {
       state.user = null;
       state.colorCode = '#19383A';
@@ -32,7 +36,13 @@ export const userReducer = createSlice({
   },
 });
 
-export const {setUser, signOut, setPassword, setAuthToken, setIsLoggedIn} =
-  userReducer.actions;
+export const {
+  setUser,
+  signOut,
+  setPassword,
+  setAuthToken,
+  setIsLoggedIn,
+  setIsModalVisible,
+} = userReducer.actions;
 
 export default userReducer.reducer;

@@ -2,16 +2,18 @@ import {RF, blue, grayButton} from '@theme';
 import React from 'react';
 import {user} from '@assets';
 import {Ratings, Text} from '@components';
-import {Image, StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 
 const ProfileItem = ({
   name,
   level,
   date,
+  onOpen,
 }: {
   name?: any;
   level?: any;
   date?: any;
+  onOpen: () => void;
 }) => {
   return (
     <View style={styles.main}>
@@ -38,11 +40,11 @@ const ProfileItem = ({
         {date ? (
           <Text size={13}>{date}</Text>
         ) : (
-          <View style={styles.btn}>
+          <TouchableOpacity style={styles.btn} onPress={onOpen}>
             <Text size={10} regular>
               View Profile
             </Text>
-          </View>
+          </TouchableOpacity>
         )}
       </View>
     </View>

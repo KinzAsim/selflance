@@ -8,7 +8,7 @@ import {
 import React from 'react';
 import {back} from '@assets';
 import {Text} from '@components';
-import {RF, light_grey} from '@theme';
+import {RF, light_grey, SCREEN_WIDTH} from '@theme';
 
 const TextHeader = ({
   f_Size,
@@ -57,16 +57,16 @@ const TextHeader = ({
         {_search ? (
           <View style={styles.s}>
             <Image source={_source1} style={styles.search} />
-            <TouchableOpacity onPress={onOpen}>
+            <TouchableOpacity>
               <Image source={_source2} style={styles.menu} />
             </TouchableOpacity>
           </View>
         ) : (
           setting && (
             <View style={styles.row}>
-              <View style={styles.innerView}>
+              <TouchableOpacity style={styles.innerView} onPress={onOpen}>
                 <Image source={s_source1} style={styles.s_s} />
-              </View>
+              </TouchableOpacity>
               <View style={[styles.innerView, {marginLeft: RF(10)}]}>
                 <Image source={s_source2} style={styles.s_s} />
               </View>
@@ -98,14 +98,11 @@ const styles = StyleSheet.create({
   s: {flexDirection: 'row'},
   view: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    width: '90%',
   },
   menu: {
     width: RF(20),
     height: RF(20),
-    marginLeft: RF(10),
   },
   search: {
     width: RF(20),
@@ -118,7 +115,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#F8F8F8',
     borderRadius: RF(10),
-    marginRight: RF(8),
   },
   img: {
     width: RF(13),
@@ -129,7 +125,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: RF(20),
-    marginRight: 10,
+    alignSelf: 'center',
   },
 });
 

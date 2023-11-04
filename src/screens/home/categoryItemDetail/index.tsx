@@ -5,17 +5,23 @@ import {
   ShiftCards,
   ProfileItem,
   HeaderSwiper,
+  SwipeModal,
+  FilterCategory,
+  UserDetail,
 } from '@components';
 import {_3tabs} from '@utils';
+import {heart, revision, time} from '@assets';
 import {styles} from './styles';
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {RF, dull_orange} from '@theme';
 import {Image, View} from 'react-native';
-import {heart, revision, time} from '@assets';
 import {RouteProp} from '@react-navigation/native';
+import {Modalize} from 'react-native-modalize';
+import {useDispatch} from 'react-redux';
+import {setIsModalVisible} from '@redux';
 
 interface Props {
-  navigation?: any;
+  navigation: any;
   route: RouteProp<{
     params: {
       data?: any;
@@ -25,21 +31,42 @@ interface Props {
 
 const CategoryItemDetail = ({route, navigation}: Props) => {
   const {data} = route.params;
+  const dispatch = useDispatch();
   const [selectedShift, setSelectedShift] = useState('Standard');
+  const [selected, setSelected] = useState('Category');
+  const modalizeRef = useRef<Modalize>(null);
 
   const handleShiftChange = (newShift: any) => {
     setSelectedShift(newShift);
   };
+  const toggleChange = (change: any) => {
+    setSelected(change);
+  };
 
+  const onOpen = () => {
+    modalizeRef.current?.open();
+
+    console.log('sssss');
+  };
+  const onClose = () => {
+    modalizeRef.current?.close();
+  };
   return (
     <Wrapper statusBarBagColor={'transparent'} translucent>
+      <SwipeModal ref={modalizeRef} onClose={onClose}>
+        <UserDetail
+          user_Desc={
+            "Pancakes are some people's favorite breakfast, who doesn't like pancakes? Especially with the real honey splash on top of the pancakes, of course everyone loves that! besides being Read More..."
+          }
+        />
+      </SwipeModal>
       <HeaderSwiper navigation={navigation} />
-      <ProfileItem name={'Kinza'} level={'1'} />
+      <ProfileItem name={'Kinza'} level={'1'} onOpen={onOpen} />
       <Line mh />
 
       <View style={styles.view}>
-        <Text semiBold size={16} style={{width: RF(250)}}>
-          Mobile UI UX Design or App UI UX Design
+        <Text semiBold size={16}>
+          Mobile UI UX design or app UI UX design
         </Text>
         <View style={styles.v_img}>
           <Image source={heart} style={styles.heart} />

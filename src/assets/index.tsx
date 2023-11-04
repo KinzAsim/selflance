@@ -61,6 +61,7 @@ const send = require('./send.png');
 const gallery = require('./gallery.png');
 const file = require('./file.png');
 const down = require('./down.png');
+const report = require('./report.png');
 
 export {
   down,
@@ -70,6 +71,7 @@ export {
   time,
   settings,
   gallery,
+  report,
   file,
   send,
   add,

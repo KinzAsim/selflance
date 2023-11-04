@@ -1,4 +1,14 @@
-import {add, file, gallery, heart, menu, search, send} from '@assets';
+import {
+  add,
+  block,
+  file,
+  gallery,
+  heart,
+  menu,
+  report,
+  search,
+  send,
+} from '@assets';
 import {Header, NavHeader, SmallModal, Text, TextHeader} from '@components';
 import {
   grayButton,
@@ -24,7 +34,7 @@ import {
 import {Bubble, GiftedChat, Send, IMessage} from 'react-native-gifted-chat';
 import {RouteProp, useRoute} from '@react-navigation/native';
 
-const ChatScreen: React.FC = ({navigation, route}: any) => {
+const ChatScreen = ({navigation, route}: any) => {
   const [messages, setMessages] = useState<IMessage[]>([]);
   const [messageText, setMessageText] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
@@ -58,13 +68,11 @@ const ChatScreen: React.FC = ({navigation, route}: any) => {
     ]);
   }, []);
 
-  const modalRef = useRef<Modal>(null);
-
   const onClose = () => {
     setModalVisible(!modalVisible);
   };
   const onOpen = () => {
-    setModalVisible(!modalVisible);
+    setModalVisible2(!modalVisible2);
   };
   const onSend = useCallback((newMessages: IMessage[] = []) => {
     console.log('ssss');
@@ -128,7 +136,7 @@ const ChatScreen: React.FC = ({navigation, route}: any) => {
           title={userName}
           _search
           _source1={search}
-          // onOpen={onOpen}
+          onOpen={onOpen}
           _source2={menu}
         />
       </View>
@@ -170,9 +178,19 @@ const ChatScreen: React.FC = ({navigation, route}: any) => {
             <SmallModal
               _sourceImage1={gallery}
               _sourceImage2={file}
-              ref={modalRef}
               onClose={onClose}
+              title1={'Photo Library'}
+              title2={'Choose File'}
               modalVisible={modalVisible}
+            />
+            <SmallModal
+              _sourceImage1={report}
+              _sourceImage2={block}
+              onClose={onOpen}
+              withMenu
+              title1={'Block User'}
+              title2={'Report'}
+              modalVisible={modalVisible2}
             />
             <TouchableOpacity
               onPress={() => setModalVisible(!modalVisible)}

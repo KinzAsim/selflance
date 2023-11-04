@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import HomeStack from '../stacks/homeStack';
 import ChatStack from '../stacks/chatStack';
 import OrderStack from '../stacks/orderStack';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import ProfileStack from '../stacks/profileStack';
 import {useTheme} from '@react-navigation/native';
 import {calendar, chat, home, profile} from '@assets';
@@ -15,15 +15,19 @@ const Tab = createBottomTabNavigator();
 const MainTabs = ({navigation}: any) => {
   const theme: any = useTheme();
   const dispatch = useDispatch();
+  const {isModalVisible} = useSelector((state: any) => state.root.user);
+
   const styles = useStyles(theme.colors);
   const [activeStack, setActiveStack] = useState('HomeStack');
+  console.log(isModalVisible, 'modalVisible');
 
   return (
     <Tab.Navigator
       screenOptions={({route: {name}}) => ({
         headerShown: false,
         keyboardHidesTabBar: true,
-        tabBarStyle: styles.tabBarStyle,
+        tabBarStyle:
+          isModalVisible == false ? styles.tabBarStyle : {display: 'none'},
         tabBarActiveTintColor: '#00538F',
         tabBarInactiveTintColor: '#949494',
         tabBarIconStyle: styles.tabIcon,

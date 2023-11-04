@@ -12,23 +12,34 @@ import {black_Shadow, grayButton, RF, SCREEN_HEIGHT, WHITE} from '@theme';
 import ModalHeader from '../modalHeader';
 import {BlurView} from '@react-native-community/blur';
 import {fadedLine} from '@assets';
+import {useDispatch} from 'react-redux';
+import {setIsModalVisible} from '@redux';
 interface Props extends TouchableOpacityProps {
   children?: any;
   modalHeader?: boolean;
   headerTitle?: any;
   ref?: any;
-  onClose?: () => void;
+  onClose: () => void;
 }
 
 const SwipeModal = React.forwardRef((props: Props, ref) => {
   const {modalHeader, headerTitle, onClose} = props;
+  const dispatch = useDispatch();
   const [blur, setBulr] = useState(false);
 
-  console.log(blur, 'onClose');
+  console.log(blur, 'onClosesssss');
 
+  const ModalVisible = () => {
+    setBulr(true);
+    dispatch(setIsModalVisible(true));
+  };
+  const Modal_VisibleFalse = () => {
+    setBulr(false);
+    dispatch(setIsModalVisible(false));
+  };
   return (
     <>
-      <StatusBar backgroundColor={blur == true ? 'rgba(0,0,0,0.6)' : WHITE} />
+      {/* <StatusBar backgroundColor={blur == true ? 'rgba(0,0,0,0.6)' : WHITE} /> */}
       {blur == true ? (
         <BlurView
           style={styles.absolute}
@@ -37,8 +48,8 @@ const SwipeModal = React.forwardRef((props: Props, ref) => {
         />
       ) : null}
       <Modalize
-        onClose={() => setBulr(false)}
-        onOpen={() => setBulr(true)}
+        onClose={Modal_VisibleFalse}
+        onOpen={ModalVisible}
         overlayStyle={{backgroundColor: 'transparent'}}
         handlePosition="inside"
         handleStyle={{
