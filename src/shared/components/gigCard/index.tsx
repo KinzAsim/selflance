@@ -33,30 +33,28 @@ const GigCard = (props: any) => {
 
       <View style={styles.line} />
 
-      <View style={styles.v}>
-        <View style={styles.v1}>
-          <View style={styles.v2}>
-            <View style={styles.imgV}>
-              <Image source={user} style={styles.img} />
-            </View>
-
-            <View style={styles.v4}>
-              <Text size={10}>Creative</Text>
-              <View style={styles.rating}>
-                <Text size={10} regular>
-                  5.5
-                </Text>
-                <Image source={star} style={styles.star} />
-              </View>
+      <View style={styles.userContainer}>
+        <View style={styles.leftContainer}>
+          <Image source={user} style={styles.img} />
+          <View>
+            <Text size={10}>Cc__Creative</Text>
+            <View style={styles.rating}>
+              <Text
+                size={10}
+                regular
+                style={{marginTop: 3.22, marginRight: 3.22}}>
+                5.5
+              </Text>
+              <Image source={star} style={styles.star} />
             </View>
           </View>
         </View>
 
-        <View style={styles.v3}>
-          <Text bold size={9}>
+        <View>
+          <Text bold size={9} style={{textAlign: 'right'}}>
             STARTING AT
           </Text>
-          <Text size={14} regular style={{marginLeft: RF(20)}}>
+          <Text size={14} regular style={{textAlign: 'right'}}>
             ₹678
           </Text>
         </View>
@@ -77,39 +75,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  v4: {marginLeft: RF(10)},
   rating: {
     flexDirection: 'row',
     alignItems: 'center',
-    // justifyContent: 'center',
   },
   star: {
-    width: RF(10),
-    height: RF(8),
-    resizeMode: 'contain',
+    width: RF(9),
+    height: RF(8.8),
   },
-  v2: {flexDirection: 'row'},
-  v3: {marginTop: RF(15), marginRight: RF(20)},
-  v1: {
-    marginTop: RF(15),
-    paddingHorizontal: RF(10),
-  },
-  v: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: RF(10),
-  },
-  imgV: {
-    width: RF(32),
-    height: RF(32),
-    borderRadius: RF(100),
-    padding: 1,
-  },
-  img: {height: RF(30), width: RF(30)},
+
+  img: {height: RF(19.76), width: RF(20.33), marginRight: 5.12},
   line: {
     height: RF(1),
-    backgroundColor: '#f4f4',
+    backgroundColor: '#f4f4f4',
     marginTop: RF(10),
     width: '92%',
     alignSelf: 'center',
@@ -119,7 +97,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   gigCardContainer: {
-    height: RF(260),
+    height: RF(247.14),
     width: RF(227.26),
     borderWidth: 1,
     borderColor: 'rgba(0,0,0,0.1)',
@@ -134,12 +112,23 @@ const styles = StyleSheet.create({
   },
 
   tag: {
-    width: 51.18,
-    height: 17.09,
+    width: RF(51.18),
+    height: RF(17.09),
     backgroundColor: '#fff',
     borderRadius: 12.94,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  userContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: RF(48.51),
+    paddingHorizontal: 9.87,
+    justifyContent: 'space-between',
+  },
+  leftContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 
