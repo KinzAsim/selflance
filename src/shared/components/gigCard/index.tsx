@@ -127,8 +127,8 @@ const styles = StyleSheet.create({
   },
 
   gigImage: {
-    width: 227,
-    height: 127.69,
+    width: RF(227),
+    height: RF(127.69),
     backgroundColor: 'green',
     padding: 8,
   },
