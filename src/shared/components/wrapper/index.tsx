@@ -34,6 +34,7 @@ interface Props extends TouchableOpacityProps {
   statusBarBagColor?: any;
   translucent?: any;
   hidden?: any;
+  bgClr?: any;
 }
 const Wrapper = (props: Props) => {
   const theme: any = useTheme();
@@ -45,6 +46,7 @@ const Wrapper = (props: Props) => {
         styles.container,
         props.viewStyle,
         {
+          backgroundColor: props?.bgClr ? props?.bgClr : '#fff',
           paddingTop: props?.isTop ? RF(50) : 0,
           paddingHorizontal: props?.isPaddingH ? RF(20) : 0,
           marginHorizontal: props?.isMarginHorizontal ? RF(20) : 0,
@@ -66,7 +68,6 @@ const Wrapper = (props: Props) => {
 const useStyles = StyleSheet.create((color: any) => ({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
   },
 }));
 

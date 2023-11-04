@@ -22,6 +22,7 @@ const TextHeader = ({
   s_source1,
   s_source2,
   navigation,
+  bgClr,
 }: {
   title?: any;
   _back?: any;
@@ -33,10 +34,17 @@ const TextHeader = ({
   s_source2?: any;
   navigation?: any;
   f_Size?: any;
+  bgClr?: any;
   onOpen?: () => void;
 }) => {
   return (
-    <View style={styles.main}>
+    <View
+      style={[
+        styles.main,
+        {
+          backgroundColor: bgClr ? bgClr : '#fff',
+        },
+      ]}>
       {_back && (
         <Pressable style={styles.iV} onPress={() => navigation?.goBack()}>
           <Image source={back} style={styles.img} />
@@ -118,7 +126,6 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   main: {
-    backgroundColor: '#fff',
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: RF(20),

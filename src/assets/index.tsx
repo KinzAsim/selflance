@@ -60,15 +60,15 @@ const add = require('./add.png');
 const send = require('./send.png');
 const gallery = require('./gallery.png');
 const file = require('./file.png');
+const down = require('./down.png');
 
 export {
+  down,
   next,
   frame,
   revision,
   time,
   settings,
-
-
   gallery,
   file,
   send,

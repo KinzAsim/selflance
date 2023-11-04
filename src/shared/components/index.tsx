@@ -35,8 +35,10 @@ import UserDescription from './userDesctiption';
 import UserLevel from './userLevel';
 import SmallModal from './customModal';
 import ModalContent from './modalContent';
+import DropDown from './dropdown';
 
 export {
+  DropDown,
   ProfileText,
   OrderCard,
   Gig,
@@ -45,7 +47,6 @@ export {
   ProfileItem,
   HeaderSwiper,
   BackHeader,
-
   ModalContent,
   SmallModal,
   UserLevel,
