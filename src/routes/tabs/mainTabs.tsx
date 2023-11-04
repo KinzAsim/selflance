@@ -19,7 +19,6 @@ const MainTabs = ({navigation}: any) => {
 
   const styles = useStyles(theme.colors);
   const [activeStack, setActiveStack] = useState('HomeStack');
-  console.log(isModalVisible, 'modalVisible');
 
   return (
     <Tab.Navigator
@@ -27,7 +26,9 @@ const MainTabs = ({navigation}: any) => {
         headerShown: false,
         keyboardHidesTabBar: true,
         tabBarStyle:
-          isModalVisible == false ? styles.tabBarStyle : {display: 'none'},
+          // isModalVisible == false ?
+          styles.tabBarStyle,
+        //  : {display: 'none'},
         tabBarActiveTintColor: '#00538F',
         tabBarInactiveTintColor: '#949494',
         tabBarIconStyle: styles.tabIcon,

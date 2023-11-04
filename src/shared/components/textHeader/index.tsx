@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#F8F8F8',
     borderRadius: RF(10),
+    marginRight: RF(15),
   },
   img: {
     width: RF(13),
@@ -126,6 +127,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: RF(20),
     alignSelf: 'center',
+    width: '100%',
   },
 });
 
