@@ -10,9 +10,10 @@ import {_2tabs} from '@utils';
 import {navigate} from '@services';
 import {SCREEN_HEIGHT} from '@theme';
 import {FlatList} from 'react-native';
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {search, settings} from '@assets';
 import {RouteProp} from '@react-navigation/native';
+import {Modalize} from 'react-native-modalize';
 
 interface Props {
   navigation: any;
@@ -27,6 +28,7 @@ const Category = ({route, navigation}: Props) => {
   const {item} = route.params;
   const [selected, setSelected] = useState('Category');
   const [selectedShift, setSelectedShift] = useState('Freelancer');
+  const modalizeRef = useRef<Modalize>(null);
 
   const toggleChange = (change: any) => {
     setSelected(change);
@@ -37,7 +39,14 @@ const Category = ({route, navigation}: Props) => {
   const onClick = (i: any) => {
     navigate('CategoryItemDetail', {data: item});
   };
+  const onOpen = () => {
+    modalizeRef.current?.open();
 
+    console.log('sssss');
+  };
+  const onClose = () => {
+    modalizeRef.current?.close();
+  };
   return (
     <Wrapper isPaddingH>
       <TextHeader
@@ -47,6 +56,7 @@ const Category = ({route, navigation}: Props) => {
         s_source1={settings}
         navigation={navigation}
         title={'Graphic And Designing'}
+        onOpen={onOpen}
       />
       <ShiftCards
         tabs={_2tabs}
@@ -56,8 +66,8 @@ const Category = ({route, navigation}: Props) => {
       <SwipeModal
         modalHeader={true}
         headerTitle={'Filter'}
-        // height={SCREEN_HEIGHT / 1.4}
-      >
+        ref={modalizeRef}
+        onClose={onClose}>
         <FilterCategory toggleChange={toggleChange} selected={selected} />
       </SwipeModal>
 
