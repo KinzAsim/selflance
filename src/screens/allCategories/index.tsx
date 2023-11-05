@@ -1,8 +1,9 @@
 import React from 'react';
 import {categoryData} from '@utils';
-import {FlatList} from 'react-native';
+import {FlatList, View} from 'react-native';
 import {RouteProp} from '@react-navigation/native';
 import {ClickableBox, Search, TextHeader, Wrapper} from '@components';
+import {RF} from '@theme';
 
 interface Props {
   navigation: any;
@@ -27,6 +28,8 @@ const AllCategories = ({route, navigation}: Props) => {
     <Wrapper isPaddingH>
       <TextHeader title={'All Categories'} _back navigation={navigation} />
       <Search />
+
+      <View style={{marginTop: RF(10)}} />
       <FlatList
         data={categoryData}
         showsVerticalScrollIndicator={false}

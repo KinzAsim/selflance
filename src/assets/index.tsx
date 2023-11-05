@@ -69,8 +69,10 @@ const unselectStar = require('./unselectStar.png');
 const user1 = require('./user1.png');
 const user2 = require('./user2.png');
 const user3 = require('./user3.png');
+const demo = require('./Image.png');
 
 export {
+  demo,
   arrowDown,
   arrowUp,
   user3,

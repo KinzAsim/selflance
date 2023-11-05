@@ -6,46 +6,23 @@ import {
   ProfileItem,
   HeaderSwiper,
   SwipeModal,
-  FilterCategory,
   UserDetail,
-  PackageDetail,
   CustomButton,
   CustomRating,
+  PackageDetail,
   CommentSection,
 } from '@components';
 import {_3tabs} from '@utils';
-import {
-  heart,
-  rating,
-  revision,
-  star,
-  tick,
-  time,
-  unselectStar,
-  user1,
-  user2,
-  user3,
-} from '@assets';
 import {styles} from './styles';
+import {useDispatch} from 'react-redux';
 import React, {useState, useRef} from 'react';
-import {
-  RF,
-  blue,
-  dull_orange,
-  gray,
-  grayButton,
-  yellow,
-  BLACK,
-  extraLight,
-  primary,
-} from '@theme';
-import {Image, ScrollView, View} from 'react-native';
+import {Modalize} from 'react-native-modalize';
 import ReadMore from 'react-native-read-more-text';
 import {RouteProp} from '@react-navigation/native';
-import {Modalize} from 'react-native-modalize';
-import {useDispatch} from 'react-redux';
-import {setIsModalVisible} from '@redux';
-import {Rating, AirbnbRating} from 'react-native-ratings';
+import {Image, ScrollView, View} from 'react-native';
+import {heart, revision, time, user1, user2, user3} from '@assets';
+import {RF, blue, dull_orange, grayButton, extraLight, primary} from '@theme';
+
 interface Props {
   navigation: any;
   route: RouteProp<{
@@ -58,13 +35,12 @@ interface Props {
 const CategoryItemDetail = ({route, navigation}: Props) => {
   const {data} = route.params;
   const dispatch = useDispatch();
+  const [rate, setRate] = useState(false);
+  const modalizeRef = useRef<Modalize>(null);
+  const [selected, setSelected] = useState('Category');
   const [selectedShift, setSelectedShift] = useState('Standard');
   const [selectedStarIndex, setSelectedStarIndex] = useState(-1);
-  const [selected, setSelected] = useState('Category');
   const [isReadMoreExpanded, setIsReadMoreExpanded] = useState(false);
-  const [rate, setRate] = useState(false);
-
-  const modalizeRef = useRef<Modalize>(null);
 
   const handleShiftChange = (newShift: any) => {
     setSelectedShift(newShift);
@@ -74,9 +50,7 @@ const CategoryItemDetail = ({route, navigation}: Props) => {
   };
 
   const onOpen = () => {
-    modalizeRef.current?.open();
-
-    console.log('sssss');
+    modalizeRef?.current?.open();
   };
   const onClose = () => {
     modalizeRef.current?.close();
@@ -104,13 +78,14 @@ const CategoryItemDetail = ({route, navigation}: Props) => {
   const handleTextReady = () => {
     setIsReadMoreExpanded(true); // Update the state to indicate that the text is ready and should be expanded.
   };
-  return (
-    <ScrollView>
-      <Wrapper statusBarBagColor={'transparent'} translucent>
-        <HeaderSwiper navigation={navigation} />
-        <ProfileItem name={'Kinza'} level={'1'} onOpen={onOpen} />
-        <Line mh />
 
+  return (
+    <Wrapper statusBarBagColor={'transparent'} translucent>
+      <HeaderSwiper navigation={navigation} />
+      <ProfileItem name={'Kinza'} level={'1'} onOpen={onOpen} />
+      <Line mh />
+
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.view}>
           <Text semiBold size={16} color={blue}>
             Mobile UI UX design or app UI UX design
@@ -178,17 +153,17 @@ const CategoryItemDetail = ({route, navigation}: Props) => {
           </View>
           <View
             style={{
+              width: '100%',
               marginTop: RF(20),
               borderTopWidth: 2,
-              width: '100%',
               borderColor: grayButton,
             }}>
             <CustomRating
-              onPress={handleStarPress}
               size={20}
-              selectedStarIndex={selectedStarIndex}
-              sectionTrue
               isTop={10}
+              sectionTrue
+              onPress={handleStarPress}
+              selectedStarIndex={selectedStarIndex}
             />
           </View>
           <CommentSection source={user1} />
@@ -200,10 +175,12 @@ const CategoryItemDetail = ({route, navigation}: Props) => {
               title={'View All Reviews'}
               color={grayButton}
               grayColor={primary}
+              onPress={() => navigation?.navigate('Reviews')}
             />
           </View>
         </View>
-      </Wrapper>
+      </ScrollView>
+
       <SwipeModal ref={modalizeRef} onClose={onClose}>
         <UserDetail
           user_Desc={
@@ -211,7 +188,7 @@ const CategoryItemDetail = ({route, navigation}: Props) => {
           }
         />
       </SwipeModal>
-    </ScrollView>
+    </Wrapper>
   );
 };
 

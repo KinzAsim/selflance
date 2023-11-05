@@ -1,23 +1,23 @@
 import React from 'react';
 import {search} from '@assets';
 import {
-  View,
   Image,
   TextInput,
+  Pressable,
   StyleSheet,
   TouchableOpacityProps,
-  Pressable,
 } from 'react-native';
 
 interface Props extends TouchableOpacityProps {
   width?: any;
   height?: any;
   onPress?: any;
+  autoFocus?: any;
   keyboardShown?: any;
 }
 
 const Search = (props: Props) => {
-  const {width, height, onPress, keyboardShown} = props;
+  const {width, height, onPress, keyboardShown, autoFocus} = props;
   return (
     <Pressable
       style={[styles.searchContainer, {height: height ? height : 50}]}
@@ -28,6 +28,7 @@ const Search = (props: Props) => {
         style={[styles.input, {width: width ? width : '92%'}]}
         placeholder="Search Here....."
         placeholderTextColor={'#949494'}
+        autoFocus={autoFocus}
         // value={text}
         // onChangeText={onChange}
       />

@@ -6,13 +6,17 @@ import {useTheme} from '@react-navigation/native';
 import {View, StyleSheet, ImageBackground} from 'react-native';
 
 const Carousel_Pagination = ({
+  btn,
   data,
+  style,
   flatListRef,
   activeSlide,
   setActiveSlide,
   setcarousel_Index,
 }: {
+  btn?: any;
   data?: any;
+  style?: any;
   flatListRef?: any;
   activeSlide?: any;
   setActiveSlide?: any;
@@ -38,23 +42,25 @@ const Carousel_Pagination = ({
                 imageStyle={{
                   resizeMode: 'contain',
                 }}
-                style={{width: RF(320), height: RF(158)}}>
-                <View
-                  style={{
-                    backgroundColor: primary,
-                    width: RF(144),
-                    height: RF(40),
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    borderRadius: RF(20),
-                    position: 'absolute',
-                    bottom: 20,
-                    left: 10,
-                  }}>
-                  <Text color={WHITE} size={16}>
-                    Post a Request
-                  </Text>
-                </View>
+                style={style ? style : {width: RF(320), height: RF(158)}}>
+                {btn && (
+                  <View
+                    style={{
+                      backgroundColor: primary,
+                      width: RF(144),
+                      height: RF(40),
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRadius: RF(20),
+                      position: 'absolute',
+                      bottom: 20,
+                      left: 10,
+                    }}>
+                    <Text color={WHITE} size={16}>
+                      Post a Request
+                    </Text>
+                  </View>
+                )}
               </ImageBackground>
             </View>
           );

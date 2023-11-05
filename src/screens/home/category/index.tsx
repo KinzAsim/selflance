@@ -5,11 +5,12 @@ import {
   ShiftCards,
   TextHeader,
   FilterCategory,
+  Text,
 } from '@components';
 import {_2tabs} from '@utils';
 import {navigate} from '@services';
-import {SCREEN_HEIGHT} from '@theme';
-import {FlatList} from 'react-native';
+import {RF, SCREEN_HEIGHT} from '@theme';
+import {FlatList, View} from 'react-native';
 import React, {useRef, useState} from 'react';
 import {search, settings} from '@assets';
 import {RouteProp} from '@react-navigation/native';
@@ -61,6 +62,17 @@ const Category = ({route, navigation}: Props) => {
         selectedShift={selectedShift}
         onShiftChange={handleShiftChange}
       />
+
+      <FlatList
+        data={item}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{paddingBottom: 30}}
+        renderItem={(i: any) => {
+          return <Gig item={i?.item} onPress={() => onClick(i)} />;
+        }}
+        keyExtractor={(i: any) => i?.id?.toString()}
+      />
+
       <SwipeModal
         modalHeader={true}
         headerTitle={'Filter'}
@@ -68,15 +80,6 @@ const Category = ({route, navigation}: Props) => {
         onClose={onClose}>
         <FilterCategory toggleChange={toggleChange} selected={selected} />
       </SwipeModal>
-
-      <FlatList
-        data={item}
-        showsVerticalScrollIndicator={false}
-        renderItem={(i: any) => {
-          return <Gig item={i?.item} onPress={() => onClick(i)} />;
-        }}
-        keyExtractor={(i: any) => i?.id?.toString()}
-      />
     </Wrapper>
   );
 };

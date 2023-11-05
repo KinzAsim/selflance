@@ -1,9 +1,8 @@
-import {Image, StyleSheet, TouchableOpacityProps, View} from 'react-native';
 import React from 'react';
-import {darkBlue, low_gray, primary, RF, semiHeading} from '@theme';
-import {user1} from '@assets';
 import Text from '../text';
 import CustomRating from '../customRating';
+import {darkBlue, low_gray, RF, semiHeading} from '@theme';
+import {Image, StyleSheet, TouchableOpacityProps, View} from 'react-native';
 
 interface Props extends TouchableOpacityProps {
   source?: any;

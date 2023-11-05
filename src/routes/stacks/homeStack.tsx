@@ -6,6 +6,7 @@ import {
   CategoryDetails,
   Category,
   SearchScreen,
+  Reviews,
 } from '@screens';
 import {createStackNavigator} from '@react-navigation/stack';
 
@@ -20,6 +21,7 @@ const HomeStack = ({route, navigation}: any) => {
       <Stack.Screen name="CategoryDetails" component={CategoryDetails} />
       <Stack.Screen name="Category" component={Category} />
       <Stack.Screen name="SearchScreen" component={SearchScreen} />
+      <Stack.Screen name="Reviews" component={Reviews} />
     </Stack.Navigator>
   );
 };

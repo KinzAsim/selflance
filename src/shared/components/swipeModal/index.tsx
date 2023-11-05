@@ -31,11 +31,13 @@ const SwipeModal = React.forwardRef((props: Props, ref) => {
 
   const ModalVisible = () => {
     setBulr(true);
-    dispatch(setIsModalVisible(true));
+    // dispatch(setIsModalVisible(true));
   };
   const Modal_VisibleFalse = () => {
+    console.log('sss');
+
     setBulr(false);
-    dispatch(setIsModalVisible(false));
+    // dispatch(setIsModalVisible(false));
   };
   return (
     <>
@@ -48,12 +50,13 @@ const SwipeModal = React.forwardRef((props: Props, ref) => {
         />
       ) : null}
       <Modalize
-        onClose={Modal_VisibleFalse}
-        onOpen={ModalVisible}
-        overlayStyle={{backgroundColor: 'transparent'}}
+        overlayStyle={{backgroundColor: 'rgba(0,0,0,0.1)'}}
+        onClose={() => setBulr(false)}
+        onOpen={() => setBulr(true)}
         handlePosition="inside"
         handleStyle={{
-          backgroundColor: black_Shadow,
+          marginTop: 20,
+          backgroundColor: grayButton,
           width: RF(50),
         }}
         ref={ref}

@@ -67,8 +67,6 @@ const Login = ({navigation}: any) => {
   };
 
   const hanldeLogIn = (values: any) => {
-    console.log('val...', values);
-
     dispatch(setIsLoggedIn(true));
   };
 
@@ -82,11 +80,6 @@ const Login = ({navigation}: any) => {
       }}>
       {({values, errors, touched, handleChange, handleSubmit}) => (
         <Wrapper isPaddingH>
-          <CustomModal
-            navigation={navigation}
-            isVisible={isModalVisible}
-            closeModal={handleCloseModal}
-          />
           <View style={[styles.justify_Row, {marginTop: RF(30)}]}>
             <Image style={styles.logo} source={logo} resizeMode={'contain'} />
             <CloseButton />
@@ -201,6 +194,11 @@ const Login = ({navigation}: any) => {
               </Text>
             </TouchableOpacity>
           </View>
+          <CustomModal
+            navigation={navigation}
+            isVisible={isModalVisible}
+            closeModal={handleCloseModal}
+          />
         </Wrapper>
       )}
     </Formik>

@@ -4,6 +4,7 @@ import {
   business,
   category1,
   category2,
+  demo,
   digital,
   frame1,
   frame2,
@@ -20,6 +21,18 @@ import {
 } from '@assets';
 
 let isDarkThemeEnabled = false;
+
+export const _carousel = [
+  {
+    img: gig,
+  },
+  {
+    img: freelancer,
+  },
+  {
+    img: gig,
+  },
+];
 
 export function getIsDarkModeEnabled() {
   return isDarkThemeEnabled;
