@@ -63,8 +63,12 @@ const file = require('./file.png');
 const down = require('./down.png');
 const report = require('./report.png');
 const tick = require('./tick.png');
+const arrowUp = require('./arrowUp.png');
+const arrowDown = require('./arrowDown.png');
 
 export {
+  arrowDown,
+  arrowUp,
   tick,
   down,
   next,

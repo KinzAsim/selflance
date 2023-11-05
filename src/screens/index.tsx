@@ -15,8 +15,10 @@ import OrderDetail from './orders/detail';
 import ChatScreen from './chatScreen';
 import MessagesScreen from './mesaages';
 import Profile from './profile';
+import SearchScreen from './home/search';
 
 export {
+  SearchScreen,
   OrderDetail,
   Orders,
   Category,

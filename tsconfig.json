@@ -37,6 +37,7 @@
       "@assets": ["assets"],
       "@routes": ["routes"],
       "@screens": ["screens"],
+      "@hooks": ["shared/hooks"],
       "@theme": ["shared/theme"],
       "@utils": ["shared/utils"],
       "@redux": ["shared/redux"],

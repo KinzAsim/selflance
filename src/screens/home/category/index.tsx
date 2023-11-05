@@ -41,8 +41,6 @@ const Category = ({route, navigation}: Props) => {
   };
   const onOpen = () => {
     modalizeRef.current?.open();
-
-    console.log('sssss');
   };
   const onClose = () => {
     modalizeRef.current?.close();

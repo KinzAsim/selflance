@@ -38,7 +38,7 @@ const Home = ({navigation}: any) => {
       <View style={styles.container}>
         <View style={styles.view}>
           <Header handleLogOut={handleLogOut} />
-          <Search />
+          <Search onPress={() => navigation.navigate('SearchScreen')} />
         </View>
 
         <ScrollView

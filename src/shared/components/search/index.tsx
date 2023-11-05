@@ -6,17 +6,22 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacityProps,
+  Pressable,
 } from 'react-native';
 
 interface Props extends TouchableOpacityProps {
   width?: any;
   height?: any;
+  onPress?: any;
+  keyboardShown?: any;
 }
 
 const Search = (props: Props) => {
-  const {width, height} = props;
+  const {width, height, onPress, keyboardShown} = props;
   return (
-    <View style={[styles.searchContainer, {height: height ? height : 50}]}>
+    <Pressable
+      style={[styles.searchContainer, {height: height ? height : 50}]}
+      onPress={onPress}>
       <Image source={search} style={styles.searchImg} />
 
       <TextInput
@@ -26,7 +31,7 @@ const Search = (props: Props) => {
         // value={text}
         // onChangeText={onChange}
       />
-    </View>
+    </Pressable>
   );
 };
 

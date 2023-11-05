@@ -95,13 +95,37 @@ const OrderDetail = ({route, navigation}: Props) => {
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <CustomTextInput
                 title={'Price'}
-                placeholderText={'Mobile UI Dehysign'}
+                placeholderText={'38$'}
+                txtInput={{
+                  backgroundColor: light_grey,
+                  height: RF(41),
+                  borderRadius: 10,
+                  paddingLeft: 10,
+                }}
+                width={146}
               />
               <CustomTextInput
                 title={'NO of Reviews'}
-                placeholderText={'Mobile UI Design'}
+                placeholderText={'5'}
+                txtInput={{
+                  backgroundColor: light_grey,
+                  height: RF(41),
+                  borderRadius: 10,
+                  paddingLeft: 10,
+                }}
+                width={146}
               />
             </View>
+
+            <CustomTextInput
+              title={'No of Days to Deliver'}
+              placeholderText={'5'}
+            />
+
+            <CustomTextInput
+              title={'Extra Charges for Extra Revision'}
+              placeholderText={'32$'}
+            />
           </>
         </DropDown>
       </ScrollView>

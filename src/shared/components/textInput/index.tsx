@@ -90,9 +90,7 @@ const CustomTextInput = (props: Partial<Props>) => {
           <RNTextInput
             multiline={multiline}
             placeholder={placeholderText}
-            placeholderTextColor={
-              placeHolderClr ? placeHolderClr : theme.colors.border
-            }
+            placeholderTextColor={placeHolderClr ? placeHolderClr : '#949494'}
             style={[
               txtInput
                 ? txtInput
@@ -101,7 +99,7 @@ const CustomTextInput = (props: Partial<Props>) => {
                 : styles.input,
               {
                 width,
-                textAlignVertical: multiline ? 'top' : 'center',
+                textAlignVertical: multiline ? 'center' : 'center',
                 color: theme.colors.border,
               },
             ]}
@@ -157,20 +155,22 @@ const getStyles = (colors: any) =>
       marginTop: RF(5),
     },
     multilineView: {
-      backgroundColor: colors.border,
-      height: RF(200),
+      backgroundColor: light_grey,
+      height: RF(80),
       borderRadius: 20,
-      paddingLeft: RF(25),
+      paddingLeft: RF(10),
+      fontSize: RF(12),
+      fontFamily: 'Poppins',
     },
     input: {
       flex: 1,
       backgroundColor: light_grey,
       height: RF(41),
       borderRadius: RF(10),
-      fontSize: RF(12.5),
-      paddingLeft: RF(15),
+      fontSize: RF(12),
+      paddingLeft: RF(10),
       fontWeight: '500',
-      fontFamily: 'Plus Jakarta Sans',
+      fontFamily: 'Poppins',
     },
     icon: {
       marginRight: RF(5),
