@@ -63,8 +63,16 @@ const file = require('./file.png');
 const down = require('./down.png');
 const report = require('./report.png');
 const tick = require('./tick.png');
+const unselectStar = require('./unselectStar.png');
+const user1 = require('./user1.png');
+const user2 = require('./user2.png');
+const user3 = require('./user3.png');
 
 export {
+  user3,
+  user2,
+  user1,
+  unselectStar,
   tick,
   down,
   next,

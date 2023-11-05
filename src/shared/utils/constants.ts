@@ -282,3 +282,5 @@ export const orders = [
     title: 'I Will Do UI Design, UI UX Design, Website UI UX...',
   },
 ];
+
+export const star = [1, 2, 3, 4, 5];

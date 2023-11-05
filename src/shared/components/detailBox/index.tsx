@@ -1,14 +1,28 @@
 import React from 'react';
 import {RF} from '@theme';
 import GigCard from '../gigCard';
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  TouchableOpacityProps,
+} from 'react-native';
+import {Pressable} from 'react-native';
 
-const DetailBox = ({data}: {data?: any}) => {
+interface Props extends TouchableOpacityProps {
+  data?: any;
+  onPress?: () => void;
+}
+
+const DetailBox = (props: Props) => {
+  const {data, onPress} = props;
   return (
     <View style={styles.view}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {data.map((d: any, index: any) => (
-          <GigCard data={d} key={index} index={index} />
+          <Pressable onPress={onPress}>
+            <GigCard data={d} key={index} index={index} />
+          </Pressable>
         ))}
       </ScrollView>
     </View>

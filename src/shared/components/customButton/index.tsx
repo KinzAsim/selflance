@@ -6,18 +6,20 @@ import {
   TouchableOpacityProps,
 } from 'react-native';
 import React from 'react';
-import {primary, RF} from '@theme';
+import {primary, RF, textColor} from '@theme';
 
 interface Props extends TouchableOpacityProps {
   onPress?: any;
   title?: any;
   height?: any;
   disabled?: any;
+  grayColor?: any;
   color?: any;
 }
 const CustomButton = (props: Props) => {
   const height = props?.height;
   const disabled = props?.disabled;
+  const grayColor = props?.grayColor;
   const color = props.color;
   return (
     <TouchableOpacity
@@ -30,7 +32,7 @@ const CustomButton = (props: Props) => {
         },
       ]}
       onPress={props?.onPress}>
-      <Text style={styles.medium}>{props?.title}</Text>
+      <Text style={[styles.medium, {color: grayColor}]}>{props?.title}</Text>
     </TouchableOpacity>
   );
 };

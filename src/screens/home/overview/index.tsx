@@ -33,6 +33,10 @@ const Home = ({navigation}: any) => {
     // navigate('Category', {item: FreelancerData});
   };
 
+  const onOpen_CategaoryItemDetail = () => {
+    navigation.navigate('CategoryItemDetail', {item: categoryData});
+  };
+
   return (
     <Wrapper>
       <View style={styles.container}>
@@ -53,14 +57,20 @@ const Home = ({navigation}: any) => {
             title={'Companies'}
             onPress={onOpenSeeAll_companies}
           />
-          <DetailBox data={companiesData} />
+          <DetailBox
+            data={companiesData}
+            onPress={onOpen_CategaoryItemDetail}
+          />
 
           <SeeAll
             title={'Freelancers'}
             source={freelancing}
             onPress={onOpenDetailBox}
           />
-          <DetailBox data={companiesData} />
+          <DetailBox
+            data={companiesData}
+            onPress={onOpen_CategaoryItemDetail}
+          />
         </ScrollView>
       </View>
     </Wrapper>
