@@ -45,13 +45,13 @@ const TextHeader = ({
           backgroundColor: bgClr ? bgClr : '#fff',
         },
       ]}>
-      <View style={{width: '14%'}}>
-        {_back && (
+      {_back && (
+        <View style={{width: '14%'}}>
           <Pressable style={styles.iV} onPress={() => navigation?.goBack()}>
             <Image source={back} style={styles.img} />
           </Pressable>
-        )}
-      </View>
+        </View>
+      )}
       <View style={styles.view}>
         <Text size={f_Size ? f_Size : RF(14)} semiBold>
           {title}

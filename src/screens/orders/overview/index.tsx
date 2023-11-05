@@ -1,9 +1,15 @@
-import React from 'react';
-import {orders} from '@utils';
-import {FlatList} from 'react-native';
-import {OrderCard, TextHeader, Wrapper} from '@components';
+import React, {useState} from 'react';
+import {_ordertabs, orders} from '@utils';
+import {FlatList, View} from 'react-native';
+import {OrderCard, ShiftCards, TextHeader, Wrapper} from '@components';
+import {RF} from '@theme';
 
 const Orders = ({navigation}: any) => {
+  const [selectedShift, setSelectedShift] = useState('Active');
+
+  const handleShiftChange = (newShift: any) => {
+    setSelectedShift(newShift);
+  };
   const onOpen = (item: any) => {
     navigation.navigate('OrderDetail', {data: item});
   };
@@ -11,6 +17,14 @@ const Orders = ({navigation}: any) => {
   return (
     <Wrapper isPaddingH>
       <TextHeader title={'Orders'} />
+      <View style={{marginRight: -20}}>
+        <ShiftCards
+          width={'100%'}
+          tabs={_ordertabs}
+          selectedShift={selectedShift}
+          onShiftChange={handleShiftChange}
+        />
+      </View>
       <FlatList
         data={orders}
         showsVerticalScrollIndicator={false}

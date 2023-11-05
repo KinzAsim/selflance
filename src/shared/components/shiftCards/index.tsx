@@ -5,23 +5,28 @@ import {StyleSheet, View, Pressable, FlatList} from 'react-native';
 
 interface ShiftCardsProps {
   tabs?: any;
+  width?: any;
   selectedShift: string;
   onShiftChange: (newShift: any) => void;
 }
 
-const ShiftCards = ({selectedShift, onShiftChange, tabs}: ShiftCardsProps) => {
+const ShiftCards = ({
+  selectedShift,
+  onShiftChange,
+  tabs,
+  width,
+}: ShiftCardsProps) => {
   return (
     <View
       style={[
         styles.container,
         {
-          width: tabs?.length === 2 ? RF(224) : RF(330),
+          width: tabs?.length === 2 ? RF(224) : width ? width : RF(330),
         },
       ]}>
       <FlatList
         horizontal
         data={tabs}
-        scrollEnabled={false}
         showsHorizontalScrollIndicator={false}
         renderItem={({item, index}: any) => {
           return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {frame, next} from '@assets';
 import {RF, light_grey, primary} from '@theme';
 import {RouteProp} from '@react-navigation/native';
@@ -8,11 +8,13 @@ import {
   DropDown,
   DropDownDetail,
   ProfileText,
+  ShiftCards,
   Text,
   TextHeader,
   Wrapper,
 } from '@components';
 import {styles} from './styles';
+import {_ordertabs} from '@utils';
 
 interface Props {
   navigation?: any;
@@ -29,6 +31,7 @@ const OrderDetail = ({route, navigation}: Props) => {
   return (
     <Wrapper isPaddingH bgClr={light_grey}>
       <TextHeader title={'Order Detail'} bgClr={light_grey} />
+
       <ScrollView showsVerticalScrollIndicator={false}>
         <Image
           source={frame}

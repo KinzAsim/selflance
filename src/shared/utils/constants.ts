@@ -242,6 +242,18 @@ export const SECTIONS = [
   },
 ];
 
+export const _ordertabs = [
+  {
+    title: 'Active',
+  },
+  {
+    title: 'Completed',
+  },
+  {title: 'In Revision'},
+  {title: 'Pending'},
+  {title: 'Cancelled'},
+];
+
 export const _2tabs = [
   {
     title: 'Freelancer',

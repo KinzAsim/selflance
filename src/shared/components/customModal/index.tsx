@@ -12,9 +12,10 @@ import {
 import React, {useState} from 'react';
 import {RF, textColor, WHITE} from '@theme';
 import Text from '../text';
+
 interface Props extends TouchableOpacityProps {
   title1?: any;
-  title2: any;
+  title2?: any;
   _sourceImage1?: any;
   _sourceImage2?: any;
   ref?: any;
@@ -33,7 +34,6 @@ const SmallModal = (props: Props) => {
     title2,
     withMenu,
   } = props;
-  console.log(modalVisible, 'sss');
 
   return (
     <Modal animationType="fade" transparent={true} visible={modalVisible}>

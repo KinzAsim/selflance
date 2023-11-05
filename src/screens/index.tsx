@@ -12,8 +12,6 @@ import CategoryDetails from './categoryDetails';
 import Category from './home/category';
 import Orders from './orders/overview';
 import OrderDetail from './orders/detail';
-import ChatScreen from './chatScreen';
-import MessagesScreen from './mesaages';
 import Profile from './profile';
 import SearchScreen from './home/search';
 import Reviews from './home/reviews';
@@ -24,8 +22,6 @@ export {
   OrderDetail,
   Orders,
   Category,
-  MessagesScreen,
-  ChatScreen,
   Home,
   Login,
   SignUp,

@@ -14,10 +14,12 @@ interface Props extends TouchableOpacityProps {
   onPress?: any;
   autoFocus?: any;
   keyboardShown?: any;
+  onSubmitEditing?: any;
 }
 
 const Search = (props: Props) => {
-  const {width, height, onPress, keyboardShown, autoFocus} = props;
+  const {width, height, onPress, keyboardShown, autoFocus, onSubmitEditing} =
+    props;
   return (
     <Pressable
       style={[styles.searchContainer, {height: height ? height : 50}]}
@@ -25,10 +27,11 @@ const Search = (props: Props) => {
       <Image source={search} style={styles.searchImg} />
 
       <TextInput
-        style={[styles.input, {width: width ? width : '92%'}]}
+        autoFocus={autoFocus}
         placeholder="Search Here....."
         placeholderTextColor={'#949494'}
-        autoFocus={autoFocus}
+        onSubmitEditing={onSubmitEditing}
+        style={[styles.input, {width: width ? width : '92%'}]}
         // value={text}
         // onChangeText={onChange}
       />
