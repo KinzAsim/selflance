@@ -11,7 +11,7 @@ const Chat = ({navigation}: any) => {
 
   return (
     <Wrapper isPaddingH>
-      <TextHeader title={'Chats'} />
+      <TextHeader title={'Chats'} f_Size={20} />
       <Search />
       <FlatList
         data={chatList}

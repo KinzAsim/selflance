@@ -38,45 +38,48 @@ const TextHeader = ({
   onOpen?: () => void;
 }) => {
   return (
-    <View
-      style={[
-        styles.main,
-        {
-          backgroundColor: bgClr ? bgClr : '#fff',
-        },
-      ]}>
-      <View style={{width: '14%'}}>
+    <>
+      <View
+        style={[
+          styles.main,
+          {
+            backgroundColor: bgClr ? bgClr : '#fff',
+          },
+        ]}>
         {_back && (
-          <Pressable style={styles.iV} onPress={() => navigation?.goBack()}>
-            <Image source={back} style={styles.img} />
-          </Pressable>
-        )}
-      </View>
-      <View style={styles.view}>
-        <Text size={f_Size ? f_Size : RF(14)} semiBold>
-          {title}
-        </Text>
-        {_search ? (
-          <View style={styles.s}>
-            <Image source={_source1} style={styles.search} />
-            <TouchableOpacity>
-              <Image source={_source2} style={styles.menu} />
-            </TouchableOpacity>
+          <View style={{width: '14%'}}>
+            <Pressable style={styles.iV} onPress={() => navigation?.goBack()}>
+              <Image source={back} style={styles.img} />
+            </Pressable>
           </View>
-        ) : (
-          setting && (
-            <View style={styles.row}>
-              <TouchableOpacity style={styles.innerView} onPress={onOpen}>
-                <Image source={s_source1} style={styles.s_s} />
-              </TouchableOpacity>
-              <View style={[styles.innerView, {marginLeft: RF(10)}]}>
-                <Image source={s_source2} style={styles.s_s} />
-              </View>
-            </View>
-          )
         )}
+
+        <View style={styles.view}>
+          <Text size={f_Size ? f_Size : RF(14)} semiBold>
+            {title}
+          </Text>
+          {_search ? (
+            <View style={styles.s}>
+              <Image source={_source1} style={styles.search} />
+              <TouchableOpacity onPress={onOpen}>
+                <Image source={_source2} style={styles.menu} />
+              </TouchableOpacity>
+            </View>
+          ) : (
+            setting && (
+              <View style={styles.row}>
+                <TouchableOpacity style={styles.innerView}>
+                  <Image source={s_source1} style={styles.s_s} />
+                </TouchableOpacity>
+                <View style={[styles.innerView, {marginLeft: RF(10)}]}>
+                  <Image source={s_source2} style={styles.s_s} />
+                </View>
+              </View>
+            )
+          )}
+        </View>
       </View>
-    </View>
+    </>
   );
 };
 
@@ -107,10 +110,13 @@ const styles = StyleSheet.create({
   menu: {
     width: RF(20),
     height: RF(20),
+    resizeMode: 'contain',
   },
   search: {
     width: RF(20),
     height: RF(20),
+    marginRight: 10,
+    resizeMode: 'contain',
   },
   iV: {
     width: RF(32),

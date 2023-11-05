@@ -1,6 +1,6 @@
 import {RF, WHITE, grayButton} from '@theme';
 import {SmallModal, TextHeader} from '@components';
-import {add, file, gallery, menu, search, send} from '@assets';
+import {add, block, file, gallery, menu, report, search, send} from '@assets';
 import React, {useState, useEffect, useCallback, useRef} from 'react';
 import {
   View,
@@ -17,6 +17,7 @@ const ChatPage: React.FC = ({navigation, route}: any) => {
   const {userName} = route?.params;
   const modalRef = useRef<Modal>(null);
   const [messageText, setMessageText] = useState('');
+  const [modalVisible2, setModalVisible2] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [messages, setMessages] = useState<IMessage[]>([]);
 
@@ -49,7 +50,8 @@ const ChatPage: React.FC = ({navigation, route}: any) => {
     setModalVisible(!modalVisible);
   };
   const onOpen = () => {
-    setModalVisible(!modalVisible);
+    console.log('modal');
+    setModalVisible2(!modalVisible2);
   };
   const onSend = useCallback((newMessages: IMessage[] = []) => {
     console.log('ssss');
@@ -113,7 +115,7 @@ const ChatPage: React.FC = ({navigation, route}: any) => {
           title={userName}
           _search
           _source1={search}
-          // onOpen={onOpen}
+          onOpen={onOpen}
           _source2={menu}
         />
       </View>
@@ -155,9 +157,19 @@ const ChatPage: React.FC = ({navigation, route}: any) => {
             <SmallModal
               _sourceImage1={gallery}
               _sourceImage2={file}
-              ref={modalRef}
               onClose={onClose}
+              title1={'Photo Library'}
+              title2={'Choose File'}
               modalVisible={modalVisible}
+            />
+            <SmallModal
+              _sourceImage1={report}
+              _sourceImage2={block}
+              onClose={onOpen}
+              withMenu
+              title1={'Blosck User'}
+              title2={'Report'}
+              modalVisible={modalVisible2}
             />
             <TouchableOpacity
               onPress={() => setModalVisible(!modalVisible)}

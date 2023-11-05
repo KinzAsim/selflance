@@ -10,7 +10,7 @@ const Orders = ({navigation}: any) => {
 
   return (
     <Wrapper isPaddingH>
-      <TextHeader title={'Orders'} />
+      <TextHeader title={'Orders'} f_Size={20} />
       <FlatList
         data={orders}
         showsVerticalScrollIndicator={false}

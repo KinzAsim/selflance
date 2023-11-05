@@ -48,7 +48,7 @@ const SmallModal = (props: Props) => {
               {
                 position: withMenu ? 'relative' : 'absolute',
                 alignSelf: withMenu ? 'flex-end' : 'flex-start',
-                bottom: withMenu ? -60 : 60,
+                bottom: withMenu ? RF(-60) : RF(130),
               },
             ]}>
             <View
@@ -105,10 +105,11 @@ const styles = StyleSheet.create({
     height: RF(64),
     width: RF(122),
     borderRadius: 6,
+
     alignItems: 'center',
     marginLeft: 10,
     justifyContent: 'space-evenly',
-    backgroundColor: WHITE,
+    backgroundColor: '#fff',
     elevation: 2,
     position: 'absolute',
   },

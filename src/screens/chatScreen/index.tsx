@@ -72,6 +72,8 @@ const ChatScreen = ({navigation, route}: any) => {
     setModalVisible(!modalVisible);
   };
   const onOpen = () => {
+    console.log('modal');
+
     setModalVisible2(!modalVisible2);
   };
   const onSend = useCallback((newMessages: IMessage[] = []) => {
