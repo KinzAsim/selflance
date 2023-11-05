@@ -9,7 +9,7 @@ import {
   ScrollView,
 } from 'react-native';
 import {RF} from '@theme';
-import {CustomCheckBox, Wrapper} from '@components';
+import {CustomButton, CustomCheckBox, Wrapper} from '@components';
 import {navigate} from '@services';
 import React, {useState} from 'react';
 import {close, fadedLine, fb, google, logo, show} from '@assets';
@@ -91,9 +91,7 @@ const SignUp = ({navigation}: any) => {
           </View>
         </View>
 
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.medium}>Sign Up</Text>
-        </TouchableOpacity>
+        <CustomButton title={'SignUp'} />
 
         <View style={styles.or_view}>
           <Image

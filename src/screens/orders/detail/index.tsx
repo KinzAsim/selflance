@@ -30,8 +30,7 @@ const OrderDetail = ({route, navigation}: Props) => {
 
   return (
     <Wrapper isPaddingH bgClr={light_grey}>
-      <TextHeader title={'Order Detail'} bgClr={light_grey} />
-
+      <TextHeader title={'Order Detail'} bgClr={light_grey} f_Size={20} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <Image
           source={frame}

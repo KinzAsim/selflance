@@ -24,19 +24,27 @@ const OrderCard = ({
           <Image source={frame} style={styles._img} />
         </View>
 
-        <View style={{marginLeft: 10}}>
+        <View
+          style={{
+            width: '50%',
+            height: RF(86),
+            paddingLeft: 8,
+            justifyContent: 'center',
+          }}>
           <View style={styles.v}>
             <View style={styles.txt}>
               <Text size={10} regular color={primary}>
                 {completion}
               </Text>
             </View>
-            <Image source={menu} style={styles.menu} />
+            <Pressable style={{zIndex: 100}}>
+              <Image source={menu} style={styles.menu} />
+            </Pressable>
           </View>
-          <Text size={11} regular style={styles.title}>
+          <Text size={10} regular style={styles.title}>
             {title}
           </Text>
-          <Text size={11} regular color={lightText}>
+          <Text size={10} regular color={lightText}>
             {date}
           </Text>
         </View>
@@ -57,15 +65,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginTop: RF(10),
-    marginRight: RF(20),
+    marginRight: RF(5),
     // paddingHorizontal: RF(10),
   },
 
-  title: {width: RF(160), marginVertical: 7},
+  title: {marginVertical: 5},
   v: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: RF(130),
+    width: '100%',
     alignItems: 'center',
   },
   menu: {
@@ -75,9 +83,9 @@ const styles = StyleSheet.create({
     tintColor: '#434343',
   },
   txt: {
-    width: RF(75),
-    height: RF(27),
-    borderRadius: 10,
+    width: RF(70),
+    height: RF(25),
+    borderRadius: 5,
     backgroundColor: lightBlue,
     alignItems: 'center',
     justifyContent: 'center',
@@ -85,24 +93,21 @@ const styles = StyleSheet.create({
   view: {
     width: '100%',
     height: RF(167),
-    borderRadius: 20,
+    borderRadius: 8,
     backgroundColor: light_grey,
-    paddingTop: 10,
-    paddingLeft: 10,
-    marginBottom: 20,
+    marginTop: 10,
+    padding: 10,
   },
 
   _img: {
-    width: RF(154),
-    height: RF(86),
-    resizeMode: 'contain',
+    height: '100%',
+    width: '100%',
+    borderRadius: 10,
   },
   vImg: {
-    width: RF(155),
-    height: RF(90),
+    width: '50%',
+    height: RF(86),
     borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
 
