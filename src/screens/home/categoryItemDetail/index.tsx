@@ -8,18 +8,44 @@ import {
   SwipeModal,
   FilterCategory,
   UserDetail,
+  PackageDetail,
+  CustomButton,
+  CustomRating,
+  CommentSection,
 } from '@components';
 import {_3tabs} from '@utils';
-import {heart, revision, tick, time} from '@assets';
+import {
+  heart,
+  rating,
+  revision,
+  star,
+  tick,
+  time,
+  unselectStar,
+  user1,
+  user2,
+  user3,
+} from '@assets';
 import {styles} from './styles';
 import React, {useState, useRef} from 'react';
-import {RF, blue, dull_orange, gray} from '@theme';
+import {
+  RF,
+  blue,
+  dull_orange,
+  gray,
+  grayButton,
+  yellow,
+  BLACK,
+  extraLight,
+  primary,
+} from '@theme';
 import {Image, ScrollView, View} from 'react-native';
+import ReadMore from 'react-native-read-more-text';
 import {RouteProp} from '@react-navigation/native';
 import {Modalize} from 'react-native-modalize';
 import {useDispatch} from 'react-redux';
 import {setIsModalVisible} from '@redux';
-
+import {Rating, AirbnbRating} from 'react-native-ratings';
 interface Props {
   navigation: any;
   route: RouteProp<{
@@ -33,7 +59,11 @@ const CategoryItemDetail = ({route, navigation}: Props) => {
   const {data} = route.params;
   const dispatch = useDispatch();
   const [selectedShift, setSelectedShift] = useState('Standard');
+  const [selectedStarIndex, setSelectedStarIndex] = useState(-1);
   const [selected, setSelected] = useState('Category');
+  const [isReadMoreExpanded, setIsReadMoreExpanded] = useState(false);
+  const [rate, setRate] = useState(false);
+
   const modalizeRef = useRef<Modalize>(null);
 
   const handleShiftChange = (newShift: any) => {
@@ -50,6 +80,29 @@ const CategoryItemDetail = ({route, navigation}: Props) => {
   };
   const onClose = () => {
     modalizeRef.current?.close();
+  };
+
+  const handleStarPress = (index: any) => {
+    setSelectedStarIndex(index);
+  };
+
+  const renderTruncatedFooter = (handlePress: any) => {
+    return (
+      <Text style={{color: dull_orange}} onPress={handlePress}>
+        Read more
+      </Text>
+    );
+  };
+
+  const renderRevealedFooter = (handlePress: any) => {
+    return (
+      <Text style={{color: dull_orange, marginTop: 5}} onPress={handlePress}>
+        Show less
+      </Text>
+    );
+  };
+  const handleTextReady = () => {
+    setIsReadMoreExpanded(true); // Update the state to indicate that the text is ready and should be expanded.
   };
   return (
     <ScrollView>
@@ -68,12 +121,17 @@ const CategoryItemDetail = ({route, navigation}: Props) => {
         </View>
 
         <View style={{marginHorizontal: RF(20)}}>
-          <Text>
-            Pancakes are some people's favorite breakfast, who doesn't like
-            pancakes? Especially with the real honey splash on top of the
-            pancakes, of course everyone loves that! besides being{'  '}
-            <Text color={dull_orange}>Read More....</Text>
-          </Text>
+          <ReadMore
+            numberOfLines={isReadMoreExpanded ? 3 : 3}
+            renderTruncatedFooter={renderTruncatedFooter}
+            renderRevealedFooter={renderRevealedFooter}
+            onReady={handleTextReady}>
+            <Text>
+              Pancakes are some people's favorite breakfast, who doesn't like
+              pancakes? Especially with the real honey splash on top of the
+              pancakes, of course everyone loves that! besides being
+            </Text>
+          </ReadMore>
           <ShiftCards
             tabs={_3tabs}
             selectedShift={selectedShift}
@@ -97,6 +155,52 @@ const CategoryItemDetail = ({route, navigation}: Props) => {
               <Image source={revision} style={styles.img} />
               <Text semiBold>1 Revision</Text>
             </View>
+          </View>
+          <View
+            style={{
+              marginTop: RF(10),
+              paddingTop: RF(10),
+              borderTopWidth: 2,
+              borderColor: grayButton,
+            }}>
+            <PackageDetail title={'8 Captions'} />
+            <PackageDetail title={'5 ScreenShots'} />
+            <PackageDetail title={'Screen Recording'} tintColor={extraLight} />
+            <PackageDetail title={'Add Logo'} />
+            <PackageDetail
+              title={'Dynamic Transactions'}
+              tintColor={extraLight}
+            />
+            <PackageDetail title={'30 Seconds'} />
+            <View style={{marginTop: RF(10)}}>
+              <CustomButton title={'Send Order'} height={RF(40)} />
+            </View>
+          </View>
+          <View
+            style={{
+              marginTop: RF(20),
+              borderTopWidth: 2,
+              width: '100%',
+              borderColor: grayButton,
+            }}>
+            <CustomRating
+              onPress={handleStarPress}
+              size={20}
+              selectedStarIndex={selectedStarIndex}
+              sectionTrue
+              isTop={10}
+            />
+          </View>
+          <CommentSection source={user1} />
+          <CommentSection source={user2} />
+          <CommentSection source={user3} />
+          <View style={{marginVertical: RF(15)}}>
+            <CustomButton
+              height={40}
+              title={'View All Reviews'}
+              color={grayButton}
+              grayColor={primary}
+            />
           </View>
         </View>
       </Wrapper>

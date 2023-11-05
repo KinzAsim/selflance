@@ -38,8 +38,13 @@ import ModalContent from './modalContent';
 import DropDown from './dropdown';
 import CustomTextInput from './textInput';
 import DropDownDetail from './dropDowndetail';
-
+import PackageDetail from './packageDetail';
+import CustomRating from './customRating';
+import CommentSection from './commentSection';
 export {
+  CommentSection,
+  CustomRating,
+  PackageDetail,
   DropDownDetail,
   CustomTextInput,
   DropDown,

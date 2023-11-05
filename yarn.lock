@@ -2084,6 +2084,13 @@
   "resolved" "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.9.tgz"
   "version" "15.7.9"
 
+"@types/react-native-read-more-text@^1.0.2":
+  "integrity" "sha512-RlU4+YEOd/oGCWwfnWygFl8b7OSStMHCyOPMNOME9BUeHMLxawYBRAALU6+Z9Tv4Tz6Kd15Ce+xiJTnJcVMagg=="
+  "resolved" "https://registry.npmjs.org/@types/react-native-read-more-text/-/react-native-read-more-text-1.0.2.tgz"
+  "version" "1.0.2"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-native-snap-carousel@^3.8.7":
   "integrity" "sha512-uhFzyPq1WMp+96NPZqIypYPmWySsOXHhqh6LSiG0FFso1rwbmVgSALKJdbzvsaggaUeMUhC50k4Od3vLPz9wFA=="
   "resolved" "https://registry.npmjs.org/@types/react-native-snap-carousel/-/react-native-snap-carousel-3.8.7.tgz"
@@ -6528,6 +6535,11 @@
   "version" "8.1.0"
   dependencies:
     "lodash" "^4.17.15"
+
+"react-native-read-more-text@^1.1.2":
+  "integrity" "sha512-FIQhOpvikUanwPRl9QVBYmx6Wx7IXxXH/jlzElOLcP+NSgFLw2fRzSekQUq0yicymZsi7cAWW5TtIj8FHWtNDw=="
+  "resolved" "https://registry.npmjs.org/react-native-read-more-text/-/react-native-read-more-text-1.1.2.tgz"
+  "version" "1.1.2"
 
 "react-native-responsive-fontsize@^0.5.1":
   "integrity" "sha512-G77iPzrf3BHxMxVm6G3Mw3vPImIdq+jLLXhYoOjWei6i9J3/jzUNUhNdRWvp49Csb5prhbVBLPM+pYZz+b3ESQ=="

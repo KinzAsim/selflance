@@ -65,10 +65,18 @@ const report = require('./report.png');
 const tick = require('./tick.png');
 const arrowUp = require('./arrowUp.png');
 const arrowDown = require('./arrowDown.png');
+const unselectStar = require('./unselectStar.png');
+const user1 = require('./user1.png');
+const user2 = require('./user2.png');
+const user3 = require('./user3.png');
 
 export {
   arrowDown,
   arrowUp,
+  user3,
+  user2,
+  user1,
+  unselectStar,
   tick,
   down,
   next,
