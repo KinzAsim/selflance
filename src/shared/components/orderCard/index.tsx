@@ -10,12 +10,14 @@ const OrderCard = ({
   budget,
   onPress,
   completion,
+  onPressOptions,
 }: {
   date?: any;
   title?: any;
   budget?: any;
   onPress?: any;
   completion?: any;
+  onPressOptions?: any;
 }) => {
   return (
     <Pressable style={styles.view} onPress={onPress}>
@@ -24,20 +26,14 @@ const OrderCard = ({
           <Image source={frame} style={styles._img} />
         </View>
 
-        <View
-          style={{
-            width: '50%',
-            height: RF(86),
-            paddingLeft: 8,
-            justifyContent: 'center',
-          }}>
+        <View style={styles.main}>
           <View style={styles.v}>
             <View style={styles.txt}>
               <Text size={10} regular color={primary}>
                 {completion}
               </Text>
             </View>
-            <Pressable style={{zIndex: 100}}>
+            <Pressable style={styles.menu} onPress={onPressOptions}>
               <Image source={menu} style={styles.menu} />
             </Pressable>
           </View>
@@ -60,6 +56,19 @@ const OrderCard = ({
 };
 
 const styles = StyleSheet.create({
+  main: {
+    width: '50%',
+    height: RF(86),
+    paddingLeft: 8,
+    justifyContent: 'center',
+  },
+  menu: {
+    zIndex: 100,
+    width: RF(20),
+    height: RF(50),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   v1: {
     flexDirection: 'row',
     alignItems: 'center',

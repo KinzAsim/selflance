@@ -1,10 +1,21 @@
-import React, {useState} from 'react';
-import {_ordertabs, orders} from '@utils';
+import {
+  Text,
+  Wrapper,
+  OrderCard,
+  RememberMe,
+  ShiftCards,
+  SwipeModal,
+  TextHeader,
+  CustomButton,
+} from '@components';
 import {FlatList, View} from 'react-native';
-import {OrderCard, ShiftCards, TextHeader, Wrapper} from '@components';
-import {RF} from '@theme';
+import React, {useRef, useState} from 'react';
+import {Modalize} from 'react-native-modalize';
+import {_ordertabs, cancelOrder, orders} from '@utils';
 
 const Orders = ({navigation}: any) => {
+  const modalizeRef = useRef<Modalize>(null);
+  const [selected, setSelected] = useState<any>(-1);
   const [selectedShift, setSelectedShift] = useState('Active');
 
   const handleShiftChange = (newShift: any) => {
@@ -12,6 +23,15 @@ const Orders = ({navigation}: any) => {
   };
   const onOpen = (item: any) => {
     navigation.navigate('OrderDetail', {data: item});
+  };
+  const onOpenModal = () => {
+    modalizeRef?.current?.open();
+  };
+  const onCloseModal = () => {
+    modalizeRef.current?.close();
+  };
+  const onClick = (index: any) => {
+    setSelected(index);
   };
 
   return (
@@ -31,15 +51,35 @@ const Orders = ({navigation}: any) => {
         renderItem={({item}) => {
           return (
             <OrderCard
-              onPress={() => onOpen(item)}
               date={item?.date}
-              budget={item?.budget}
               title={item?.title}
+              budget={item?.budget}
+              onPress={() => onOpen(item)}
+              onPressOptions={onOpenModal}
               completion={item?.completion}
             />
           );
         }}
       />
+      <SwipeModal ref={modalizeRef} onClose={onCloseModal}>
+        <Text size={20} semiBold>
+          Cancel Order
+        </Text>
+        <FlatList
+          data={cancelOrder}
+          renderItem={({item, index}) => {
+            return (
+              <RememberMe
+                index={index}
+                selected={selected}
+                title={item?.title}
+                onPress={() => onClick(index)}
+              />
+            );
+          }}
+        />
+        <CustomButton title={'Cancel Order'} onPress={onCloseModal} />
+      </SwipeModal>
     </Wrapper>
   );
 };

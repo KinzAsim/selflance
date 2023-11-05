@@ -277,30 +277,35 @@ export const _3tabs = [
 
 export const orders = [
   {
+    id: 1,
     title: 'I Will Do UI Design, UI UX Design, Website UI UX...',
     completion: 'In Revision',
     budget: '300',
     date: '21/23/2023',
   },
   {
+    id: 2,
     completion: 'In Revision',
     budget: '300',
     date: '21/23/2023',
     title: 'I Will Do UI Design, UI UX Design, Website UI UX...',
   },
   {
+    id: 3,
     completion: 'In Revision',
     budget: '300',
     date: '21/23/2023',
     title: 'I Will Do UI Design, UI UX Design, Website UI UX...',
   },
   {
+    id: 4,
     completion: 'In Revision',
     budget: '300',
     date: '21/23/2023',
     title: 'I Will Do UI Design, UI UX Design, Website UI UX...',
   },
   {
+    id: 5,
     completion: 'In Revision',
     budget: '300',
     date: '21/23/2023',
@@ -309,3 +314,15 @@ export const orders = [
 ];
 
 export const star = [1, 2, 3, 4, 5];
+
+export const cancelOrder = [
+  {
+    title: 'He Is Just Taking More Time Then Required',
+  },
+  {
+    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ',
+  },
+  {
+    title: 'Nemo enim ipsam voluptatem quia voluptas ',
+  },
+];
