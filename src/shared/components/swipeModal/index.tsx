@@ -1,19 +1,9 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  StatusBar,
-} from 'react-native';
+import {StyleSheet, View, TouchableOpacityProps, StatusBar} from 'react-native';
 import {Modalize} from 'react-native-modalize';
 import React, {useRef, useState} from 'react';
 import {black_Shadow, grayButton, RF, SCREEN_HEIGHT, WHITE} from '@theme';
 import ModalHeader from '../modalHeader';
 import {BlurView} from '@react-native-community/blur';
-import {fadedLine} from '@assets';
-import {useDispatch} from 'react-redux';
-import {setIsModalVisible} from '@redux';
 interface Props extends TouchableOpacityProps {
   children?: any;
   modalHeader?: boolean;
@@ -24,24 +14,12 @@ interface Props extends TouchableOpacityProps {
 
 const SwipeModal = React.forwardRef((props: Props, ref) => {
   const {modalHeader, headerTitle, onClose} = props;
-  const dispatch = useDispatch();
   const [blur, setBulr] = useState(false);
+  console.log('blurrr', blur);
 
-  console.log(blur, 'onClosesssss');
-
-  const ModalVisible = () => {
-    setBulr(true);
-    // dispatch(setIsModalVisible(true));
-  };
-  const Modal_VisibleFalse = () => {
-    console.log('sss');
-
-    setBulr(false);
-    // dispatch(setIsModalVisible(false));
-  };
   return (
     <>
-      {/* <StatusBar backgroundColor={blur == true ? 'rgba(0,0,0,0.6)' : WHITE} /> */}
+      <StatusBar backgroundColor={blur == true ? 'rgba(0,0,0,0.6)' : WHITE} />
       {blur == true ? (
         <BlurView
           style={styles.absolute}
@@ -51,8 +29,6 @@ const SwipeModal = React.forwardRef((props: Props, ref) => {
       ) : null}
       <Modalize
         overlayStyle={{backgroundColor: 'rgba(0,0,0,0.1)'}}
-        onClose={() => setBulr(false)}
-        onOpen={() => setBulr(true)}
         handlePosition="inside"
         handleStyle={{
           marginTop: 20,
@@ -61,7 +37,6 @@ const SwipeModal = React.forwardRef((props: Props, ref) => {
         }}
         ref={ref}
         adjustToContentHeight={true}
-        // modalHeight={props?.height}
         modalStyle={{
           backgroundColor: WHITE,
         }}>

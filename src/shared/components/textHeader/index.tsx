@@ -35,7 +35,7 @@ const TextHeader = ({
   navigation?: any;
   f_Size?: any;
   bgClr?: any;
-  onOpen?: () => void;
+  onOpen: () => void;
 }) => {
   return (
     <>
@@ -46,13 +46,13 @@ const TextHeader = ({
             backgroundColor: bgClr ? bgClr : '#fff',
           },
         ]}>
-        {_back && (
-          <View style={{width: '14%'}}>
+        <View style={{width: '14%'}}>
+          {_back && (
             <Pressable style={styles.iV} onPress={() => navigation?.goBack()}>
               <Image source={back} style={styles.img} />
             </Pressable>
-          </View>
-        )}
+          )}
+        </View>
 
         <View style={styles.view}>
           <Text size={f_Size ? f_Size : RF(14)} semiBold>
@@ -61,14 +61,14 @@ const TextHeader = ({
           {_search ? (
             <View style={styles.s}>
               <Image source={_source1} style={styles.search} />
-              <TouchableOpacity onPress={onOpen}>
+              <TouchableOpacity>
                 <Image source={_source2} style={styles.menu} />
               </TouchableOpacity>
             </View>
           ) : (
             setting && (
               <View style={styles.row}>
-                <TouchableOpacity style={styles.innerView}>
+                <TouchableOpacity style={styles.innerView} onPress={onOpen}>
                   <Image source={s_source1} style={styles.s_s} />
                 </TouchableOpacity>
                 <View style={[styles.innerView, {marginLeft: RF(10)}]}>

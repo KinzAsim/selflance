@@ -41,6 +41,7 @@ const Category = ({route, navigation}: Props) => {
     navigate('CategoryItemDetail', {data: item});
   };
   const onOpen = () => {
+    console.log('open Modal');
     modalizeRef.current?.open();
   };
   const onClose = () => {
@@ -74,6 +75,7 @@ const Category = ({route, navigation}: Props) => {
       />
 
       <SwipeModal
+        // height={SCREEN_HEIGHT / 1.4}
         modalHeader={true}
         headerTitle={'Filter'}
         ref={modalizeRef}
