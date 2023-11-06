@@ -8,13 +8,27 @@ import {
   Image,
   ViewProps,
   TouchableOpacityProps,
+  TouchableOpacity,
+  StatusBar,
 } from 'react-native';
 import React, {useState} from 'react';
-import {RF, textColor, WHITE} from '@theme';
+import {
+  grayButton,
+  RF,
+  SCREEN_HEIGHT,
+  SCREEN_WIDTH,
+  textColor,
+  WHITE,
+} from '@theme';
 import Text from '../text';
+import {BlurView} from '@react-native-community/blur';
+import CustomButton from '../customButton';
+import CloseButton from '../closeButton';
 
 interface Props extends TouchableOpacityProps {
   title1?: any;
+  openLibrary?: () => void;
+  openCameraPicker?: () => void;
   title2?: any;
   _sourceImage1?: any;
   _sourceImage2?: any;
@@ -31,10 +45,21 @@ const SmallModal = (props: Props) => {
     onClose,
     modalVisible,
     title1,
+    openLibrary,
+    openCameraPicker,
     title2,
     withMenu,
   } = props;
 
+  const [secondModalVisible, setSecondModalVisible] = useState(false);
+
+  // Function to open the second modal
+  const openSecondModal = () => {
+    setSecondModalVisible(true);
+  };
+  const closeSecondModal = () => {
+    setSecondModalVisible(false);
+  };
   return (
     <Modal animationType="fade" transparent={true} visible={modalVisible}>
       <TouchableWithoutFeedback
@@ -51,7 +76,12 @@ const SmallModal = (props: Props) => {
                 bottom: withMenu ? RF(-60) : RF(130),
               },
             ]}>
-            <View
+            <TouchableOpacity
+              onPress={
+                title1 == 'Photo Library'
+                  ? openCameraPicker
+                  : () => openSecondModal()
+              }
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
@@ -68,8 +98,9 @@ const SmallModal = (props: Props) => {
               <Text color={textColor} size={12}>
                 {title1}
               </Text>
-            </View>
-            <View
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={title2 == 'Choose File' ? openLibrary : openCameraPicker}
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
@@ -86,10 +117,70 @@ const SmallModal = (props: Props) => {
               <Text color={textColor} size={12}>
                 {title2}
               </Text>
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
       </TouchableWithoutFeedback>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={secondModalVisible}
+        onRequestClose={() => {
+          closeSecondModal();
+        }}>
+        <View style={styles.absolute}>
+          <StatusBar backgroundColor={'rgba(0,0,0,0.5)'} />
+          <View
+            style={{
+              height: RF(182),
+              width: '100%',
+              padding: RF(20),
+              borderRadius: RF(18),
+              backgroundColor: '#fff',
+            }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}>
+              <Text semiBold size={20} color={textColor}>
+                Block On Messanger
+              </Text>
+              <CloseButton onPress={() => setSecondModalVisible(false)} />
+            </View>
+            <Text size={12} color={textColor} regular>
+              You are blocking Angle Young. The conversation will stay in chats
+              unless you hide it
+            </Text>
+            <View
+              style={{
+                flexDirection: 'row',
+                paddingTop: RF(10),
+                width: '100%',
+                justifyContent: 'flex-end',
+              }}>
+              <View style={{height: RF(34), width: RF(95), marginRight: 10}}>
+                <CustomButton
+                  height={'100%'}
+                  title={'Cancel'}
+                  f_Size={12}
+                  onPress={() => setSecondModalVisible(false)}
+                />
+              </View>
+              <View style={{height: RF(34), width: RF(95)}}>
+                <CustomButton
+                  height={'100%'}
+                  title={'Block'}
+                  f_Size={12}
+                  style={{backgroundColor: grayButton}}
+                />
+              </View>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </Modal>
   );
 };
@@ -105,12 +196,16 @@ const styles = StyleSheet.create({
     height: RF(64),
     width: RF(122),
     borderRadius: 6,
-
     alignItems: 'center',
     marginLeft: 10,
     justifyContent: 'space-evenly',
     backgroundColor: '#fff',
-    elevation: 2,
-    position: 'absolute',
+  },
+  absolute: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    height: '100%',
+    padding: RF(20),
   },
 });

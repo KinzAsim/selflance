@@ -46,31 +46,37 @@ const TextHeader = ({
             backgroundColor: bgClr ? bgClr : '#fff',
           },
         ]}>
-        <View style={{width: '14%'}}>
-          {_back && (
+        {_back && (
+          <View style={{width: '14%'}}>
             <Pressable style={styles.iV} onPress={() => navigation?.goBack()}>
               <Image source={back} style={styles.img} />
             </Pressable>
-          )}
-        </View>
+          </View>
+        )}
 
         <View style={styles.view}>
           <Text size={f_Size ? f_Size : RF(14)} semiBold>
             {title}
           </Text>
           {_search ? (
-            <View style={styles.s}>
+            <View style={[styles.s]}>
               <Image source={_source1} style={styles.search} />
-              <TouchableOpacity>
+              <Pressable
+                onPress={() => onOpen()}
+                style={{
+                  height: RF(20),
+                  width: RF(35),
+                  alignItems: 'center',
+                }}>
                 <Image source={_source2} style={styles.menu} />
-              </TouchableOpacity>
+              </Pressable>
             </View>
           ) : (
             setting && (
               <View style={styles.row}>
-                <TouchableOpacity style={styles.innerView} onPress={onOpen}>
+                <Pressable style={styles.innerView} onPress={() => onOpen()}>
                   <Image source={s_source1} style={styles.s_s} />
-                </TouchableOpacity>
+                </Pressable>
                 <View style={[styles.innerView, {marginLeft: RF(10)}]}>
                   <Image source={s_source2} style={styles.s_s} />
                 </View>
@@ -115,7 +121,7 @@ const styles = StyleSheet.create({
   search: {
     width: RF(20),
     height: RF(20),
-    marginRight: 10,
+    marginRight: 5,
     resizeMode: 'contain',
   },
   iV: {

@@ -10,9 +10,10 @@ import {
   Pressable,
   StyleSheet,
   TouchableOpacity,
+  PermissionsAndroid,
 } from 'react-native';
 import {Bubble, GiftedChat, IMessage} from 'react-native-gifted-chat';
-
+import ImagePicker from 'react-native-image-crop-picker';
 const ChatPage: React.FC = ({navigation, route}: any) => {
   const {userName} = route?.params;
   const modalRef = useRef<Modal>(null);
@@ -20,6 +21,54 @@ const ChatPage: React.FC = ({navigation, route}: any) => {
   const [modalVisible2, setModalVisible2] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [messages, setMessages] = useState<IMessage[]>([]);
+
+  const requestCameraPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+        {
+          title: 'Cool Photo App Camera Permission',
+          message:
+            'Cool Photo App needs access to your camera ' +
+            'so you can take awesome pictures.',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('You can use the camera');
+      } else {
+        console.log('Camera permission denied');
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  };
+
+  const openLibrary = () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      console.log(image);
+    });
+  };
+
+  const openCameraPicker = () => {
+    ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      console.log(image);
+    });
+  };
+
+  useEffect(() => {
+    requestCameraPermission();
+  }, []);
 
   useEffect(() => {
     setMessages([
@@ -54,7 +103,7 @@ const ChatPage: React.FC = ({navigation, route}: any) => {
     setModalVisible2(!modalVisible2);
   };
   const onSend = useCallback((newMessages: IMessage[] = []) => {
-    console.log('ssss');
+    // console.log('ssss');
     setMessages(previousMessages =>
       GiftedChat.append(previousMessages, newMessages),
     );
@@ -161,6 +210,8 @@ const ChatPage: React.FC = ({navigation, route}: any) => {
               title1={'Photo Library'}
               title2={'Choose File'}
               modalVisible={modalVisible}
+              openLibrary={openLibrary}
+              openCameraPicker={openCameraPicker}
             />
             <SmallModal
               _sourceImage1={report}

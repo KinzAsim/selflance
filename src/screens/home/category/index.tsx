@@ -40,11 +40,11 @@ const Category = ({route, navigation}: Props) => {
   const onClick = (i: any) => {
     navigate('CategoryItemDetail', {data: item});
   };
-  const onOpen = () => {
+  const onOpen2 = () => {
     console.log('open Modal');
     modalizeRef.current?.open();
   };
-  const onClose = () => {
+  const onClose2 = () => {
     modalizeRef.current?.close();
   };
   return (
@@ -56,7 +56,7 @@ const Category = ({route, navigation}: Props) => {
         s_source1={settings}
         navigation={navigation}
         title={'Graphic And Designing'}
-        onOpen={onOpen}
+        onOpen={onOpen2}
       />
       <ShiftCards
         tabs={_2tabs}
@@ -79,7 +79,7 @@ const Category = ({route, navigation}: Props) => {
         modalHeader={true}
         headerTitle={'Filter'}
         ref={modalizeRef}
-        onClose={onClose}>
+        onClose={onClose2}>
         <FilterCategory toggleChange={toggleChange} selected={selected} />
       </SwipeModal>
     </Wrapper>

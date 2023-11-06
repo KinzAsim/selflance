@@ -12,15 +12,14 @@ interface Props extends TouchableOpacityProps {
   onPress?: any;
   title?: any;
   height?: any;
+  width?: any;
   disabled?: any;
   grayColor?: any;
   color?: any;
+  f_Size?: any;
 }
 const CustomButton = (props: Props) => {
-  const height = props?.height;
-  const disabled = props?.disabled;
-  const grayColor = props?.grayColor;
-  const color = props.color;
+  const {height, disabled, grayColor, color, f_Size} = props;
   return (
     <TouchableOpacity
       disabled={disabled}
@@ -32,7 +31,14 @@ const CustomButton = (props: Props) => {
         },
       ]}
       onPress={props?.onPress}>
-      <Text style={[styles.medium, {color: grayColor ? grayColor : WHITE}]}>
+      <Text
+        style={[
+          styles.medium,
+          {
+            color: grayColor ? grayColor : WHITE,
+            fontSize: f_Size ? f_Size : RF(16),
+          },
+        ]}>
         {props?.title}
       </Text>
     </TouchableOpacity>
@@ -49,5 +55,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 8,
   },
-  medium: {fontSize: RF(16), color: '#fff', fontWeight: '600'},
+  medium: {color: '#fff', fontWeight: '600'},
 });

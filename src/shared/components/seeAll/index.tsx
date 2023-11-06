@@ -16,7 +16,7 @@ const SeeAll = ({
   return (
     <View style={styles.view}>
       <View style={styles.row}>
-        <Image source={source} style={styles.img} />
+        {source && <Image source={source} style={styles.img} />}
         <Text size={15} semiBold>
           {title}
         </Text>

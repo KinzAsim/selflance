@@ -39,38 +39,14 @@ export function getIsDarkModeEnabled() {
 }
 
 export const categoryData = [
-  {
-    img: graphic,
-    title: 'Graphic Designing',
-  },
-  {
-    img: digital,
-    title: 'Digital Marketing',
-  },
-  {
-    img: write,
-    title: 'Writing & Translation',
-  },
-  {
-    img: video,
-    title: 'Video & Animation',
-  },
-  {
-    img: tech,
-    title: 'Programming & Tech',
-  },
-  {
-    img: business,
-    title: 'Business',
-  },
-  {
-    img: social,
-    title: 'Social Media',
-  },
-  {
-    img: ai,
-    title: 'AI Services',
-  },
+  {id: 1, img: graphic, title: 'Graphic Designing'},
+  {id: 2, img: digital, title: 'Digital Marketing'},
+  {id: 3, img: write, title: 'Writing & Translation'},
+  {id: 4, img: video, title: 'Video & Animation'},
+  {id: 5, img: tech, title: 'Programming & Tech'},
+  {id: 6, img: business, title: 'Business'},
+  {id: 7, img: social, title: 'Social Media'},
+  {id: 8, img: ai, title: 'AI Services'},
 ];
 
 export const companiesData = [

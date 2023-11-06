@@ -55,6 +55,7 @@ const CustomAccordion = (props: Partial<Props>) => {
       <View style={styles.content}>
         {sec.map((s: any, index: any) => (
           <Pressable
+            key={index}
             onPress={() =>
               navigation.navigate('Category', {item: FreelancerData})
             }>

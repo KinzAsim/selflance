@@ -4,6 +4,7 @@ import {FlatList, View} from 'react-native';
 import {RouteProp} from '@react-navigation/native';
 import {ClickableBox, Search, TextHeader, Wrapper} from '@components';
 import {RF} from '@theme';
+import {navigate} from '@services';
 
 interface Props {
   navigation: any;
@@ -18,9 +19,8 @@ const AllCategories = ({route, navigation}: Props) => {
   const {data} = route.params;
 
   const onClickCategory = (item: any) => {
-    navigation.navigate('CategoryDetails', {
+    navigate('CategoryDetails', {
       data: item,
-      navigation: navigation,
     });
   };
 
@@ -33,6 +33,7 @@ const AllCategories = ({route, navigation}: Props) => {
       <FlatList
         data={categoryData}
         showsVerticalScrollIndicator={false}
+        keyExtractor={(item, index) => index.toString()}
         renderItem={({item, index}: any) => {
           return (
             <ClickableBox

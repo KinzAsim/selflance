@@ -11,7 +11,7 @@ import {Pressable} from 'react-native';
 
 interface Props extends TouchableOpacityProps {
   data?: any;
-  onPress?: () => void;
+  onPress: () => void;
 }
 
 const DetailBox = (props: Props) => {
@@ -20,7 +20,7 @@ const DetailBox = (props: Props) => {
     <View style={styles.view}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {data.map((d: any, index: any) => (
-          <Pressable onPress={onPress}>
+          <Pressable onPress={onPress} key={index}>
             <GigCard data={d} key={index} index={index} />
           </Pressable>
         ))}

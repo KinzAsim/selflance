@@ -7,6 +7,8 @@ const Ratings = () => {
     <Rating
       type="custom"
       ratingImage={_star}
+      readonly={true}
+      // showRating={false}
       ratingColor="#fff"
       ratingBackgroundColor="#fff"
       ratingCount={5}
