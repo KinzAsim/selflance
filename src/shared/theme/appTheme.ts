@@ -37,6 +37,7 @@ export const orange = '#FF7F00';
 export const blue = '#121F3E';
 export const yellow = '#FFC120';
 export const lightBlue = '#E6F3FC';
+export const dim_gray = '#F7F9FB';
 
 export const mulish_regular = 'Mulish-Regular';
 export const mulish_bold = 'Mulish-Bold';

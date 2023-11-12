@@ -71,7 +71,28 @@ const user2 = require('./user2.png');
 const user3 = require('./user3.png');
 const demo = require('./Image.png');
 
+const eye = require('./eye.png');
+const logout = require('./Logout.png');
+const infocircle = require('./infocircle.png');
+const money_change = require('./money-change.png');
+const _setting = require('./setting2.png');
+const _profileP = require('./_profileP.png');
+const _report = require('./Vector.png');
+const _u = require('./_u.png');
+const upgrade = require('./upgrade.png');
+const edit = require('./Edit.png');
+
 export {
+  edit,
+  upgrade,
+  _u,
+  _report,
+  eye,
+  logout,
+  infocircle,
+  money_change,
+  _setting,
+  _profileP,
   demo,
   arrowDown,
   arrowUp,

@@ -35,7 +35,7 @@ const TextHeader = ({
   navigation?: any;
   f_Size?: any;
   bgClr?: any;
-  onOpen: () => void;
+  onOpen?: () => void;
 }) => {
   return (
     <>

@@ -2,14 +2,15 @@ import React from 'react';
 import {RF} from '@theme';
 import {Text} from '@components';
 import {rightArrow} from '@assets';
-import {Image, StyleSheet, View, TouchableOpacity} from 'react-native';
 import {RouteProp} from '@react-navigation/native';
+import {Image, StyleSheet, View, TouchableOpacity} from 'react-native';
 
 interface Props {
-  source: any;
-  title: string;
-  onClick: any;
-  navigation: any;
+  source?: any;
+  title?: string;
+  onClick?: any;
+  style?: any;
+  navigation?: any;
   route: RouteProp<{
     params: {
       data?: any;
@@ -17,12 +18,12 @@ interface Props {
   }>;
 }
 const ClickableBox = (props: Partial<Props>) => {
-  const {source, title, onClick} = props;
+  const {source, title, onClick, style} = props;
   return (
-    <TouchableOpacity style={styles.view} onPress={onClick}>
+    <TouchableOpacity style={style ? style : styles.view} onPress={onClick}>
       <View style={styles.imgV}>
         <Image source={source} style={styles.img} />
-        <Text size={14} style={styles.txt}>
+        <Text size={14} style={styles.txt} regular>
           {title}
         </Text>
       </View>
@@ -47,8 +48,8 @@ const styles = StyleSheet.create({
     marginRight: RF(10),
   },
   img: {
-    width: RF(42),
-    height: RF(42),
+    width: RF(13),
+    height: RF(15),
     resizeMode: 'contain',
   },
   view: {

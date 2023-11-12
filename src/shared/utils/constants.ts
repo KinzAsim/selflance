@@ -1,4 +1,7 @@
 import {
+  _profileP,
+  _report,
+  _u,
   ai,
   banner,
   business,
@@ -6,6 +9,7 @@ import {
   category2,
   demo,
   digital,
+  eye,
   frame1,
   frame2,
   frame3,
@@ -13,6 +17,9 @@ import {
   freelancer,
   gig,
   graphic,
+  infocircle,
+  logout,
+  money_change,
   social,
   tech,
   user,
@@ -47,6 +54,21 @@ export const categoryData = [
   {id: 6, img: business, title: 'Business'},
   {id: 7, img: social, title: 'Social Media'},
   {id: 8, img: ai, title: 'AI Services'},
+];
+
+export const profileData = [
+  {id: 1, img: _u, title: 'My Profile'},
+  {id: 2, img: _report, title: 'Report Saller'},
+  {id: 3, img: _profileP, title: 'Invite Friends'},
+  // {id: 4, img: video, title: 'Invite Friends'},
+];
+
+export const logOut = [{id: 1, img: logout, title: 'Log Out'}];
+export const profilePolicy = [
+  {id: 1, img: money_change, title: 'Refund Policy'},
+  {id: 2, img: infocircle, title: 'About Us'},
+  {id: 3, img: _report, title: 'Term of Use'},
+  {id: 3, img: eye, title: 'Privacy Policy'},
 ];
 
 export const companiesData = [
