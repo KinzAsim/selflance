@@ -5,135 +5,186 @@ import {
   TextInput,
   StyleSheet,
   Dimensions,
-  TouchableOpacity,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import {RF} from '@theme';
-import {CustomButton, CustomCheckBox, Wrapper} from '@components';
-import {navigate} from '@services';
+import {Formik} from 'formik';
 import React, {useState} from 'react';
-import {close, fadedLine, fb, google, logo, show} from '@assets';
+import {navigate, signUp} from '@services';
+import {SignUpValidationSchema} from '@utils';
 import CheckBox from '@react-native-community/checkbox';
+import {CustomButton, CustomCheckBox, CustomModal, Wrapper} from '@components';
+import {close, fadedLine, fb, google, logo, show} from '@assets';
 
-const Height = Dimensions.get('window').height;
-const Width = Dimensions.get('window').width;
 const primary = '#00538F';
 const placeHolder = 'gray';
+const Width = Dimensions.get('window').width;
+const Height = Dimensions.get('window').height;
+
+const initialValues = {
+  username: '',
+  email: '',
+  password: '',
+};
 
 const SignUp = ({navigation}: any) => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const onClick = () => {
     navigation.navigate('SignUp');
   };
 
+  const submitHandler = (values: any) => {
+    console.log('dd...', values);
+    let params = {
+      username: values.username,
+      email: values.email,
+      password: values.password,
+    };
+    console.log('para...', params);
+
+    signUp(params)
+      .then((res: any) => {
+        console.log('re...', res);
+        setIsVisible(true);
+        // dispatch(setIsLoggedIn(true));
+      })
+      .catch((err: any) => {
+        console.log('error...', err.message);
+      })
+      .finally();
+  };
+
   return (
     <Wrapper isPaddingH>
-      <ScrollView
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}>
-        <View style={[styles.justify_Row, {marginTop: RF(30)}]}>
-          <Image style={styles.logo} source={logo} resizeMode={'contain'} />
-          <Image
-            source={close}
-            style={styles.close_Icon}
-            resizeMode={'contain'}
-          />
-        </View>
+      <Formik
+        onSubmit={submitHandler}
+        initialValues={initialValues}
+        validationSchema={SignUpValidationSchema}>
+        {({values, errors, touched, handleChange, handleSubmit}) => (
+          <ScrollView
+            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}>
+            <View style={[styles.justify_Row, {marginTop: RF(30)}]}>
+              <Image style={styles.logo} source={logo} resizeMode={'contain'} />
+              <Image
+                source={close}
+                resizeMode={'contain'}
+                style={styles.close_Icon}
+              />
+            </View>
 
-        <View style={{marginVertical: RF(20)}}>
-          <Text style={styles.semiBold}>Sign Up</Text>
-          <Text style={styles.regular}>Create Your Account To continue</Text>
-        </View>
+            <View style={{marginVertical: RF(20)}}>
+              <Text style={styles.semiBold}>Sign Up</Text>
+              <Text style={styles.regular}>
+                Create Your Account To continue
+              </Text>
+            </View>
 
-        <TextInput
-          placeholder={'User Name'}
-          style={[styles.entry_Fields, {marginTop: RF(10)}]}
-          placeholderTextColor={placeHolder}
-        />
-        <TextInput
-          placeholder={'Enter E-mail Address'}
-          style={[styles.entry_Fields, {marginTop: RF(0)}]}
-          placeholderTextColor={placeHolder}
-        />
-        <View
-          style={[
-            styles.entry_Fields,
-            {
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            },
-          ]}>
-          <TextInput
-            style={styles.password_Field}
-            placeholder={'Enter Password'}
-            placeholderTextColor={placeHolder}
-          />
-          <Image
-            source={show}
-            resizeMode={'contain'}
-            style={{height: RF(24), width: RF(24)}}
-          />
-        </View>
+            <TextInput
+              value={values.username}
+              placeholder={'User Name'}
+              placeholderTextColor={placeHolder}
+              onChangeText={handleChange('username')}
+              style={[styles.entry_Fields, {marginTop: RF(10)}]}
+            />
+            <TextInput
+              value={values.email}
+              placeholderTextColor={placeHolder}
+              placeholder={'Enter E-mail Address'}
+              onChangeText={handleChange('email')}
+              style={[styles.entry_Fields, {marginTop: RF(0)}]}
+            />
+            <View
+              style={[
+                styles.entry_Fields,
+                {
+                  alignItems: 'center',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                },
+              ]}>
+              <TextInput
+                value={values.password}
+                style={styles.password_Field}
+                placeholder={'Enter Password'}
+                placeholderTextColor={placeHolder}
+                onChangeText={handleChange('password')}
+              />
+              <Image
+                source={show}
+                resizeMode={'contain'}
+                style={{height: RF(24), width: RF(24)}}
+              />
+            </View>
 
-        <View
-          style={[
-            styles.justify_Row,
-            {marginBottom: RF(25), marginTop: RF(5)},
-          ]}>
-          <CustomCheckBox />
-          <View style={{flexDirection: 'row', width: '70%', marginLeft: 7}}>
-            <Text style={[styles.extra_Small, {color: placeHolder}]}>
-              Yes, I understand and agree to the
-              {<Text style={styles.extra_Small}> Terms of Services </Text>}
-            </Text>
-          </View>
-        </View>
+            <View
+              style={[
+                styles.justify_Row,
+                {marginBottom: RF(25), marginTop: RF(5)},
+              ]}>
+              <CustomCheckBox />
+              <View style={{flexDirection: 'row', width: '70%', marginLeft: 7}}>
+                <Text style={[styles.extra_Small, {color: placeHolder}]}>
+                  Yes, I understand and agree to the
+                  {<Text style={styles.extra_Small}> Terms of Services </Text>}
+                </Text>
+              </View>
+            </View>
 
-        <CustomButton title={'SignUp'} />
+            <CustomButton title={'SignUp'} onPress={handleSubmit} />
 
-        <View style={styles.or_view}>
-          <Image
-            source={fadedLine}
-            resizeMode={'contain'}
-            style={styles.faded_Line}
-          />
-          <Text style={{marginHorizontal: RF(10)}}>or</Text>
-          <Image
-            source={fadedLine}
-            resizeMode={'contain'}
-            style={styles.faded_Line}
-          />
-        </View>
+            <View style={styles.or_view}>
+              <Image
+                source={fadedLine}
+                resizeMode={'contain'}
+                style={styles.faded_Line}
+              />
+              <Text style={{marginHorizontal: RF(10)}}>or</Text>
+              <Image
+                source={fadedLine}
+                resizeMode={'contain'}
+                style={styles.faded_Line}
+              />
+            </View>
 
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginTop: RF(30),
-          }}>
-          <View style={styles.auth_View}>
-            <Image style={styles.auth} source={google} />
-          </View>
-          <View style={styles.auth_View}>
-            <Image style={styles.auth} source={fb} />
-          </View>
-        </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                marginTop: RF(30),
+              }}>
+              <View style={styles.auth_View}>
+                <Image style={styles.auth} source={google} />
+              </View>
+              <View style={styles.auth_View}>
+                <Image style={styles.auth} source={fb} />
+              </View>
+            </View>
 
-        <View style={{marginTop: RF(10), marginBottom: RF(20)}}>
-          <Text style={[styles.regular, {alignSelf: 'center', color: '#000'}]}>
-            New to Selflance?
-          </Text>
+            <View style={{marginTop: RF(10), marginBottom: RF(20)}}>
+              <Text
+                style={[styles.regular, {alignSelf: 'center', color: '#000'}]}>
+                New to Selflance?
+              </Text>
 
-          <TouchableOpacity onPress={onClick}>
-            <Text
-              style={[styles.medium, {alignSelf: 'center', color: primary}]}>
-              Create Account
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+              <TouchableOpacity onPress={onClick}>
+                <Text
+                  style={[
+                    styles.medium,
+                    {alignSelf: 'center', color: primary},
+                  ]}>
+                  Create Account
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
+        )}
+      </Formik>
+
+      {<CustomModal navigation={navigation} isVisible={isVisible} />}
     </Wrapper>
   );
 };
