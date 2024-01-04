@@ -21,6 +21,7 @@ import {LoginValidationSchema} from '@utils';
 import {fb, google, leftfaded_Line, logo, rightfaded_Line, show} from '@assets';
 import {useDispatch} from 'react-redux';
 import {setIsLoggedIn} from '@redux';
+import {login} from '@services';
 
 const initialValues = {
   email: '',
@@ -67,7 +68,19 @@ const Login = ({navigation}: any) => {
   };
 
   const hanldeLogIn = (values: any) => {
-    dispatch(setIsLoggedIn(true));
+    let params = {
+      email: values.email,
+      password: values.password,
+    };
+    login(params)
+      .then((res: any) => {
+        // console.log('re...', res);
+        // dispatch(setIsLoggedIn(true));
+      })
+      .catch((err: any) => {
+        console.log('error...', err.message);
+      })
+      .finally();
   };
 
   return (
@@ -90,10 +103,10 @@ const Login = ({navigation}: any) => {
           </View>
 
           <TextInput
-            placeholder={'User Name'}
-            onFocus={handleUsernameFocus}
-            onBlur={handleUsernameBlur}
             value={values.email}
+            placeholder={'User Name'}
+            onBlur={handleUsernameBlur}
+            onFocus={handleUsernameFocus}
             onChangeText={handleChange('email')}
             style={[
               styles.entry_Fields,
@@ -113,8 +126,8 @@ const Login = ({navigation}: any) => {
               styles.entry_Fields,
               {
                 flexDirection: 'row',
-                justifyContent: 'space-between',
                 alignItems: 'center',
+                justifyContent: 'space-between',
                 borderColor: isPasswordFocused ? primary : '#00000014',
               },
             ]}>
