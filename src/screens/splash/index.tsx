@@ -1,14 +1,18 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {gray, RF} from '@theme';
-import {logo} from '@assets';
+import {logo, logo2} from '@assets';
+import LinearGradient from 'react-native-linear-gradient';
+import {Wrapper} from '@components';
 
 const Splash = () => {
   return (
-    <View style={styles.container}>
-      <Image style={styles.logo} source={logo} />
-      <Text style={styles.text}>Selflance Technology Private Limited</Text>
-    </View>
+    <Wrapper translucent statusBarBagColor={'transparent'}>
+      <LinearGradient colors={['#2794E3', '#00538F']} style={styles.container}>
+        <Image style={styles.logo} source={logo2} />
+        <Text style={styles.text}>Selflance Technology Private Limited</Text>
+      </LinearGradient>
+    </Wrapper>
   );
 };
 
@@ -23,7 +27,7 @@ const styles = StyleSheet.create({
   text: {
     position: 'absolute',
     bottom: 20,
-    color: '#949494',
+    color: '#fff',
     fontSize: RF(14),
     fontFamily: 'Poppins-Regular',
   },

@@ -5,6 +5,7 @@ const calendar = require('./Calendar.png');
 const fb = require('./fb.png');
 const google = require('./google.png');
 const logo = require('./logo.png');
+const logo2 = require('./logo2.png');
 const close = require('./close.png');
 const show = require('./show.png');
 const fadedLine = require('./fadedLine.png');
@@ -84,6 +85,7 @@ const edit = require('./Edit.png');
 
 export {
   edit,
+  logo2,
   upgrade,
   _u,
   _report,

@@ -155,6 +155,7 @@ const styles = StyleSheet.create({
   },
   justify_Row: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   close_Icon: {height: RF(32), width: RF(32), marginTop: -12},
   semiBold: {
