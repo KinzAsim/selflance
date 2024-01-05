@@ -94,6 +94,8 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
   regular: {
+    fontSize: RF(14),
+    top: 2,
     fontFamily: 'Poppins-Regular',
   },
   medium: {

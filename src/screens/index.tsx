@@ -15,8 +15,9 @@ import OrderDetail from './orders/detail';
 import Profile from './profile';
 import SearchScreen from './home/search';
 import Reviews from './home/reviews';
-
+import OnBoardScreen from './onBoardScreen';
 export {
+  OnBoardScreen,
   Reviews,
   SearchScreen,
   OrderDetail,

@@ -17,14 +17,16 @@ interface Props extends TouchableOpacityProps {
   grayColor?: any;
   color?: any;
   f_Size?: any;
+  buttonStyle?: any;
 }
 const CustomButton = (props: Props) => {
-  const {height, disabled, grayColor, color, f_Size} = props;
+  const {height, disabled, grayColor, color, f_Size, buttonStyle} = props;
   return (
     <TouchableOpacity
       disabled={disabled}
       style={[
         styles.button,
+        buttonStyle,
         {
           height: height ? height : RF(55),
           backgroundColor: color ? color : primary,

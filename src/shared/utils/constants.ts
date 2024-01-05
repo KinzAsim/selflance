@@ -25,6 +25,9 @@ import {
   user,
   video,
   write,
+  onBoard1,
+  onBoard2,
+  onBoard3,
 } from '@assets';
 
 let isDarkThemeEnabled = false;
@@ -322,5 +325,29 @@ export const cancelOrder = [
   },
   {
     title: 'Nemo enim ipsam voluptatem quia voluptas ',
+  },
+];
+
+export const INTRO_DATA = [
+  {
+    key: '1',
+    title: 'Title',
+    description:
+      'Ac Dolor Dacilisi Lacus Habitasse Lectus Lacus. Vitae Scelerisque Pellentesque Imperdiet Consectetur ',
+    img: onBoard1,
+  },
+  {
+    key: '2',
+    title: 'Title',
+    description:
+      'Ac Dolor Dacilisi Lacus Habitasse Lectus Lacus. Vitae Scelerisque Pellentesque Imperdiet Consectetur ',
+    img: onBoard2,
+  },
+  {
+    key: '3',
+    title: 'Title',
+    description:
+      'Ac Dolor Dacilisi Lacus Habitasse Lectus Lacus. Vitae Scelerisque Pellentesque Imperdiet Consectetur ',
+    img: onBoard3,
   },
 ];

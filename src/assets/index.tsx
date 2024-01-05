@@ -28,6 +28,7 @@ const block = require('./block.png');
 const menu = require('./menu.png');
 const warning = require('./warning.png');
 const banner = require('./banner.png');
+const skip = require('./skip.png');
 const freelancing = require('./freelancing.png');
 const company = require('./company.png');
 const star = require('./star.png');
@@ -82,9 +83,16 @@ const _report = require('./Vector.png');
 const _u = require('./_u.png');
 const upgrade = require('./upgrade.png');
 const edit = require('./Edit.png');
+const onBoard1 = require('./onBoard1.png');
+const onBoard2 = require('./onBoard2.png');
+const onBoard3 = require('./onBoard3.png');
 
 export {
+  onBoard1,
+  onBoard2,
+  onBoard3,
   edit,
+  skip,
   logo2,
   upgrade,
   _u,
