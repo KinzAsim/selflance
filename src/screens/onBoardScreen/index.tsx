@@ -88,7 +88,7 @@ const OnBoardScreen = () => {
           <CustomButton
             title={'Get Started'}
             buttonStyle={styles.button}
-            onPress={() => navigate('Login')}
+            onPress={() => navigate('SignUp')}
           />
         </View>
       </View>
@@ -97,6 +97,7 @@ const OnBoardScreen = () => {
           Already Have Account?
         </Text>
         <Text
+          onPress={() => navigate('Login')}
           color={primary}
           semiBold
           center

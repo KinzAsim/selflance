@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
   },
   semiBold: {
     fontFamily: 'Poppins-SemiBold',
+    top: 5,
   },
   bold: {
     fontFamily: 'Poppins-Bold',

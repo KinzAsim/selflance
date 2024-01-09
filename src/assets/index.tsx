@@ -72,7 +72,7 @@ const user1 = require('./user1.png');
 const user2 = require('./user2.png');
 const user3 = require('./user3.png');
 const demo = require('./Image.png');
-
+const profilePicture = require('./profilePicture.png');
 const eye = require('./eye.png');
 const logout = require('./Logout.png');
 const infocircle = require('./infocircle.png');
@@ -86,8 +86,11 @@ const edit = require('./Edit.png');
 const onBoard1 = require('./onBoard1.png');
 const onBoard2 = require('./onBoard2.png');
 const onBoard3 = require('./onBoard3.png');
+const star5 = require('./star5.png');
 
 export {
+  star5,
+  profilePicture,
   onBoard1,
   onBoard2,
   onBoard3,

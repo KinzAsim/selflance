@@ -2,19 +2,20 @@ import React from 'react';
 import Text from '../text';
 import {notification, user} from '@assets';
 import {Image, Pressable, StyleSheet, View} from 'react-native';
+import {RF} from '@theme';
 
 const Header = (props: any) => {
-  const {handleLogOut} = props;
+  const {handleLogOut, title} = props;
   return (
     <View style={styles.headerContainer}>
       <View style={styles.headerLeft}>
-        <Pressable onPress={handleLogOut}>
+        {/* <Pressable onPress={handleLogOut}>
           <Image source={user} style={styles.userImg} />
-        </Pressable>
+        </Pressable> */}
         <View>
-          <Text style={[styles.fs14, styles.fw400]}>Welcome!</Text>
-          <Text style={[styles.fs16, styles.fw600, styles.textDark]}>
-            Hammad Khan
+          {/* <Text style={[styles.fs14, styles.fw400]}>Welcome!</Text> */}
+          <Text style={[styles.fs20]} semiBold color={'#434343'}>
+            {title}
           </Text>
         </View>
       </View>
@@ -57,6 +58,13 @@ const styles = StyleSheet.create({
   fs16: {
     fontSize: 16,
   },
+  fs8: {
+    fontSize: RF(18),
+  },
+  fs20: {
+    fontSize: RF(20),
+  },
+
   fw400: {
     fontWeight: '400',
   },

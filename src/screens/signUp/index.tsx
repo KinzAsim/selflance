@@ -67,7 +67,11 @@ const SignUp = ({navigation}: any) => {
           <ScrollView
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}>
-            <View style={[styles.justify_Row, {marginTop: RF(30)}]}>
+            <View
+              style={[
+                styles.justify_Row,
+                {marginTop: RF(30), justifyContent: 'space-between'},
+              ]}>
               <Image style={styles.logo} source={logo} resizeMode={'contain'} />
               <Image
                 source={close}
@@ -206,7 +210,6 @@ const styles = StyleSheet.create({
   },
   justify_Row: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
   },
   close_Icon: {height: RF(32), width: RF(32), marginTop: -12},
   semiBold: {

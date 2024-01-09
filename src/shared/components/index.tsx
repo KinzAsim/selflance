@@ -43,7 +43,9 @@ import CustomRating from './customRating';
 import CommentSection from './commentSection';
 import RememberMe from './rememberMe';
 import ProfileHeader from './profileHeader';
+import ProfileCard from './profileCard';
 export {
+  ProfileCard,
   ProfileHeader,
   RememberMe,
   CommentSection,

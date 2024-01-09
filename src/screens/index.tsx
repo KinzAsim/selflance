@@ -16,7 +16,9 @@ import Profile from './profile';
 import SearchScreen from './home/search';
 import Reviews from './home/reviews';
 import OnBoardScreen from './onBoardScreen';
+import Dashboard from './home/dashboard';
 export {
+  Dashboard,
   OnBoardScreen,
   Reviews,
   SearchScreen,

@@ -68,19 +68,20 @@ const Login = ({navigation}: any) => {
   };
 
   const hanldeLogIn = (values: any) => {
-    let params = {
-      email: values.email,
-      password: values.password,
-    };
-    login(params)
-      .then((res: any) => {
-        // console.log('re...', res);
-        // dispatch(setIsLoggedIn(true));
-      })
-      .catch((err: any) => {
-        console.log('error...', err.message);
-      })
-      .finally();
+    // let params = {
+    //   email: values.email,
+    //   password: values.password,
+    // };
+    // login(params)
+    //   .then((res: any) => {
+    //     // console.log('re...', res);
+    //     // dispatch(setIsLoggedIn(true));
+    //   })
+    //   .catch((err: any) => {
+    //     console.log('error...', err.message);
+    //   })
+    //   .finally();
+    dispatch(setIsLoggedIn(true));
   };
 
   return (
