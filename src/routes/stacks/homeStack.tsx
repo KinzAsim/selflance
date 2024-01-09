@@ -16,7 +16,7 @@ const Stack = createStackNavigator();
 const HomeStack = ({route, navigation}: any) => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Dashboard" component={Dashboard} />
+      <Stack.Screen name="DashboardScreen" component={Dashboard} />
 
       {/* <Stack.Screen name="HomeScreen" component={Home} /> */}
       <Stack.Screen name="AllCategories" component={AllCategories} />

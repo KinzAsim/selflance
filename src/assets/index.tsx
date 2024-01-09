@@ -87,8 +87,12 @@ const onBoard1 = require('./onBoard1.png');
 const onBoard2 = require('./onBoard2.png');
 const onBoard3 = require('./onBoard3.png');
 const star5 = require('./star5.png');
+const circleStar = require('./circleStar.png');
+const dashboard = require('./dashboard.png');
 
 export {
+  dashboard,
+  circleStar,
   star5,
   profilePicture,
   onBoard1,

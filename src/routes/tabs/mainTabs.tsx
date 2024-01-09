@@ -6,7 +6,7 @@ import OrderStack from '../stacks/orderStack';
 import {useDispatch, useSelector} from 'react-redux';
 import ProfileStack from '../stacks/profileStack';
 import {useTheme} from '@react-navigation/native';
-import {calendar, chat, home, profile} from '@assets';
+import {calendar, chat, dashboard, home, profile} from '@assets';
 import {View, Image, Pressable, StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
@@ -34,16 +34,16 @@ const MainTabs = ({navigation}: any) => {
         tabBarIconStyle: styles.tabIcon,
       })}>
       <Tab.Screen
-        name="Home"
+        name="Dashboard"
         component={HomeStack}
         options={{
           tabBarIcon: ({tintColor, color, focused}: any) => (
             <TabBarIcon
-              source={home}
+              source={dashboard}
               color={color}
               styles={styles}
               focused={focused}
-              stack={'Home'}
+              stack={'Dashboard'}
               activeStack={activeStack}
               setActiveStack={setActiveStack}
             />

@@ -44,7 +44,11 @@ import CommentSection from './commentSection';
 import RememberMe from './rememberMe';
 import ProfileHeader from './profileHeader';
 import ProfileCard from './profileCard';
+import ProgressBarContent from './progressBarContent';
+import YourEarnings from './yourEarnings';
 export {
+  YourEarnings,
+  ProgressBarContent,
   ProfileCard,
   ProfileHeader,
   RememberMe,
