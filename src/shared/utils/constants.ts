@@ -20,6 +20,7 @@ import {
   infocircle,
   logout,
   money_change,
+  settings,
   social,
   tech,
   user,
@@ -59,8 +60,9 @@ export const categoryData = [
 export const profileData = [
   {id: 1, img: _u, title: 'My Profile'},
   {id: 2, img: _report, title: 'Report Saller'},
-  {id: 3, img: _profileP, title: 'Invite Friends'},
-  // {id: 4, img: video, title: 'Invite Friends'},
+  {id: 3, img: _report, title: 'Favorite'},
+  {id: 4, img: _profileP, title: 'Invite Friends'},
+  {id: 4, img: settings, title: 'Settings'},
 ];
 
 export const logOut = [{id: 1, img: logout, title: 'Log Out'}];

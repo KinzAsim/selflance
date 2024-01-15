@@ -72,10 +72,10 @@ const Login = ({navigation}: any) => {
       email: values.email,
       password: values.password,
     };
+    dispatch(setIsLoggedIn(true));
     login(params)
       .then((res: any) => {
         // console.log('re...', res);
-        // dispatch(setIsLoggedIn(true));
       })
       .catch((err: any) => {
         console.log('error...', err.message);

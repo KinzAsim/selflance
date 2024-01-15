@@ -12,11 +12,13 @@ import CategoryDetails from './categoryDetails';
 import Category from './home/category';
 import Orders from './orders/overview';
 import OrderDetail from './orders/detail';
-import Profile from './profile';
+import Profile from './profile/overview';
 import SearchScreen from './home/search';
 import Reviews from './home/reviews';
+import UpgradeAccount from './profile/upgradeAcc';
 
 export {
+  UpgradeAccount,
   Reviews,
   SearchScreen,
   OrderDetail,

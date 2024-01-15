@@ -4,39 +4,46 @@ import {styles} from './styles';
 import {RF, WHITE, dim_gray} from '@theme';
 import {logOut, profileData, profilePolicy} from '@utils';
 import LinearGradient from 'react-native-linear-gradient';
-import {FlatList, Image, ScrollView, View} from 'react-native';
+import {FlatList, Image, Pressable, ScrollView, View} from 'react-native';
 import {ClickableBox, ProfileHeader, Text, Wrapper} from '@components';
+import {navigate} from '@services';
 
-const Profile = () => {
+const Profile = ({navigation}: any) => {
   const onClickCategory = () => {};
+  const onOpenSellerAcc = () => {
+    navigation.navigate('UpgradeAccount');
+  };
 
   return (
     <Wrapper bgClr={dim_gray}>
       <ProfileHeader title={'Kinza'} email={'Kinza@gmail.com'} />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <LinearGradient
-          angle={150}
-          useAngle={true}
-          angleCenter={{x: 0.5, y: 0.5}}
-          colors={[
-            '#034A79',
-            '#0071BD',
-            '#0071BD',
-            '#0071BD',
-            '#50B1F2',
-            '#50B1F2',
-          ]}
-          style={styles.linear}>
-          <Image source={upgrade} style={styles.img} />
-          <View>
-            <Text semiBold size={14} color={WHITE}>
-              Upgrade To Seller Account
-            </Text>
-            <Text regular size={14} color={WHITE}>
-              Sell Service And Start Earning Now.
-            </Text>
-          </View>
-        </LinearGradient>
+        <Pressable onPress={onOpenSellerAcc}>
+          <LinearGradient
+            angle={150}
+            useAngle={true}
+            angleCenter={{x: 0.5, y: 0.5}}
+            colors={[
+              '#034A79',
+              '#0071BD',
+              '#0071BD',
+              '#0071BD',
+              '#50B1F2',
+              '#50B1F2',
+            ]}
+            style={styles.linear}>
+            <Image source={upgrade} style={styles.img} />
+            <View>
+              <Text semiBold size={14} color={WHITE}>
+                Upgrade To Seller Account
+              </Text>
+              <Text regular size={14} color={WHITE}>
+                Sell Service And Start Earning Now.
+              </Text>
+            </View>
+          </LinearGradient>
+        </Pressable>
+
         <View style={styles.view}>
           <FlatList
             data={profileData}
