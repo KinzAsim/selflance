@@ -168,7 +168,7 @@ const SignUp = ({navigation}: any) => {
               </View>
             </View>
 
-            <View style={{marginTop: RF(10), marginBottom: RF(20)}}>
+            {/* <View style={{marginTop: RF(10), marginBottom: RF(20)}}>
               <Text
                 style={[styles.regular, {alignSelf: 'center', color: '#000'}]}>
                 New to Selflance?
@@ -183,7 +183,7 @@ const SignUp = ({navigation}: any) => {
                   Create Account
                 </Text>
               </TouchableOpacity>
-            </View>
+            </View> */}
           </ScrollView>
         )}
       </Formik>
