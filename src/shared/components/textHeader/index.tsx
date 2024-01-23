@@ -8,7 +8,7 @@ import {
 import React from 'react';
 import {back} from '@assets';
 import {Text} from '@components';
-import {RF, light_grey, SCREEN_WIDTH} from '@theme';
+import {RF, light_grey, SCREEN_WIDTH, orange} from '@theme';
 
 interface Props {
   title?: any;
@@ -27,6 +27,7 @@ interface Props {
   numofLines?: any;
   _Icon2?: any;
   icon2?: any;
+  title2?: any;
   onOpen?: () => void;
   handleBack?: () => void;
 }
@@ -50,6 +51,7 @@ const TextHeader = (props: Props) => {
     numofLines,
     textStyle,
     _Icon2,
+    title2,
     handleBack,
   } = props;
   return (
@@ -78,6 +80,11 @@ const TextHeader = (props: Props) => {
             style={textStyle}
             numberOfLines={numofLines}>
             {title}
+            {title2 && (
+              <Text size={f_Size ? f_Size : RF(14)} semiBold color={orange}>
+                {`${' '} ${title2}`}
+              </Text>
+            )}
           </Text>
           {_search ? (
             <View style={[styles.s]}>

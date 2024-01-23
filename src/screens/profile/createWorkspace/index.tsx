@@ -12,6 +12,7 @@ import {
   CustomButton,
   DropDown,
   EnterDetail,
+  FAQs,
   ImagePickers,
   PortfolioModal,
   Text,
@@ -20,8 +21,9 @@ import {
 } from '@components';
 import {RF} from '@theme';
 import {forward} from '@assets';
+import {navigationRef} from '@services';
 
-const CreateWorkspace = () => {
+const CreateWorkspace = ({navigation}: any) => {
   const [changeColor, setCangeColor] = useState('#DD730A');
   const [visible, setVisible] = useState(false);
 
@@ -65,6 +67,9 @@ const CreateWorkspace = () => {
   const handleBackPress = () => {
     setCompleteStep(Math.max(completStep - 1, 0));
     setCangeColor('#DD730A');
+    if (completStep == 0) {
+      navigation.goBack();
+    }
   };
   const onClose = () => {
     setVisible(!visible);
@@ -76,6 +81,7 @@ const CreateWorkspace = () => {
         title={'Create Workspace'}
         _back
         f_Size={20}
+        navigation={navigation}
         handleBack={handleBackPress}
       />
       <View style={styles.stepView}>
@@ -131,6 +137,7 @@ const CreateWorkspace = () => {
               </View>
             </View>
             <EnterDetail />
+            <FAQs />
           </>
         )}
         {completStep === 2 && <ImagePickers />}

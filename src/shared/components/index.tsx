@@ -54,7 +54,9 @@ import CustomCard from './Cards/customCard';
 import EmptyContent from './emptyContent';
 import CustomDropDown from './customDropDown';
 import TimeCard from './timeCard';
+import FAQs from './faqs';
 export {
+  FAQs,
   TimeCard,
   CustomDropDown,
   EmptyContent,

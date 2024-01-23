@@ -68,6 +68,7 @@ const Orders = ({navigation}: any) => {
           Cancel Order
         </Text>
         <FlatList
+          scrollEnabled={false}
           data={cancelOrder}
           renderItem={({item, index}) => {
             return (

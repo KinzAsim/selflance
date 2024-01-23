@@ -6,12 +6,14 @@ import {FlatList, Image, ScrollView, View} from 'react-native';
 import {ClickableBox, ProfileHeader, Text, Wrapper} from '@components';
 import ToggleSwitch from 'toggle-switch-react-native';
 import {navigate} from '@services';
+import {setIsLoggedIn} from '@redux';
+import {useDispatch} from 'react-redux';
 const Profile = () => {
   const onClickCategory = (item: any) => {
     item.screen && navigate(item.screen);
   };
   const [toggle, setToggle] = useState(false);
-
+  const dispatch = useDispatch();
   return (
     <Wrapper bgClr={grayButton}>
       <View style={{backgroundColor: WHITE}}>
@@ -85,7 +87,7 @@ const Profile = () => {
                     source={item?.img}
                     style={styles.box}
                     title={item?.title}
-                    onClick={() => onClickCategory(item)}
+                    onClick={() => dispatch(setIsLoggedIn(false))}
                   />
                 );
               }}

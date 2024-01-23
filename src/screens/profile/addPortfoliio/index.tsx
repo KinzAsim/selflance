@@ -6,19 +6,28 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {EmptyContent, Text, TextHeader, Wrapper} from '@components';
+import {
+  CustomButton,
+  EmptyContent,
+  Text,
+  TextHeader,
+  Wrapper,
+} from '@components';
 import {useTheme} from '@react-navigation/native';
-import {primary, RF, text_Color3} from '@theme';
+import {light_grey, primary, RF, text_Color3} from '@theme';
 import {add, addIcon} from '@assets';
 import ImagePicker from 'react-native-image-crop-picker';
 
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {setPortfolioImages} from '@redux';
 
 const AddPortfolio = ({navigation}: any) => {
-  const [portfolioImages, setPortfolioImages] = useState<any>([]);
   const theme: any = useTheme();
   const colors = theme.colors;
+  const dispatch = useDispatch();
+  const {portfolioImages} = useSelector((state: any) => state.root.user);
+
   const openLibrary = () => {
     ImagePicker.openPicker({
       width: 300,
@@ -28,7 +37,9 @@ const AddPortfolio = ({navigation}: any) => {
       .then(image => {
         if (image && image.path) {
           console.log(image.path);
-          setPortfolioImages([...portfolioImages, image.path]);
+          dispatch(
+            setPortfolioImages([...portfolioImages, {image: image.path}]),
+          );
         } else {
           console.log('No image selected or an error occurred.');
         }
@@ -37,7 +48,8 @@ const AddPortfolio = ({navigation}: any) => {
         console.log('Error selecting image:', error);
       });
   };
-  console.log(portfolioImages, 'portfolioImages');
+
+  const handleSubmit = () => {};
 
   return (
     <Wrapper>
@@ -83,11 +95,16 @@ const AddPortfolio = ({navigation}: any) => {
           marginHorizontal: RF(18),
         }}
         numColumns={2}
-        ListEmptyComponent={() => <EmptyContent />}
-        renderItem={({item}) => (
-          <View style={{height: RF(112), width: '48.7%', marginBottom: RF(8)}}>
+        ListEmptyComponent={() => <EmptyContent title={'No recent Uploads'} />}
+        renderItem={({item}: any) => (
+          <View
+            style={{
+              height: RF(112),
+              width: '48.7%',
+              marginBottom: RF(8),
+            }}>
             <Image
-              source={{uri: item}}
+              source={{uri: item.image}}
               style={{
                 height: '100%',
                 width: '100%',
@@ -97,6 +114,9 @@ const AddPortfolio = ({navigation}: any) => {
           </View>
         )}
       />
+      <View style={{paddingHorizontal: RF(18)}}>
+        <CustomButton title={'Submit Requirements'} />
+      </View>
     </Wrapper>
   );
 };
@@ -140,6 +160,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: light_grey,
     borderWidth: 1,
     borderRadius: 8,
     gap: RF(8),

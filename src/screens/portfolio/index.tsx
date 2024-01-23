@@ -4,14 +4,22 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
+  FlatList,
   View,
 } from 'react-native';
 import React from 'react';
-import {Text, TextHeader, Wrapper} from '@components';
+import {
+  CustomButton,
+  EmptyContent,
+  Text,
+  TextHeader,
+  Wrapper,
+} from '@components';
 import {useTheme} from '@react-navigation/native';
-import {primary, RF} from '@theme';
+import {light_grey, primary, RF} from '@theme';
 import {one, three, two} from '@assets';
 import {navigate} from '@services';
+import {useSelector} from 'react-redux';
 const Portfolio = ({navigation}: any) => {
   const ArrayData = [
     {
@@ -31,6 +39,10 @@ const Portfolio = ({navigation}: any) => {
       Avatar: three,
     },
   ];
+
+  const {portfolioImages} = useSelector((state: any) => state.root.user);
+  console.log(portfolioImages, 'portfolioImages');
+
   const theme: any = useTheme();
   const colors = theme.colors;
   console.log(colors, 'LabOrange');
@@ -51,33 +63,31 @@ const Portfolio = ({navigation}: any) => {
           </Text>
         </Pressable>
       </View>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{marginTop: RF(16), paddingHorizontal: RF(18)}}>
-          {ArrayData.map((item, index) => (
-            <View key={index}>
-              <Pressable>
-                <Image
-                  source={item.Avatar}
-                  style={{
-                    width: '100%',
-                    height: RF(220),
-                    borderRadius: RF(16),
-                  }}
-                />
-              </Pressable>
-              <Text
-                size={14}
+      <View style={{marginTop: RF(16), paddingHorizontal: RF(18)}}>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={portfolioImages}
+          ListEmptyComponent={<EmptyContent title={'No Portfolio Added'} />}
+          renderItem={({item}: any) => (
+            <View
+              style={{
+                width: '100%',
+                height: RF(220),
+                borderRadius: RF(16),
+                marginBottom: RF(16),
+                overflow: 'hidden',
+              }}>
+              <Image
+                source={{uri: item.image}}
                 style={{
-                  marginVertical: RF(8),
-                  fontWeight: '700',
-                  color: '#171725',
-                }}>
-                {item.Title}
-              </Text>
+                  width: '100%',
+                  height: '100%',
+                }}
+              />
             </View>
-          ))}
-        </View>
-      </ScrollView>
+          )}
+        />
+      </View>
     </Wrapper>
   );
 };
@@ -96,6 +106,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignSelf: 'center',
     borderRadius: 12,
+    backgroundColor: light_grey,
     borderColor: primary,
     right: RF(18),
   },

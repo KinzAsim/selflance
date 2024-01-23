@@ -196,8 +196,8 @@ const ChatPage: React.FC = ({navigation, route}: any) => {
               flexDirection: 'row',
               height: RF(70),
               alignItems: 'center',
+              paddingHorizontal: RF(16),
               width: '100%',
-              justifyContent: 'space-evenly',
               backgroundColor: grayButton,
             }}>
             <SmallModal
@@ -215,7 +215,7 @@ const ChatPage: React.FC = ({navigation, route}: any) => {
               _sourceImage2={block}
               onClose={onOpen}
               withMenu
-              title1={'Blosck User'}
+              title1={'Block User'}
               title2={'Report'}
               modalVisible={modalVisible2}
             />
@@ -234,6 +234,7 @@ const ChatPage: React.FC = ({navigation, route}: any) => {
             <TextInput
               style={{
                 height: RF(33),
+                marginHorizontal: RF(8),
                 width: '80%',
                 padding: 0,
                 paddingHorizontal: 5,

@@ -31,7 +31,7 @@ const SwipeModal = React.forwardRef((props: Props, ref) => {
         overlayStyle={{backgroundColor: 'rgba(0,0,0,0.1)'}}
         handlePosition="inside"
         handleStyle={{
-          marginTop: 20,
+          // marginTop: 20,
           backgroundColor: grayButton,
           width: RF(50),
         }}

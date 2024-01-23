@@ -117,6 +117,7 @@ const MyProfile = ({navigation}: any) => {
             </Text>
             <FlatList
               data={skillsData}
+              scrollEnabled={false}
               numColumns={3}
               contentContainerStyle={{width: '100%'}}
               columnWrapperStyle={{

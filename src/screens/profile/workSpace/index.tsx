@@ -9,7 +9,7 @@ import {
 import React, {useState} from 'react';
 import {ShiftCards, Text, TextHeader, Wrapper} from '@components';
 import {FreelancerData, workSpaceTabs} from '@utils';
-import {medium_Gray, primary, RF, textColor} from '@theme';
+import {light_grey, medium_Gray, primary, RF, textColor} from '@theme';
 import {menu} from '@assets';
 import {navigate} from '@services';
 
@@ -51,7 +51,7 @@ const WorkSpace = ({navigation}: any) => {
     );
   };
   return (
-    <Wrapper isPaddingH={RF(20)}>
+    <Wrapper>
       <View style={styles.row}>
         <TextHeader
           title={'Workspace'}
@@ -67,20 +67,22 @@ const WorkSpace = ({navigation}: any) => {
           </Text>
         </Pressable>
       </View>
-      <ShiftCards
-        width={'100%'}
-        pHorizontal={RF(23)}
-        marginLeft={RF(6)}
-        tabs={workSpaceTabs}
-        selectedShift={selectedShift}
-        onShiftChange={handleShiftChange}
-      />
-      <FlatList
-        data={FreelancerData}
-        showsVerticalScrollIndicator={false}
-        keyExtractor={(item: any) => item.id.toString()}
-        renderItem={({item}: any) => renderFrelancer(item)}
-      />
+      <View style={{paddingHorizontal: RF(18)}}>
+        <ShiftCards
+          width={'100%'}
+          pHorizontal={RF(23)}
+          marginLeft={RF(6)}
+          tabs={workSpaceTabs}
+          selectedShift={selectedShift}
+          onShiftChange={handleShiftChange}
+        />
+        <FlatList
+          data={FreelancerData}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={(item: any) => item.id.toString()}
+          renderItem={({item}: any) => renderFrelancer(item)}
+        />
+      </View>
     </Wrapper>
   );
 };
@@ -99,10 +101,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     position: 'absolute',
+    backgroundColor: light_grey,
     alignSelf: 'center',
     borderRadius: 12,
     borderColor: primary,
-    right: 0,
+    right: RF(18),
   },
   cards: {
     height: RF(98),

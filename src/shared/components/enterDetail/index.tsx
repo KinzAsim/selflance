@@ -236,8 +236,9 @@ const styles = StyleSheet.create({
     paddingVertical: RF(16),
     marginVertical: RF(16),
     marginHorizontal: RF(16),
-    elevation: 5,
     backgroundColor: '#fff',
+    borderWidth: 0.5,
+    borderColor: extraLight,
     borderRadius: RF(8),
   },
   row: {

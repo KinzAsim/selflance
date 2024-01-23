@@ -56,6 +56,7 @@ const ProgressBarContent = (props: Props) => {
 
       <FlatList
         data={progressData}
+        scrollEnabled={false}
         horizontal
         contentContainerStyle={{
           justifyContent: 'space-between',

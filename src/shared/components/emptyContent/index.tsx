@@ -3,11 +3,11 @@ import React from 'react';
 import Text from '../text';
 import {extraLight, textColor} from '@theme';
 
-const EmptyContent = () => {
+const EmptyContent = ({title}: {title?: any}) => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text regular color={textColor}>
-        No Images found
+        {title}
       </Text>
     </View>
   );

@@ -20,14 +20,15 @@ import {GREY, primary, RF, text_Color2} from '@theme';
 const Agreement = ({navigation}: any) => {
   const [isSelected, setSelection] = useState(false);
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <Wrapper>
         <TextHeader
           f_Size={RF(20)}
           navigation={navigation}
           _back
           textStyle={{color: primary}}
-          title={'Cooperation Agreement'}
+          title={'Cooperation'}
+          title2={'Agreement'}
         />
         <View
           style={{
