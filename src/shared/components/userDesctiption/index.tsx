@@ -1,9 +1,10 @@
 import {StyleSheet, View, ViewProps, Image, ScrollView} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import Text from '../text';
 import {
   BLACK,
   border_Opacity,
+  dull_orange,
   neutral,
   neutral_90,
   RF,
@@ -12,20 +13,49 @@ import {
 } from '@theme';
 import {chat, comment, location, sellerLevel, translater} from '@assets';
 import UserLevel from '../userLevel';
+import ReadMore from 'react-native-read-more-text';
 interface props extends ViewProps {
   user_Desc: any;
 }
 
 const UserDescription = (props: props) => {
   const {user_Desc} = props;
+  const [isReadMoreExpanded, setIsReadMoreExpanded] = useState(false);
+
+  const renderTruncatedFooter = (handlePress: any) => {
+    return (
+      <Text style={{color: dull_orange}} onPress={handlePress}>
+        Read more
+      </Text>
+    );
+  };
+
+  const renderRevealedFooter = (handlePress: any) => {
+    return (
+      <Text style={{color: dull_orange, marginTop: 5}} onPress={handlePress}>
+        Show less
+      </Text>
+    );
+  };
+  const handleTextReady = () => {
+    setIsReadMoreExpanded(true); // Update the state to indicate that the text is ready and should be expanded.
+  };
   return (
     <View style={styles.detailView}>
       <Text semiBold size={14} color={neutral}>
         User Details
       </Text>
-      <Text regular size={12} color={text_Color2}>
-        {user_Desc}
-      </Text>
+      <ReadMore
+        numberOfLines={isReadMoreExpanded ? 3 : 3}
+        renderTruncatedFooter={renderTruncatedFooter}
+        renderRevealedFooter={renderRevealedFooter}
+        onReady={handleTextReady}>
+        <Text size={12} regular color={text_Color2}>
+          Pancakes are some people's favorite breakfast, who doesn't like
+          pancakes? Especially with the real honey splash on top of the
+          pancakes, of course everyone loves that! besides being
+        </Text>
+      </ReadMore>
       <View style={styles.row}>
         <Image source={location} style={styles.icon} />
         <View style={{paddingLeft: 10}}>
@@ -70,15 +100,14 @@ export default UserDescription;
 
 const styles = StyleSheet.create({
   detailView: {
-    borderTopWidth: 1,
+    // borderTopWidth: 1,
     width: '100%',
-    borderTopColor: border_Opacity,
-    marginTop: RF(15),
-    paddingTop: RF(15),
+    // borderTopColor: border_Opacity,
   },
   row: {
     flexDirection: 'row',
-    marginVertical: RF(10),
+    marginTop: RF(25),
+    marginBottom: RF(18),
   },
   icon: {height: RF(19), width: RF(16), resizeMode: 'contain', marginTop: 10},
   row_D: {

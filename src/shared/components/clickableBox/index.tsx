@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
     marginRight: RF(10),
   },
   img: {
-    width: RF(13),
-    height: RF(15),
+    width: RF(18),
+    height: RF(18),
     resizeMode: 'contain',
   },
   view: {

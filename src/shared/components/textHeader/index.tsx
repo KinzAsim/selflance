@@ -10,20 +10,7 @@ import {back} from '@assets';
 import {Text} from '@components';
 import {RF, light_grey, SCREEN_WIDTH} from '@theme';
 
-const TextHeader = ({
-  f_Size,
-  title,
-  _back,
-  onOpen,
-  _search,
-  _source1,
-  _source2,
-  setting,
-  s_source1,
-  s_source2,
-  navigation,
-  bgClr,
-}: {
+interface Props {
   title?: any;
   _back?: any;
   _search?: any;
@@ -35,8 +22,36 @@ const TextHeader = ({
   navigation?: any;
   f_Size?: any;
   bgClr?: any;
+  source2?: any;
+  textStyle?: any;
+  numofLines?: any;
+  _Icon2?: any;
+  icon2?: any;
   onOpen?: () => void;
-}) => {
+  handleBack?: () => void;
+}
+
+const TextHeader = (props: Props) => {
+  const {
+    f_Size,
+    title,
+    _back,
+    onOpen,
+    _search,
+    _source1,
+    _source2,
+    setting,
+    s_source1,
+    s_source2,
+    navigation,
+    bgClr,
+    source2,
+    icon2,
+    numofLines,
+    textStyle,
+    _Icon2,
+    handleBack,
+  } = props;
   return (
     <>
       <View
@@ -48,21 +63,27 @@ const TextHeader = ({
         ]}>
         {_back && (
           <View style={{width: '14%'}}>
-            <Pressable style={styles.iV} onPress={() => navigation?.goBack()}>
+            <Pressable
+              style={styles.iV}
+              onPress={handleBack ? handleBack : () => navigation?.goBack()}>
               <Image source={back} style={styles.img} />
             </Pressable>
           </View>
         )}
 
         <View style={styles.view}>
-          <Text size={f_Size ? f_Size : RF(14)} semiBold>
+          <Text
+            size={f_Size ? f_Size : RF(14)}
+            semiBold
+            style={textStyle}
+            numberOfLines={numofLines}>
             {title}
           </Text>
           {_search ? (
             <View style={[styles.s]}>
               <Image source={_source1} style={styles.search} />
               <Pressable
-                onPress={() => onOpen()}
+                onPress={() => onOpen && onOpen()}
                 style={{
                   height: RF(20),
                   width: RF(35),
@@ -74,12 +95,16 @@ const TextHeader = ({
           ) : (
             setting && (
               <View style={styles.row}>
-                <Pressable style={styles.innerView} onPress={() => onOpen()}>
+                <Pressable
+                  style={styles.innerView}
+                  onPress={() => onOpen && onOpen()}>
                   <Image source={s_source1} style={styles.s_s} />
                 </Pressable>
-                <View style={[styles.innerView, {marginLeft: RF(10)}]}>
-                  <Image source={s_source2} style={styles.s_s} />
-                </View>
+                {source2 === false ? null : (
+                  <View style={[styles.innerView, {marginLeft: RF(10)}]}>
+                    <Image source={s_source2} style={styles.s_s} />
+                  </View>
+                )}
               </View>
             )
           )}
@@ -140,8 +165,10 @@ const styles = StyleSheet.create({
   },
   main: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     marginVertical: RF(20),
+    paddingHorizontal: RF(18),
     width: '100%',
     marginRight: 2,
   },

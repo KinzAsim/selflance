@@ -6,6 +6,7 @@ const initialState: any = {
   authToken: null,
   isLoggedIn: false,
   isModalVisible: false,
+  portfolioImages: [],
 };
 
 export const userReducer = createSlice({
@@ -33,6 +34,9 @@ export const userReducer = createSlice({
       state.authToken = null;
       state.isLoggedIn = false;
     },
+    setPortfolioImages: (state, action) => {
+      state.portfolioImages = action.payload;
+    },
   },
 });
 
@@ -43,6 +47,7 @@ export const {
   setAuthToken,
   setIsLoggedIn,
   setIsModalVisible,
+  setPortfolioImages,
 } = userReducer.actions;
 
 export default userReducer.reducer;

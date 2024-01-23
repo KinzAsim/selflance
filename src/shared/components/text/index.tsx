@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   regular: {
     fontSize: RF(14),
-    top: 2,
+    top: 1,
     fontFamily: 'Poppins-Regular',
   },
   medium: {
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   },
   semiBold: {
     fontFamily: 'Poppins-SemiBold',
-    top: 5,
+    top: 2,
   },
   bold: {
     fontFamily: 'Poppins-Bold',

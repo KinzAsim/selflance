@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {frame, next} from '@assets';
-import {RF, light_grey, primary} from '@theme';
+import {RF, light_grey, primary, text_Color2, orange} from '@theme';
 import {RouteProp} from '@react-navigation/native';
 import {Image, Pressable, ScrollView, View} from 'react-native';
 import {
@@ -8,9 +8,9 @@ import {
   DropDown,
   DropDownDetail,
   ProfileText,
-  ShiftCards,
   Text,
   TextHeader,
+  TimeCard,
   Wrapper,
 } from '@components';
 import {styles} from './styles';
@@ -32,10 +32,8 @@ const OrderDetail = ({route, navigation}: Props) => {
     <Wrapper isPaddingH bgClr={light_grey}>
       <TextHeader title={'Order Detail'} bgClr={light_grey} f_Size={20} />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Image
-          source={frame}
-          style={{width: '100%', height: RF(189), resizeMode: 'contain'}}
-        />
+        <TimeCard />
+        <Image source={frame} style={styles.gigImg} />
         <View
           style={{
             marginTop: 10,
@@ -97,25 +95,13 @@ const OrderDetail = ({route, navigation}: Props) => {
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <CustomTextInput
                 title={'Price'}
+                containerStyle={{width: '45%'}}
                 placeholderText={'38$'}
-                txtInput={{
-                  backgroundColor: light_grey,
-                  height: RF(41),
-                  borderRadius: 10,
-                  paddingLeft: 10,
-                }}
-                width={146}
               />
               <CustomTextInput
-                title={'NO of Reviews'}
-                placeholderText={'5'}
-                txtInput={{
-                  backgroundColor: light_grey,
-                  height: RF(41),
-                  borderRadius: 10,
-                  paddingLeft: 10,
-                }}
-                width={146}
+                title={'No of Reviews'}
+                containerStyle={{width: '45%'}}
+                placeholderText={'38$'}
               />
             </View>
 

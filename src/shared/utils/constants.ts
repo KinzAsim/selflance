@@ -28,6 +28,7 @@ import {
   onBoard1,
   onBoard2,
   onBoard3,
+  _setting,
 } from '@assets';
 
 let isDarkThemeEnabled = false;
@@ -60,9 +61,12 @@ export const categoryData = [
 ];
 
 export const profileData = [
-  {id: 1, img: _u, title: 'My Profile'},
-  {id: 2, img: _report, title: 'Report Saller'},
-  {id: 3, img: _profileP, title: 'Invite Friends'},
+  {id: 1, img: _u, title: 'My Profile', screen: 'MyProfile'},
+  {id: 2, img: _report, title: 'Add Portfolio', screen: 'Portfolio'},
+  {id: 3, img: _report, title: 'Work Space', screen: 'WorkSpace'},
+  {id: 4, img: _report, title: 'Report Saller'},
+  {id: 5, img: _setting, title: 'Settings'},
+
   // {id: 4, img: video, title: 'Invite Friends'},
 ];
 
@@ -71,7 +75,9 @@ export const profilePolicy = [
   {id: 1, img: money_change, title: 'Refund Policy'},
   {id: 2, img: infocircle, title: 'About Us'},
   {id: 3, img: _report, title: 'Term of Use'},
-  {id: 3, img: eye, title: 'Privacy Policy'},
+  {id: 4, img: eye, title: 'Privacy Policy'},
+  {id: 5, img: eye, title: "FAQ's"},
+  {id: 6, img: _profileP, title: 'Invite Friends'},
 ];
 
 export const companiesData = [
@@ -254,6 +260,25 @@ export const _ordertabs = [
   {title: 'Pending'},
   {title: 'Cancelled'},
 ];
+export const _profiletabs = [
+  {
+    title: 'About',
+  },
+  {
+    title: 'Work Space',
+  },
+  {title: 'Reviews'},
+  {title: 'Porfolio'},
+];
+export const workSpaceTabs = [
+  {
+    title: 'Active',
+  },
+  {
+    title: 'Drafts',
+  },
+  {title: 'Paused'},
+];
 
 export const _2tabs = [
   {
@@ -325,6 +350,15 @@ export const cancelOrder = [
   },
   {
     title: 'Nemo enim ipsam voluptatem quia voluptas ',
+  },
+  {
+    title: 'Nemo enim ipsam voluptatem quia  ',
+  },
+  {
+    title: 'Quis autem vel eum iure reprehenderit qui in ea voluptate  ',
+  },
+  {
+    title: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur  ',
   },
 ];
 

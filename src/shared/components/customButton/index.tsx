@@ -1,12 +1,13 @@
 import {
   StyleSheet,
-  Text,
   View,
   TouchableOpacity,
   TouchableOpacityProps,
 } from 'react-native';
 import React from 'react';
 import {primary, RF, textColor, WHITE} from '@theme';
+import {Image} from 'react-native-svg';
+import Text from '../text';
 
 interface Props extends TouchableOpacityProps {
   onPress?: any;
@@ -18,22 +19,26 @@ interface Props extends TouchableOpacityProps {
   color?: any;
   f_Size?: any;
   buttonStyle?: any;
+  renderIcon?: any;
 }
 const CustomButton = (props: Props) => {
-  const {height, disabled, grayColor, color, f_Size, buttonStyle} = props;
+  const {height, disabled, renderIcon, grayColor, color, f_Size, buttonStyle} =
+    props;
   return (
     <TouchableOpacity
       disabled={disabled}
       style={[
         styles.button,
-        buttonStyle,
+
         {
           height: height ? height : RF(55),
           backgroundColor: color ? color : primary,
         },
+        buttonStyle,
       ]}
       onPress={props?.onPress}>
       <Text
+        regular
         style={[
           styles.medium,
           {
@@ -43,6 +48,7 @@ const CustomButton = (props: Props) => {
         ]}>
         {props?.title}
       </Text>
+      {renderIcon && <View>{renderIcon()}</View>}
     </TouchableOpacity>
   );
 };
@@ -54,6 +60,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: primary,
     justifyContent: 'center',
+    flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 8,
   },

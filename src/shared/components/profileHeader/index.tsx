@@ -4,15 +4,31 @@ import {edit, user} from '@assets';
 import {RF, dim_gray, primary} from '@theme';
 import {Image, StyleSheet, View} from 'react-native';
 
-const ProfileHeader = ({title, email}: {title?: any; email?: any}) => {
+const ProfileHeader = ({
+  title,
+  email,
+  editIcon,
+  style,
+  center,
+}: {
+  editIcon?: any;
+  title?: any;
+  email?: any;
+  style?: any;
+  center?: any;
+}) => {
   return (
-    <View style={styles.main}>
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+    <View
+      style={[
+        styles.main,
+        {justifyContent: center ? 'center' : 'space-between'},
+      ]}>
+      <View style={[{flexDirection: 'row', alignItems: 'center'}, style]}>
         <View style={styles.view}>
           <Image source={user} style={styles.img} />
         </View>
-        <View style={{marginLeft: RF(15)}}>
-          <Text semiBold size={16}>
+        <View style={{marginLeft: center ? 0 : RF(15)}}>
+          <Text semiBold size={16} center={center ? true : false}>
             {title}
           </Text>
           <Text regular size={12}>
@@ -20,9 +36,11 @@ const ProfileHeader = ({title, email}: {title?: any; email?: any}) => {
           </Text>
         </View>
       </View>
-      <View style={styles.edit}>
-        <Image source={edit} style={styles._img} />
-      </View>
+      {editIcon == false ? null : (
+        <View style={styles.edit}>
+          <Image source={edit} style={styles._img} />
+        </View>
+      )}
     </View>
   );
 };
@@ -38,7 +56,6 @@ const styles = StyleSheet.create({
   },
   main: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     backgroundColor: '#fff',
     paddingHorizontal: RF(20),
     alignItems: 'center',

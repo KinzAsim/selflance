@@ -35,4 +35,26 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     marginVertical: RF(10),
   },
+  buyerMode: {
+    flexGrow: 1,
+    height: RF(56),
+    marginHorizontal: RF(20),
+    borderWidth: 0.5,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: RF(10),
+    marginBottom: RF(10),
+    borderRadius: RF(8),
+
+    borderColor: '#CAC8C8',
+  },
+  container: {
+    flexGrow: 1,
+    borderWidth: 0.5,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: RF(10),
+  },
 });

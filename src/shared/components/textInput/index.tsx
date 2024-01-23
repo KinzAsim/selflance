@@ -34,6 +34,7 @@ interface Props extends TextInputProps {
   onSubmitEditing?: any;
   placeholderText?: any;
   secureTextEntry?: any;
+  inputStyle?: any;
 }
 
 const CustomTextInput = (props: Partial<Props>) => {
@@ -60,6 +61,7 @@ const CustomTextInput = (props: Partial<Props>) => {
     placeHolderClr,
     secureTextEntry,
     onSubmitEditing,
+    inputStyle,
   } = props;
   let maxLen = maxLength === undefined ? 100 : maxLength;
   let editable = isEditable === undefined ? true : isEditable;
@@ -102,6 +104,7 @@ const CustomTextInput = (props: Partial<Props>) => {
                 textAlignVertical: multiline ? 'center' : 'center',
                 color: theme.colors.border,
               },
+              inputStyle,
             ]}
             value={value}
             maxLength={maxLen}

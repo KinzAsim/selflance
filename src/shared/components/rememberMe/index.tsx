@@ -34,7 +34,7 @@ const RememberMe = ({
 };
 
 const styles = StyleSheet.create({
-  _v: {flexDirection: 'row', marginBottom: RF(8)},
+  _v: {flexDirection: 'row', marginTop: RF(16)},
   main: {
     width: RF(15),
     height: RF(15),

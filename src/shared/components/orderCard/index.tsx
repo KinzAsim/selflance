@@ -62,13 +62,7 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
     justifyContent: 'center',
   },
-  menu: {
-    zIndex: 100,
-    width: RF(20),
-    height: RF(50),
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
   v1: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -86,10 +80,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   menu: {
-    width: RF(15),
-    height: RF(15),
+    width: RF(35),
+    height: RF(20),
     resizeMode: 'contain',
     tintColor: '#434343',
+    // borderWidth: 1,
   },
   txt: {
     width: RF(70),

@@ -7,11 +7,13 @@ import {
   SwipeModal,
   TextHeader,
   CustomButton,
+  CustomCard,
 } from '@components';
-import {FlatList, View} from 'react-native';
+import {FlatList, TextInput, View} from 'react-native';
 import React, {useRef, useState} from 'react';
 import {Modalize} from 'react-native-modalize';
 import {_ordertabs, cancelOrder, orders} from '@utils';
+import {RF} from '@theme';
 
 const Orders = ({navigation}: any) => {
   const modalizeRef = useRef<Modalize>(null);
@@ -37,7 +39,7 @@ const Orders = ({navigation}: any) => {
   return (
     <Wrapper isPaddingH>
       <TextHeader title={'Orders'} />
-      <View style={{marginRight: -20}}>
+      <View>
         <ShiftCards
           width={'100%'}
           tabs={_ordertabs}
@@ -78,6 +80,23 @@ const Orders = ({navigation}: any) => {
             );
           }}
         />
+        <Text regular semiBold style={{marginTop: RF(16)}}>
+          Other
+        </Text>
+        <CustomCard
+          radius={8}
+          containerStyle={{
+            height: RF(100),
+            paddingVertical: RF(8),
+            paddingLeft: RF(16),
+            marginBottom: RF(16),
+          }}>
+          <TextInput
+            placeholder="Write Reason"
+            textAlignVertical="top"
+            style={{padding: 0}}
+          />
+        </CustomCard>
         <CustomButton title={'Cancel Order'} onPress={onCloseModal} />
       </SwipeModal>
     </Wrapper>

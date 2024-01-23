@@ -1,5 +1,5 @@
-import {RF, WHITE, grayButton} from '@theme';
-import {SmallModal, TextHeader} from '@components';
+import {RF, WHITE, grayButton, primary} from '@theme';
+import {SmallModal, Text, TextHeader, Wrapper} from '@components';
 import {add, block, file, gallery, menu, report, search, send} from '@assets';
 import React, {useState, useEffect, useCallback, useRef} from 'react';
 import {
@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import {Bubble, GiftedChat, IMessage} from 'react-native-gifted-chat';
 import ImagePicker from 'react-native-image-crop-picker';
+import {navigate} from '@services';
 const ChatPage: React.FC = ({navigation, route}: any) => {
   const {userName} = route?.params;
   const modalRef = useRef<Modal>(null);
@@ -155,29 +156,25 @@ const ChatPage: React.FC = ({navigation, route}: any) => {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: '#fff', paddingBottom: 30}}>
-      <View style={{marginHorizontal: RF(15)}}>
-        <TextHeader
-          f_Size={20}
-          navigation={navigation}
-          _back
-          title={userName}
-          _search
-          _source1={search}
-          onOpen={onOpen}
-          _source2={menu}
-        />
-      </View>
-      <View
-        style={{
-          borderWidth: 1,
-          width: '90%',
-          position: 'absolute',
-          bottom: 130,
-          alignSelf: 'center',
-          borderColor: grayButton,
-        }}
+    <Wrapper viewStyle={{paddingBottom: RF(30)}}>
+      <TextHeader
+        textStyle={{width: '35%'}}
+        numofLines={1}
+        navigation={navigation}
+        _back
+        title={userName}
+        _search
+        _source1={search}
+        onOpen={onOpen}
+        _source2={menu}
       />
+      <Pressable
+        onPress={() => navigate('CreateOffer')}
+        style={styles.offerCard}>
+        <Text regular size={12} color={primary}>
+          Create Offer
+        </Text>
+      </Pressable>
       <GiftedChat
         messagesContainerStyle={{paddingBottom: RF(80)}}
         renderMessageImage={renderMessageImage}
@@ -276,7 +273,8 @@ const ChatPage: React.FC = ({navigation, route}: any) => {
           </View>
         )}
       />
-    </View>
+      <View style={styles.line} />
+    </Wrapper>
   );
 };
 
@@ -303,5 +301,26 @@ const styles = StyleSheet.create({
     elevation: 2,
     position: 'absolute',
     bottom: RF(60),
+  },
+  offerCard: {
+    height: RF(34),
+    width: RF(90),
+    borderWidth: 1,
+    top: RF(20),
+    position: 'absolute',
+    right: RF(85),
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 8,
+    backgroundColor: '#00538F0D',
+    borderColor: primary,
+  },
+  line: {
+    borderWidth: 1,
+    width: '90%',
+    position: 'absolute',
+    bottom: 130,
+    alignSelf: 'center',
+    borderColor: grayButton,
   },
 });

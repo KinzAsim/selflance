@@ -89,8 +89,28 @@ const onBoard3 = require('./onBoard3.png');
 const star5 = require('./star5.png');
 const circleStar = require('./circleStar.png');
 const dashboard = require('./dashboard.png');
+const forward = require('./forward.png');
+const trash = require('./trash.png');
+const tick2 = require('./tick2.png');
+const addIcon = require('./addIcon.png');
+const one = require('./one.png');
+const two = require('./two.png');
+const three = require('./three.png');
+const four = require('./four.png');
+const five = require('./five.png');
+const share = require('./share.png');
 
 export {
+  share,
+  one,
+  two,
+  three,
+  five,
+  four,
+  addIcon,
+  tick2,
+  trash,
+  forward,
   dashboard,
   circleStar,
   star5,

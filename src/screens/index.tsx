@@ -17,7 +17,21 @@ import SearchScreen from './home/search';
 import Reviews from './home/reviews';
 import OnBoardScreen from './onBoardScreen';
 import Dashboard from './home/dashboard';
+import WorkSpace from './profile/workSpace';
+import CreateWorkspace from './profile/createWorkspace';
+import CreateOffer from './chat/createOffer';
+import Agreement from './chat/agreement';
+import MyProfile from './profile/myProfile';
+import AddPortfolio from './profile/addPortfoliio';
+import Portfolio from './portfolio';
 export {
+  Portfolio,
+  AddPortfolio,
+  MyProfile,
+  Agreement,
+  CreateOffer,
+  WorkSpace,
+  CreateWorkspace,
   Dashboard,
   OnBoardScreen,
   Reviews,

@@ -1,4 +1,4 @@
-import {RF} from '@theme';
+import {RF, SCREEN_HEIGHT, SCREEN_WIDTH} from '@theme';
 import Text from '../text';
 import {down} from '@assets';
 import React, {useState} from 'react';
@@ -8,10 +8,16 @@ const DropDown = ({
   title,
   type,
   children,
+  noMargin,
+  style,
+  f_size,
 }: {
   type?: any;
+  noMargin?: any;
   title?: any;
   children?: any;
+  style?: any;
+  f_size?: any;
 }) => {
   const [open, setOpen] = useState<any>(false);
   const onOpen = () => {
@@ -23,9 +29,11 @@ const DropDown = ({
   };
 
   return (
-    <Pressable style={open ? styles.open : styles.main} onPress={onOpen}>
-      <View style={[styles.view, {marginTop: open ? RF(15) : 0}]}>
-        <Text semiBold size={14}>
+    <Pressable
+      style={[open ? styles.open : styles.main, {marginTop: noMargin ? 0 : 20}]}
+      onPress={onOpen}>
+      <View style={[styles.view, {marginTop: open ? RF(15) : 0}, style]}>
+        <Text semiBold size={f_size ? f_size : 14}>
           {title}
         </Text>
         <Image source={down} style={styles.img} />
@@ -70,17 +78,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 10,
     paddingHorizontal: 20,
-    marginTop: RF(20),
     paddingBottom: 20,
   },
   main: {
     width: '100%',
-    height: RF(53),
-    backgroundColor: '#fff',
     borderRadius: 10,
     justifyContent: 'center',
     paddingHorizontal: 20,
-    marginTop: RF(20),
   },
 });
 

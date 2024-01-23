@@ -47,4 +47,5 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: RF(20),
   },
+  gigImg: {width: '100%', height: RF(189), resizeMode: 'contain'},
 });

@@ -7,6 +7,9 @@ interface ShiftCardsProps {
   tabs?: any;
   width?: any;
   selectedShift: string;
+  marginLeft?: any;
+  fSize?: any;
+  pHorizontal?: any;
   onShiftChange: (newShift: any) => void;
 }
 
@@ -15,6 +18,9 @@ const ShiftCards = ({
   onShiftChange,
   tabs,
   width,
+  fSize,
+  marginLeft,
+  pHorizontal,
 }: ShiftCardsProps) => {
   return (
     <View
@@ -33,18 +39,24 @@ const ShiftCards = ({
             <Pressable
               style={[
                 styles.shiftCards,
+
+                {paddingHorizontal: pHorizontal ? pHorizontal : RF(8)},
                 {
                   backgroundColor:
                     selectedShift == item?.title ? WHITE : grayButton,
-                  marginLeft: tabs?.length === 2 ? RF(10) : RF(15),
-                  width: tabs?.length === 2 ? RF(97) : RF(90),
+                  marginLeft:
+                    tabs?.length === 2
+                      ? RF(10)
+                      : marginLeft
+                      ? marginLeft
+                      : RF(6),
                 },
               ]}
               onPress={() => onShiftChange(item?.title)}>
               <Text
                 regular={item?.title == selectedShift ? false : true}
                 semiBold={item?.title == selectedShift ? true : false}
-                size={14}
+                size={fSize ? fSize : 14}
                 color={selectedShift == item?.title ? primary : lightText}>
                 {item?.title}
               </Text>
@@ -62,15 +74,15 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: grayButton,
     alignSelf: 'center',
-    justifyContent: 'center',
     flexDirection: 'row',
     borderRadius: 10,
-    paddingVertical: 8,
+    paddingVertical: RF(8),
+    paddingRight: RF(5),
     alignItems: 'center',
     margin: 10,
   },
   shiftCards: {
-    height: RF(41),
+    paddingVertical: RF(10),
     borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
